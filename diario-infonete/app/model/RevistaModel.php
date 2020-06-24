@@ -38,4 +38,7 @@ class RevistaModel
     public function executeBorrarNoticia($idNoticia){
         $this->conexion->queryBorrarNoticia($idNoticia);
     }
+    public function executeBorrarRevista($idRevista){
+        $this->conexion->queryBorrarRevista($idRevista);
+    }
 }

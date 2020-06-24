@@ -51,6 +51,12 @@ switch ($page){
         $controller->executeBuscarNoticias();
         break;
 
+    case "buscarRevistas":
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executeBuscarRevista();
+        break;
+
     case "crearRevista":
         $_SESSION["crearRevista"] = "OK";
         include_once("controller/RevistaController.php");
@@ -97,6 +103,13 @@ switch ($page){
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
         $controller->executeBorrarNoticia($idNoticia);
+        break;
+
+    case "borrarRevista":
+        $idRevista = $_GET["idRevista"];
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executeBorrarRevista($idRevista);
         break;
 
     case "inicioAdm":

@@ -28,3 +28,5 @@
         </div>
     </form>
 </div>
+<div class="w3-display-bottomright w3-margin-bottom w3-margin-right">
+    <a href="interno.php?page=panelControl" class="w3-button bg-primary w3-hover-black w3-margin-right w3-text-white" style="text-decoration: none">Volver a la página anterior</a></div>

@@ -49,10 +49,11 @@ if(isset($_SESSION["usuarioOK"])) {
                         echo "<td>$pos[3]</td>";
                         echo "<td>$pos[4]</td>";
                         echo "<td>";
-                        echo"<div class='w3-margin-left'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></div>";
+                        echo"<div class='w3-margin-left'><a href='interno.php?page=borrarRevista&idRevista=$pos[0]'style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
                         echo "</td>";
                         echo "<td>";
-                        echo"<div class='w3-margin-left'><i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></div>";
+                        echo "<div class='w3-margin-left'><a href='' style='color: black'>
+                              <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div>";
                         echo "</td>";
                         echo"</tr>";
                     }
@@ -106,11 +107,11 @@ if(isset($_SESSION["usuarioOK"])) {
                         echo "<td>$pos[3]</td>";
                         echo "<td>$pos[4]</td>";
                         echo "<td>";
-                        echo"<div class='w3-margin-left'><a href='interno.php?page=borrarNoticia&idNoticia=$pos[0]' ><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
+                        echo"<div class='w3-margin-left'><a href='interno.php?page=borrarNoticia&idNoticia=$pos[0]' style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
                         echo "</td>";
                         echo "<td>";
-                        echo"<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarEstadoNoticia&idNoticia=$pos[0]' >
-                                <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></a></div></div>";
+                        echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarEstadoNoticia&idNoticia=$pos[0]' style='color: black'>
+                              <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                         echo "</td>";
                         echo"</tr>";
                     }
@@ -120,7 +121,7 @@ if(isset($_SESSION["usuarioOK"])) {
                               <span class='closebtn'>&times;</span>  
                               <strong>Success!</strong> No hay noticias para mostrar en la tabla
                             </div>";
-                    unset($_SESSION["sinDatos"]);
+                    unset($_SESSION["sinNoticias"]);
 
                 }
                 if(isset($_SESSION["eliminadoOK"])) {
@@ -139,6 +140,9 @@ if(isset($_SESSION["usuarioOK"])) {
             </table>
         </div>
     </div>
+    <div class="w3-display-bottomright w3-margin-bottom w3-margin-right">
+        <a href="interno.php?page=panelControl" class="w3-button bg-primary w3-hover-black w3-margin-right" style="text-decoration: none">Volver a la página anterior</a></div>
+
     <?php
     if(isset($_SESSION["crearRevista"])){
         ?>
@@ -204,6 +208,7 @@ if(isset($_SESSION["usuarioOK"])) {
         unset($_SESSION["crearNoticia"]);
     }
     ?>
+
     <script>
         function cerrarForm() {
             document.getElementById("ocultar").style.display = 'none';

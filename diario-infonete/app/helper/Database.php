@@ -114,9 +114,18 @@ class Database{
         $stmt->close();
 
     }
+    public function queryBorrarRevista($idRevista)
+    {
+        $stmt = $this->conexion->prepare("DELETE FROM Diario_Revista  WHERE Id=?");
+        $stmt->bind_param('i', $idRevista);
+        $stmt->execute();
+        $stmt->close();
+
+    }
 
 
-            public function queryInsert($sql){
+
+    public function queryInsert($sql){
         mysqli_query($this->conexion, $sql);
     }
 
