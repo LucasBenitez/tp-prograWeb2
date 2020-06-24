@@ -60,7 +60,7 @@ if(isset($_SESSION["usuarioOK"])) {
                 if(isset($_SESSION["sinDatos"])) {
                     echo"<div class='alert warning'>
                               <span class='closebtn'>&times;</span>  
-                              <strong>Success!</strong> No hay datos para mostrar en la tabla
+                              <strong>Success!</strong> No hay revistas para mostrar en la tabla
                             </div>";
                     unset($_SESSION["sinDatos"]);
 
@@ -106,19 +106,19 @@ if(isset($_SESSION["usuarioOK"])) {
                         echo "<td>$pos[3]</td>";
                         echo "<td>$pos[4]</td>";
                         echo "<td>";
-                        echo"<div class='w3-margin-left'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></div>";
+                        echo"<div class='w3-margin-left'><a href='interno.php?page=borrarNoticia&idNoticia=$pos[0]' ><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
                         echo "</td>";
                         echo "<td>";
-                        echo"<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarEstadoNoticia&idNoticia=$pos[0]'>
+                        echo"<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarEstadoNoticia&idNoticia=$pos[0]' >
                                 <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></a></div></div>";
                         echo "</td>";
                         echo"</tr>";
                     }
                 }
-                if(isset($_SESSION["sinDatos"])) {
+                if(isset($_SESSION["sinNoticias"])) {
                     echo"<div class='alert warning'>
                               <span class='closebtn'>&times;</span>  
-                              <strong>Success!</strong> No hay datos para mostrar en la tabla
+                              <strong>Success!</strong> No hay noticias para mostrar en la tabla
                             </div>";
                     unset($_SESSION["sinDatos"]);
 
@@ -208,6 +208,7 @@ if(isset($_SESSION["usuarioOK"])) {
         function cerrarForm() {
             document.getElementById("ocultar").style.display = 'none';
         }
+
     </script>
     </body>
     </html>

@@ -90,6 +90,14 @@ switch ($page){
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
         $controller->executeCambiarEstadoNoticia($idNoticia);
+        break;
+
+    case "borrarNoticia":
+        $idNoticia = $_GET["idNoticia"];
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executeBorrarNoticia($idNoticia);
+        break;
 
     case "inicioAdm":
     default:

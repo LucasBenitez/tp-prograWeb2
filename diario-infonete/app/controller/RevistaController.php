@@ -28,6 +28,15 @@ class RevistaController{
     }
     public function executeCambiarEstadoNoticia($idNoticia){
         $this->modelo->executeCambiarEstadoNoticia($idNoticia);
-        include_once("view/revista/panelControlRevista.php");
+        header("Location: interno.php?page=admRevista");
+
+    }
+
+    public function executeBorrarNoticia($idNoticia){
+        $this->modelo->executeBorrarNoticia($idNoticia);
+        header("Location: interno.php?page=admRevista");
+
+
+
     }
 }

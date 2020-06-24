@@ -35,4 +35,7 @@ class RevistaModel
     public function executeCambiarEstadoNoticia($idNoticia){
         $this->conexion->queryCambiarEstado($idNoticia);
     }
+    public function executeBorrarNoticia($idNoticia){
+        $this->conexion->queryBorrarNoticia($idNoticia);
+    }
 }
