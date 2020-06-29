@@ -41,15 +41,15 @@ if(isset($_SESSION["usuarioOK"])) {
                     $revistas = $_SESSION["revistas"];
                     $tam = sizeof($revistas);
                     for ($i = 1; $i <= $tam; $i++) {
-                        $pos = explode("-", $revistas[$i]);
+                        $posi = explode("-", $revistas[$i]);
                         echo "<tr>";
-                        echo "<td>$pos[0]</td>";
-                        echo "<td>$pos[1]</td>";
-                        echo "<td>$pos[2]</td>";
-                        echo "<td>$pos[3]</td>";
-                        echo "<td>$pos[4]</td>";
+                        echo "<td>$posi[0]</td>";
+                        echo "<td>$posi[1]</td>";
+                        echo "<td>$posi[2]</td>";
+                        echo "<td>$posi[3]</td>";
+                        echo "<td>$posi[4]</td>";
                         echo "<td>";
-                        echo"<div class='w3-margin-left'><a href='interno.php?page=borrarRevista&idRevista=$pos[0]'style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
+                        echo"<div class='w3-margin-left'><a href='interno.php?page=borrarRevista&idRevista=$posi[0]'style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
                         echo "</td>";
                         echo "<td>";
                         echo "<div class='w3-margin-left'><a href='' style='color: black'>
@@ -99,20 +99,30 @@ if(isset($_SESSION["usuarioOK"])) {
                     $noticias = $_SESSION["noticias"];
                     $tam = sizeof($noticias);
                     for ($i = 1; $i <= $tam; $i++) {
-                        $pos = explode("-", $noticias[$i]);
+                        $posi = explode("-", $noticias[$i]);
                         echo "<tr>";
-                        echo "<td>$pos[0]</td>";
-                        echo "<td>$pos[1]</td>";
-                        echo "<td>$pos[2]</td>";
-                        echo "<td>$pos[3]</td>";
-                        echo "<td>$pos[4]</td>";
+                        echo "<td>$posi[0]</td>";
+                        echo "<td>$posi[1]</td>";
+                        echo "<td>$posi[2]</td>";
+                        echo "<td>$posi[3]</td>";
+                        echo "<td>$posi[4]</td>";
+                        if($pos[2]==1){
                         echo "<td>";
-                        echo"<div class='w3-margin-left'><a href='interno.php?page=borrarNoticia&idNoticia=$pos[0]' style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
+                        echo"<div class='w3-margin-left'><a href='interno.php?page=borrarNoticia&idNoticia=$posi[0]' style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
                         echo "</td>";
                         echo "<td>";
-                        echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarEstadoNoticia&idNoticia=$pos[0]' style='color: black'>
+                        echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarEstadoNoticia&idNoticia=$posi[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                         echo "</td>";
+                        }else{
+                            echo "<td>";
+                            echo "No disponible";
+                            echo "</td>";
+                            echo "<td>";
+                            echo "No disponible";
+                            echo "</td>";
+
+                        }
                         echo"</tr>";
                     }
                 }

@@ -105,6 +105,16 @@ class Database{
         $stmt->close();
 
     }
+
+    public function queryEditarNoticia($idNoticia,$cuerpoNoticia)
+    {
+
+        $stmt = $this->conexion->prepare("UPDATE Noticia SET informe_noticia=?  WHERE Cod_noticia=?");
+        $stmt->bind_param('si', $cuerpoNoticia, $idNoticia);
+        $stmt->execute();
+        $stmt->close();
+
+    }
     public function queryBorrarNoticia($idNoticia)
     {
 

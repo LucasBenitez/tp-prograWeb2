@@ -98,6 +98,14 @@ switch ($page){
         $controller->executeCambiarEstadoNoticia($idNoticia);
         break;
 
+    case "editarNoticia":
+        $idNoticia = $_GET["idNoticia"];
+        $cuerpoNoticia=$_GET["cuerpoNoticia"];
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executeEditarNoticia($idNoticia,$cuerpoNoticia);
+        break;
+
     case "borrarNoticia":
         $idNoticia = $_GET["idNoticia"];
         include_once("controller/RevistaController.php");

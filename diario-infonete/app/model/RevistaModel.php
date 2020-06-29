@@ -33,7 +33,10 @@ class RevistaModel
         $this->conexion->close();
     }
     public function executeCambiarEstadoNoticia($idNoticia){
-        $this->conexion->queryCambiarEstado($idNoticia);
+    $this->conexion->queryCambiarEstado($idNoticia);
+}
+    public function executeEditarNoticia($idNoticia,$cuerpoNoticia){
+        $this->conexion->queryEditarNoticia($idNoticia,$cuerpoNoticia);
     }
     public function executeBorrarNoticia($idNoticia){
         $this->conexion->queryBorrarNoticia($idNoticia);
