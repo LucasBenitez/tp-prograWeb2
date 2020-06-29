@@ -35,8 +35,8 @@ class RevistaController{
         header("Location: interno.php?page=admRevista");
 
     }
-    public function executeEditarNoticia($idNoticia,$cuerpoNoticia){
-        $this->modelo->executeEditarNoticia($idNoticia,$cuerpoNoticia);
+    public function executeEditarNoticia($idNoticia,$cuerpoNoticia,$titulo){
+        $this->modelo->executeEditarNoticia($idNoticia,$cuerpoNoticia,$titulo);
         header("Location: interno.php?page=admRevista");
 
 

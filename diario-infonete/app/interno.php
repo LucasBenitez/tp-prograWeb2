@@ -99,11 +99,12 @@ switch ($page){
         break;
 
     case "editarNoticia":
+        $titulo=$_POST["titulo"];
         $idNoticia = $_POST["idNoticia"];
         $cuerpoNoticia=$_POST["cuerpoNoticia"];
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
-        $controller->executeEditarNoticia($idNoticia,$cuerpoNoticia);
+        $controller->executeEditarNoticia($idNoticia,$cuerpoNoticia,$titulo);
         break;
 
         case "redirect":

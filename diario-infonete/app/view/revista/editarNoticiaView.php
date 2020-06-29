@@ -17,9 +17,13 @@ if(isset($_SESSION["usuarioOK"])) {
 </head>
 <body>
 <form class="w3-container" name="registrar" action="interno.php?page=editarNoticia" method="post" enctype="application/x-www-form-urlencoded">
+
+
     <div class="w3-container bg-primary">
         <h2>Cambiar informe noticia</h2>
     </div>
+    <label>Titulo noticia</label>
+    <input class="w3-input w3-margin-top" type="text" name="titulo">
 
     <label>Informe noticia</label>
     <input class="w3-input w3-margin-top" type="text" name="cuerpoNoticia">
