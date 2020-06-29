@@ -106,6 +106,12 @@ switch ($page){
         $controller->executeEditarNoticia($idNoticia,$cuerpoNoticia);
         break;
 
+        case "redirect":
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->redirectEditarNoticia();
+        break;
+
     case "borrarNoticia":
         $idNoticia = $_GET["idNoticia"];
         include_once("controller/RevistaController.php");

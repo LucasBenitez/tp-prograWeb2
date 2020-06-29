@@ -93,6 +93,7 @@ if(isset($_SESSION["usuarioOK"])) {
                     <th>Origen</th>
                     <th>Borrar</th>
                     <th>Modificar Estado</th>
+                    <th>Editar noticia</th>
                 </tr>
                 <?php
                 if(isset($_SESSION["noticias"])) {
@@ -114,6 +115,10 @@ if(isset($_SESSION["usuarioOK"])) {
                         echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarEstadoNoticia&idNoticia=$posi[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                         echo "</td>";
+                            echo "<td>";
+                            echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=redirect&idNoticia=$posi[0]' style='color: black'>
+                              <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
+                            echo "</td>";
                         }else{
                             echo "<td>";
                             echo "No disponible";
