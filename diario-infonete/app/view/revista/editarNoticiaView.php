@@ -16,12 +16,14 @@ if(isset($_SESSION["usuarioOK"])) {
     <title>Document</title>
 </head>
 <body>
-    <form class="w3-container w3-display-middle text-white w3-col s6" action="interno.php?page=editarNoticia" method="get">
+<form class="w3-container" name="registrar" action="interno.php?page=editarNoticia" method="post" enctype="application/x-www-form-urlencoded">
     <div class="w3-container bg-primary">
         <h2>Cambiar informe noticia</h2>
     </div>
+
     <label>Informe noticia</label>
     <input class="w3-input w3-margin-top" type="text" name="cuerpoNoticia">
+
         <input type="hidden" value="<?php echo $idNoticia ?>" name="idNoticia">
         <input type="submit">
     <!--<div class="text-center"><button class="w3-button bg-primary text-white" >Enviar</button></div>-->

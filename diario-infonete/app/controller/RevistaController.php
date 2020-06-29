@@ -39,6 +39,7 @@ class RevistaController{
         $this->modelo->executeEditarNoticia($idNoticia,$cuerpoNoticia);
         header("Location: interno.php?page=admRevista");
 
+
     }
     public function redirectEditarNoticia(){
         include_once("view/revista/editarNoticiaView.php");
