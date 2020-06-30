@@ -33,6 +33,7 @@ if(isset($_SESSION["usuarioOK"])) {
                     <th>Descripcion</th>
                     <th>Borrar</th>
                     <th>Modificar</th>
+
                 </tr>
     </div>
 
@@ -52,8 +53,8 @@ if(isset($_SESSION["usuarioOK"])) {
                         echo"<div class='w3-margin-left'><a href='interno.php?page=borrarRevista&idRevista=$posi[0]'style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
                         echo "</td>";
                         echo "<td>";
-                        echo "<div class='w3-margin-left'><a href='' style='color: black'>
-                              <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div>";
+                        echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=redirectNoticia&idRevista=$posi[0]' style='color: black'>
+                              <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                         echo "</td>";
                         echo"</tr>";
                     }

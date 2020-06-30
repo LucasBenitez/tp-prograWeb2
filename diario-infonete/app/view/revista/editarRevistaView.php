@@ -3,7 +3,7 @@ if(isset($_SESSION["usuarioOK"])) {
     $usuario = $_SESSION["usuarioOK"];
     $pos = explode("-", $usuario);
 }
-    $idNoticia = $_GET["idNoticia"];
+    $idRevista = $_GET["idRevista"];
 
 ?>
 <!doctype html>
@@ -16,21 +16,18 @@ if(isset($_SESSION["usuarioOK"])) {
     <title>Document</title>
 </head>
 <body>
-<form class="w3-container w3-col s6 w3-display-middle" name="registrar" action="interno.php?page=editarNoticia" method="post" enctype="application/x-www-form-urlencoded">
+<form class="w3-container w3-col s6 w3-display-middle" name="registrar" action="interno.php?page=editarRevista" method="post" enctype="application/x-www-form-urlencoded">
 
 
     <div class="w3-container bg-primary text-white text-center">
-        <h2>Cambiar informe noticia</h2>
+        <h2>Cambiar titulo revista</h2>
     </div>
-    <label class="w3-margin-top">Titulo noticia</label>
+    <label class="w3-margin-top">Titulo Revista</label>
     <input class="w3-input w3-margin-top" type="text" name="titulo">
 
-    <label class="w3-margin-top">Informe noticia</label>
-    <input class="w3-input w3-margin-top" type="text" name="cuerpoNoticia">
-
-        <input type="hidden" value="<?php echo $idNoticia ?>" name="idNoticia">
+    <input type="hidden" value="<?php echo $idRevista ?>" name="idRevista">
 
     <div class="text-center w3-margin-top"><button class="w3-button bg-primary text-white" >Enviar</button></div>
-    </form>
+</form>
 </body>
 </html>

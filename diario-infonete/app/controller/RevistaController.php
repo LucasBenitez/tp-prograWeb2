@@ -38,12 +38,16 @@ class RevistaController{
     public function executeEditarNoticia($idNoticia,$cuerpoNoticia,$titulo){
         $this->modelo->executeEditarNoticia($idNoticia,$cuerpoNoticia,$titulo);
         header("Location: interno.php?page=admRevista");
-
-
+    }
+    public function executeEditarRevista($idRevista,$titulo){
+        $this->modelo->executeEditarRevista($idRevista,$titulo);
+        header("Location: interno.php?page=admRevista");
     }
     public function redirectEditarNoticia(){
         include_once("view/revista/editarNoticiaView.php");
-
+    }
+    public function redirectEditarRevista(){
+        include_once("view/revista/editarRevistaView.php");
     }
 
     public function executeBorrarNoticia($idNoticia){
