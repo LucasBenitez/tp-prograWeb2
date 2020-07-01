@@ -13,14 +13,14 @@ if(isset($_SESSION["usuarioOK"])) {
         <div class="w3-container w3-margin-top">
             <a href="interno.php?page=registrar" class="w3-button bg-primary w3-hover-black w3-margin-right" style="text-decoration: none">Alta Usuario</a>
             <a href="interno.php?page=admRevista" class="w3-button bg-primary w3-hover-black w3-margin-right"style="text-decoration: none">Administrar Revista</a>
-            <a href="interno.php?page=bajaUsuario" class="w3-button bg-primary w3-hover-black "style="text-decoration: none">Listar usuarios</a>
+
 
 
         </div>
     </div>
     <br>
     <div class="w3-container">
-        <h2>Lista Autorizar Noticias</h2>
+        <h2>Lista Usuarios</h2>
         <table class="w3-table w3-bordered">
             <tr>
                 <th>Nombre</th>

@@ -1,3 +1,4 @@
+
 <div class="w3-card-4 w3-display-middle " style="width:25%;">
     <div class="w3-container bg-primary text-white w3-round">
         <h2 class="w3-center">Alta <?php echo$_SESSION["usuarioAlta"] ?></h2>

@@ -16,19 +16,29 @@ class RevistaModel
     public function executeBuscarNoticias(){
         $this->conexion->queryBuscarNoticias();
     }
+    public function executeBuscarSeccion(){
+        $this->conexion->queryBuscarSeccion();
+    }
 
-    public function executeGuardarRevista($idAdmin,$titulo,$nroRevista,$descripcion){
+    public function executeGuardarRevista($titulo,$nroRevista,$descripcion){
 
-        $sql = "INSERT INTO Diario_Revista(Id_Admin,Titulo,Numero,Descripcion)
-                value($idAdmin,'$titulo',$nroRevista,'$descripcion')";
+        $sql = "INSERT INTO Diario_Revista(Titulo,Numero,Descripcion)
+                value('$titulo',$nroRevista,'$descripcion')";
         $this->conexion->queryInsert($sql);
         $this->conexion->close();
     }
-    public function executeGuardarNoticia($tituloNoticia,$subtitulo,$informe,$cod_contenidista){
+    public function executeGuardarNoticia($tituloNoticia,$subtitulo,$informe,$cod_contenidista,$cod_seccion){
 
-        $sql = "insert into Noticia (Titulo,Subtitulo,informe_noticia,Cod_georef
-                 ,Cod_seccion,Cod_Contenidista,EstadoAutorizado,Origen)
-      value ('$tituloNoticia','$subtitulo','$informe',1,1,$cod_contenidista,'no','diario');";
+        $sql = "insert into Noticia (Titulo,Subtitulo,informe_noticia
+                 ,Cod_seccion,Cod_Contenidista,EstadoAutorizado)
+      value ('$tituloNoticia','$subtitulo','$informe',$cod_seccion,$cod_contenidista,'no')";
+        $this->conexion->queryInsert($sql);
+        $this->conexion->close();
+    }
+    public function executeGuardarSeccion($descripcion,$cod_revista){
+
+        $sql = "insert into Seccion (Descripcion,Cod_Revista)
+      value ('$descripcion',$cod_revista);";
         $this->conexion->queryInsert($sql);
         $this->conexion->close();
     }
@@ -45,3 +55,5 @@ class RevistaModel
         $this->conexion->queryBorrarRevista($idRevista);
     }
 }
+
+

@@ -51,12 +51,11 @@ class Database{
             $i=1;
             while($row = $result->fetch_assoc()) {
                 $id= $row['Id'];
-                $idAdmin= $row['Id_Admin'];
                 $titulo=$row['Titulo'];
                 $numero = $row['Numero'];
                 $descripcion = $row['Descripcion'];
 
-                $resultados[$i]= $id."-".$idAdmin."-".$titulo."-".$numero."-".$descripcion;
+                $resultados[$i]= $id."-".$titulo."-".$numero."-".$descripcion;
                 $i++;
             }
             // se guarda las revistas recuperados de la consulta en SESSION
@@ -69,7 +68,7 @@ class Database{
 
     public function queryBuscarNoticias(){
 
-        $stmt = $this->conexion->prepare("SELECT * FROM Noticia");
+        $stmt = $this->conexion->prepare("SELECT * FROM Noticia ");
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -82,13 +81,40 @@ class Database{
                 $titulo=$row['Titulo'];
                 $subTitulo = $row['Subtitulo'];
                 $estadoAutorizado = $row['EstadoAutorizado'];
-                $origen = $row['Origen'];
 
-                $resultados[$i]= $codNoticia."-".$titulo."-".$subTitulo."-".$estadoAutorizado."-".$origen;
+
+                $resultados[$i]= $codNoticia."-".$titulo."-".$subTitulo."-".$estadoAutorizado;
                 $i++;
             }
             // se guarda las revistas recuperados de la consulta en SESSION
             $_SESSION["noticias"] = $resultados;
+        }
+
+        $stmt->close();
+        $this->conexion->close();
+    }
+
+    public function queryBuscarSeccion(){
+
+        $stmt = $this->conexion->prepare("SELECT * FROM Seccion ");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if($result->num_rows === 0) {
+            $_SESSION["sinSeccion"] = "0";
+        }else{
+            $i=1;
+            while($row = $result->fetch_assoc()) {
+                $codSeccion= $row['Cod_seccion'];
+                $descripcion=$row['Descripcion'];
+
+
+
+                $resultados[$i]= $codSeccion."-".$descripcion;
+                $i++;
+            }
+            // se guarda las revistas recuperados de la consulta en SESSION
+            $_SESSION["seccion"] = $resultados;
         }
 
         $stmt->close();

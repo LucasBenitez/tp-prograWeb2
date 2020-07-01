@@ -57,6 +57,12 @@ switch ($page){
         $controller->executeBuscarRevista();
         break;
 
+    case "buscarSeccion":
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executeBuscarSeccion();
+        break;
+
     case "crearRevista":
         $_SESSION["crearRevista"] = "OK";
         include_once("controller/RevistaController.php");
@@ -71,14 +77,21 @@ switch ($page){
         $controller->execute();
         break;
 
+    case "crearSeccion":
+        $_SESSION["crearSeccion"] = "OK";
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->execute();
+        break;
+
+
     case "guardarRevista":
         $titulo = $_POST["titulo"];
         $nroRevista = $_POST["nroRevista"];
         $descripcion = $_POST["descripcion"];
-        $idAdmin = $_POST["idUsuario"];
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
-        $controller->executeGuardarRevista($idAdmin,$titulo,$nroRevista,$descripcion);
+        $controller->executeGuardarRevista($titulo,$nroRevista,$descripcion);
         break;
 
     case "guardarNoticia":
@@ -86,9 +99,19 @@ switch ($page){
         $subtitulo= $_POST["subtitulo"];
         $informe = $_POST["informe"];
         $cod_contenidista = $_POST["cod_contenidista"];
+        $cod_seccion=$_POST["cod_seccion"];
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
-        $controller->executeGuardarNoticia($tituloNoticia,$subtitulo,$informe,$cod_contenidista);
+        $controller->executeGuardarNoticia($tituloNoticia,$subtitulo,$informe,$cod_contenidista,$cod_seccion);
+        break;
+
+
+    case "guardarSeccion":
+        $descripcionSeccion = $_POST["descripcion"];
+        $cod_revista= $_POST["cod_revista"];
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executeGuardarSeccion($descripcionSeccion,$cod_revista);
         break;
 
     case "cambiarEstadoNoticia":
