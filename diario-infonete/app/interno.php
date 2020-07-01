@@ -51,11 +51,7 @@ switch ($page){
         $controller->executeBuscarNoticias();
         break;
 
-    case "buscarRevistas":
-        include_once("controller/RevistaController.php");
-        $controller = new RevistaController();
-        $controller->executeBuscarRevista();
-        break;
+
 
     case "buscarSeccion":
         include_once("controller/RevistaController.php");
@@ -138,16 +134,30 @@ switch ($page){
         $controller->executeEditarRevista($idRevista,$titulo);
         break;
 
+        case "editarSeccion":
+        $titulo=$_POST["titulo"];
+        $idSeccion= $_POST["idSeccion"];
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executeEditarSeccion($idSeccion,$titulo);
+        break;
+
         case "redirect":
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
         $controller->redirectEditarNoticia();
         break;
 
-    case "redirectNoticia":
+    case "redirectRevista":
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
         $controller->redirectEditarRevista();
+        break;
+
+    case "redirectSeccion":
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->redirectEditarSeccion();
         break;
 
     case "borrarNoticia":
@@ -162,6 +172,13 @@ switch ($page){
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
         $controller->executeBorrarRevista($idRevista);
+        break;
+
+    case "borrarSeccion":
+        $idSeccion = $_GET["idSeccion"];
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executeBorrarSeccion($idSeccion);
         break;
 
     case "inicioAdm":

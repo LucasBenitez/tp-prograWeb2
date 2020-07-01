@@ -9,9 +9,6 @@ class RevistaModel
         $this->conexion = new Database();
     }
 
-    public function executeBuscarRevista(){
-       $this->conexion->queryBuscarRevistas();
-    }
 
     public function executeBuscarNoticias(){
         $this->conexion->queryBuscarNoticias();
@@ -51,11 +48,17 @@ class RevistaModel
     public function executeEditarRevista($idRevista,$titulo){
         $this->conexion->queryEditarRevista($idRevista,$titulo);
     }
+    public function executeEditarSeccion($idSeccion,$titulo){
+        $this->conexion->queryEditarSeccion($idSeccion,$titulo);
+    }
     public function executeBorrarNoticia($idNoticia){
         $this->conexion->queryBorrarNoticia($idNoticia);
     }
     public function executeBorrarRevista($idRevista){
         $this->conexion->queryBorrarRevista($idRevista);
+    }
+    public function executeBorrarSeccion($idSeccion){
+        $this->conexion->queryBorrarSeccion($idSeccion);
     }
 }
 

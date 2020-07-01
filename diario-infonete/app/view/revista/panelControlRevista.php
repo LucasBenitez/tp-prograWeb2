@@ -54,7 +54,7 @@ if(isset($_SESSION["usuarioOK"])) {
                         echo"<div class='w3-margin-left'><a href='interno.php?page=borrarRevista&idRevista=$posi[0]'style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
                         echo "</td>";
                         echo "<td>";
-                        echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=redirectNoticia&idRevista=$posi[0]' style='color: black'>
+                        echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=redirectRevista&idRevista=$posi[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                         echo "</td>";
                         echo"</tr>";
@@ -109,14 +109,14 @@ if(isset($_SESSION["usuarioOK"])) {
                         echo "<td>$posN[3]</td>";
                         if($pos[2]==1){
                         echo "<td>";
-                        echo"<div class='w3-margin-left'><a href='interno.php?page=borrarNoticia&idNoticia=$posi[0]' style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
+                        echo"<div class='w3-margin-left'><a href='interno.php?page=borrarNoticia&idNoticia=$posN[0]' style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
                         echo "</td>";
                         echo "<td>";
-                        echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarEstadoNoticia&idNoticia=$posi[0]' style='color: black'>
+                        echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarEstadoNoticia&idNoticia=$posN[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                         echo "</td>";
                             echo "<td>";
-                            echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=redirect&idNoticia=$posi[0]' style='color: black'>
+                            echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=redirect&idNoticia=$posN[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                             echo "</td>";
                         }else{
@@ -174,10 +174,10 @@ if(isset($_SESSION["usuarioOK"])) {
                     echo "<td>$posS[1]</td>";
                     if($pos[2]==1){
                         echo "<td>";
-                        echo"<div class='w3-margin-left'><a href='interno.php?page=borrarSeccion&idNoticia=$posS[0]' style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
+                        echo"<div class='w3-margin-left'><a href='interno.php?page=borrarSeccion&idSeccion=$posS[0]' style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
                         echo "</td>";
                         echo "<td>";
-                        echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=redirect&idNoticia=$posS[0]' style='color: black'>
+                        echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=redirectSeccion&idSeccion=$posS[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                         echo "</td>";
                     }else{

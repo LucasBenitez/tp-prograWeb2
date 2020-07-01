@@ -12,6 +12,7 @@ class RevistaController{
            // $this->modelo->executeBuscarRevista();
             $this->modelo->executeBuscarSeccion();
             header("Location: interno.php?page=buscarNoticias");
+
         }
 
         public function executeGuardarRevista($titulo,$nroRevista,$descripcion){
@@ -23,10 +24,7 @@ class RevistaController{
             $this->modelo->executeBuscarNoticias();
             include_once("view/revista/panelControlRevista.php");
         }
-    public function executeBuscarRevista(){
-        $this->modelo->executeBuscarRevista();
-        include_once("view/revista/panelControlRevista.php");
-    }
+
     public function executeBuscarSeccion(){
         $this->modelo->executeBuscarSeccion();
         include_once("view/revista/panelControlRevista.php");
@@ -52,11 +50,18 @@ class RevistaController{
         $this->modelo->executeEditarRevista($idRevista,$titulo);
         header("Location: interno.php?page=admRevista");
     }
+    public function executeEditarSeccion($idSeccion,$titulo){
+        $this->modelo->executeEditarSeccion($idSeccion,$titulo);
+        header("Location: interno.php?page=admRevista");
+    }
     public function redirectEditarNoticia(){
         include_once("view/revista/editarNoticiaView.php");
     }
     public function redirectEditarRevista(){
         include_once("view/revista/editarRevistaView.php");
+    }
+    public function redirectEditarSeccion(){
+        include_once("view/revista/editarSeccionView.php");
     }
 
     public function executeBorrarNoticia($idNoticia){
@@ -65,6 +70,10 @@ class RevistaController{
     }
     public function executeBorrarRevista($idRevista){
         $this->modelo->executeBorrarRevista($idRevista);
+        header("Location: interno.php?page=admRevista");
+    }
+    public function executeBorrarSeccion($idSeccion){
+        $this->modelo->executeBorrarSeccion($idSeccion);
         header("Location: interno.php?page=admRevista");
     }
 

@@ -39,32 +39,6 @@ class Database{
          $stmt->close();
         $this->conexion->close();
     }
-    public function queryBuscarRevistas(){
-
-        $stmt = $this->conexion->prepare("SELECT * FROM Diario_Revista");
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if($result->num_rows === 0) {
-            $_SESSION["sinDatos"] = "0";
-        }else{
-            $i=1;
-            while($row = $result->fetch_assoc()) {
-                $id= $row['Id'];
-                $titulo=$row['Titulo'];
-                $numero = $row['Numero'];
-                $descripcion = $row['Descripcion'];
-
-                $resultados[$i]= $id."-".$titulo."-".$numero."-".$descripcion;
-                $i++;
-            }
-            // se guarda las revistas recuperados de la consulta en SESSION
-            $_SESSION["revistas"] = $resultados;
-        }
-
-        $stmt->close();
-        $this->conexion->close();
-    }
 
     public function queryBuscarNoticias(){
 
@@ -91,6 +65,30 @@ class Database{
         }
 
         $stmt->close();
+
+
+        $stmt2 = $this->conexion->prepare("SELECT * FROM Diario_Revista");
+        $stmt2->execute();
+        $result = $stmt2->get_result();
+
+        if($result->num_rows === 0) {
+            $_SESSION["sinDatos"] = "0";
+        }else{
+            $i=1;
+            while($row = $result->fetch_assoc()) {
+                $id= $row['Id'];
+                $titulo=$row['Titulo'];
+                $numero = $row['Numero'];
+                $descripcion = $row['Descripcion'];
+
+                $resultados[$i]= $id."-".$titulo."-".$numero."-".$descripcion;
+                $i++;
+            }
+            // se guarda las revistas recuperados de la consulta en SESSION
+            $_SESSION["revistas"] = $resultados;
+        }
+
+        $stmt2->close();
         $this->conexion->close();
     }
 
@@ -151,6 +149,13 @@ class Database{
         $stmt2->execute();
         $stmt2->close();
     }
+    public function queryEditarSeccion($idSeccion,$titulo)
+    {
+        $stmt2 = $this->conexion->prepare("UPDATE Seccion SET  Descripcion=?  WHERE Cod_seccion=?");
+        $stmt2->bind_param('si',$titulo, $idSeccion);
+        $stmt2->execute();
+        $stmt2->close();
+    }
     public function queryBorrarNoticia($idNoticia)
     {
 
@@ -168,6 +173,15 @@ class Database{
         $stmt->close();
 
     }
+
+public function queryBorrarSeccion($idSeccion)
+{
+    $stmt = $this->conexion->prepare("DELETE FROM Seccion  WHERE Cod_seccion=?");
+    $stmt->bind_param('i', $idSeccion);
+    $stmt->execute();
+    $stmt->close();
+
+}
 
 
 
