@@ -130,10 +130,24 @@ switch ($page){
         $controller->executeEditarNoticia($idNoticia,$cuerpoNoticia,$titulo);
         break;
 
+    case "editarRevista":
+        $titulo=$_POST["titulo"];
+        $idRevista = $_POST["idRevista"];
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executeEditarRevista($idRevista,$titulo);
+        break;
+
         case "redirect":
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
         $controller->redirectEditarNoticia();
+        break;
+
+    case "redirectNoticia":
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->redirectEditarRevista();
         break;
 
     case "borrarNoticia":

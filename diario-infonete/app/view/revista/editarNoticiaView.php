@@ -28,11 +28,18 @@ if(isset($_SESSION["usuarioOK"])) {
     <label class="w3-margin-top">Informe noticia</label>
     <input class="w3-input w3-margin-top" type="text" name="cuerpoNoticia">
 
+<<<<<<< HEAD
     <input type="hidden" value="<?php echo $idNoticia ?>" name="idNoticia">
 
     <div class="text-center w3-margin-top"><button class="w3-button bg-primary text-white" >Enviar</button></div>
 </form>
 <div class="w3-display-bottomright w3-margin-bottom w3-margin-right">
     <a href="interno.php?page=admRevista" class="w3-button bg-primary w3-hover-black w3-margin-right" style="text-decoration: none">Volver a la página anterior</a></div>
+=======
+        <input type="hidden" value="<?php echo $idNoticia ?>" name="idNoticia">
+
+    <div class="text-center w3-margin-top"><button class="w3-button bg-primary text-white" >Enviar</button></div>
+    </form>
+>>>>>>> 0b33c02d6c8e06fa2171a2fc547efdde419dee85
 </body>
 </html>
