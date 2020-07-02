@@ -33,6 +33,8 @@ switch ($page){
         $controller->executeRegistarUsuario($usuario,$clave,$nroDoc,$tel,$mail,$codUser);
         break;
 
+
+
     case "panelControl":
         include_once("controller/InicioController.php");
         $controller = new InicioController();

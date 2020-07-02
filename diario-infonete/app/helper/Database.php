@@ -39,6 +39,99 @@ class Database{
          $stmt->close();
         $this->conexion->close();
     }
+    public function queryBuscarUsuarios(){
+
+        $stmt = $this->conexion->prepare("SELECT * FROM usuario  where Cod_Usuario=1");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if($result->num_rows === 0) {
+            $_SESSION["sinSeccion"] = "0";
+        }else{
+            $i=1;
+            while($row = $result->fetch_assoc()) {
+                $id=$row['Id_usuario'];
+                $nombre= $row['Nombre'];
+                $clave=$row['Pass'];
+                $nroDoc=$row['Nro_doc'];
+                $codDoc=$row['Cod_doc'];
+                $mail=$row['Mail'];
+                $telefono=$row['Telefono'];
+                $cod_usuario=$row['Cod_Usuario'];
+
+
+
+
+                $resultados[$i]= $id."-".$nombre."-".$clave."-".$nroDoc."-". $codDoc."-".$mail ."-".$telefono."-".$cod_usuario;
+                $i++;
+            }
+            // se guarda las revistas recuperados de la consulta en SESSION
+            $_SESSION["admin"] = $resultados;
+        }
+
+        $stmt->close();
+
+        $stmt2 = $this->conexion->prepare("SELECT * FROM usuario  where Cod_Usuario=2");
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+
+        if($result2->num_rows === 0) {
+            $_SESSION["sinSeccion"] = "0";
+        }else{
+            $i=1;
+            while($row = $result->fetch_assoc()) {
+                $id=$row['Id_usuario'];
+                $nombre= $row['Nombre'];
+                $clave=$row['Pass'];
+                $nroDoc=$row['Nro_doc'];
+                $codDoc=$row['Cod_doc'];
+                $mail=$row['Mail'];
+                $telefono=$row['Telefono'];
+                $cod_usuario=$row['Cod_Usuario'];
+
+
+
+
+                $resultados[$i]= $id."-".$nombre."-".$clave."-".$nroDoc."-". $codDoc."-".$mail ."-".$telefono."-".$cod_usuario;
+                $i++;
+            }
+            // se guarda las revistas recuperados de la consulta en SESSION
+            $_SESSION["contenidista"] = $resultados;
+        }
+
+        $stmt2->close();
+
+        $stmt3 = $this->conexion->prepare("SELECT * FROM usuario  where Cod_Usuario=3");
+        $stmt3->execute();
+        $result3 = $stmt3->get_result();
+
+        if($result3->num_rows === 0) {
+            $_SESSION["sinSeccion"] = "0";
+        }else{
+            $i=1;
+            while($row = $result->fetch_assoc()) {
+                $id=$row['Id_usuario'];
+                $nombre= $row['Nombre'];
+                $clave=$row['Pass'];
+                $nroDoc=$row['Nro_doc'];
+                $codDoc=$row['Cod_doc'];
+                $mail=$row['Mail'];
+                $telefono=$row['Telefono'];
+                $cod_usuario=$row['Cod_Usuario'];
+
+
+
+
+                $resultados[$i]= $id."-".$nombre."-".$clave."-".$nroDoc."-". $codDoc."-".$mail ."-".$telefono."-".$cod_usuario;
+                $i++;
+            }
+            // se guarda las revistas recuperados de la consulta en SESSION
+            $_SESSION["lector"] = $resultados;
+        }
+
+        $stmt3->close();
+        $this->conexion->close();
+    }
 
     public function queryBuscarNoticias(){
 
@@ -167,6 +260,10 @@ class Database{
     }
     public function queryBorrarRevista($idRevista)
     {
+        $stmt2 = $this->conexion->prepare("DELETE FROM Seccion  WHERE Cod_revista=?");
+        $stmt2->bind_param('i', $idRevista);
+        $stmt2->execute();
+        $stmt2->close();
         $stmt = $this->conexion->prepare("DELETE FROM Diario_Revista  WHERE Id=?");
         $stmt->bind_param('i', $idRevista);
         $stmt->execute();

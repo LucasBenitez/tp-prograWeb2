@@ -29,11 +29,11 @@ if(isset($_SESSION["usuarioOK"])) {
                 <th>Cambiar Clave</th>
             </tr>
             <?php
-            if(isset($_SESSION["usuarios"])) {
-                $usuarios = $_SESSION["usuarios"];
-                $tam = sizeof($usuarios);
+            if(isset($_SESSION["admin"])) {
+                $admin = $_SESSION["admin"];
+                $tam = sizeof($admin);
                 for ($i = 1; $i <= $tam; $i++) {
-                    $pos = explode("-", $usuarios[$i]);
+                    $pos = explode("-", $admin[$i]);
                     echo "<tr>";
                     echo "<td>$pos[1]</td>";
                     echo "<td>$pos[2]</td>";
