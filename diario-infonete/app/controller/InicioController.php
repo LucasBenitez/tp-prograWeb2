@@ -20,5 +20,9 @@ class InicioController
         $this->modelo->executeBuscarUsuarios();
         include_once("view/adm/panelControl.php");
     }
+    public function executeBorrarUsuario($idUsuario){
+        $this->modelo->executeBorrarUsuario($idUsuario);
+        header("Location: interno.php?page=panelControl");
+    }
 
 }

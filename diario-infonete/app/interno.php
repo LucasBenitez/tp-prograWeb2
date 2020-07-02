@@ -15,12 +15,6 @@ switch ($page){
         $controller->execute($usuario,$clave);
         break;
 
-    case "registrar":
-        include_once("controller/AltaUsuarioController.php");
-        $controller = new AltaUsuarioController();
-        $controller->execute();
-        break;
-
     case "guardarUsuario":
         $usuario = $_POST["usuario"];
         $clave = $_POST["clave"];
@@ -52,8 +46,6 @@ switch ($page){
         $controller = new RevistaController();
         $controller->executeBuscarNoticias();
         break;
-
-
 
     case "buscarSeccion":
         include_once("controller/RevistaController.php");
@@ -181,6 +173,14 @@ switch ($page){
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
         $controller->executeBorrarSeccion($idSeccion);
+        break;
+
+    case "borrarUsuario":
+        $idUsuario = $_GET["idUsuario"];
+        include_once("controller/InicioController.php");
+        $controller = new InicioController();
+        $controller->executeBorrarUsuario($idUsuario);
+
         break;
 
     case "inicioAdm":

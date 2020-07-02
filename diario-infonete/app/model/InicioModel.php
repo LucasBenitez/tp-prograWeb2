@@ -13,4 +13,7 @@ class InicioModel
         $this->conexion->queryBuscarUsuarios();
 
     }
+    public function executeBorrarUsuario($idUsuario){
+        $this->conexion->queryBorrarUsuario($idUsuario);
+    }
 }

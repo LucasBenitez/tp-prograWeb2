@@ -9,10 +9,10 @@ class RevistaModel
         $this->conexion = new Database();
     }
 
-
     public function executeBuscarNoticias(){
         $this->conexion->queryBuscarNoticias();
     }
+
     public function executeBuscarSeccion(){
         $this->conexion->queryBuscarSeccion();
     }
@@ -60,6 +60,7 @@ class RevistaModel
     public function executeBorrarSeccion($idSeccion){
         $this->conexion->queryBorrarSeccion($idSeccion);
     }
+
 }
 
 

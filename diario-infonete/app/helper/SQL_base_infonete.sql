@@ -47,7 +47,8 @@ insert into Usuario (Nro_doc,Cod_doc,Nombre,Mail,Telefono,Cod_Usuario,Pass) valu
 	
 	(40111222,1,"lector","agus@gmail.com",1122223333,3,"1234"),
 	(30555000,1,"admin","walter@gmail.com",1133445566,1,"1234"),
-	(35123456,1,"contenidista","pepe2@gmail.com",1533445566,2,"1234");
+	(35123456,1,"contenidista","pepe2@gmail.com",1533445566,2,"1234"),
+    (35123457,1,"admin2","pepe2@gmail.com",1533445566,1,"1234");
 
 
 CREATE TABLE Diario_Revista

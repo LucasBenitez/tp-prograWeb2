@@ -46,7 +46,7 @@ class Database{
         $result = $stmt->get_result();
 
         if($result->num_rows === 0) {
-            $_SESSION["sinSeccion"] = "0";
+            $_SESSION["sinDatos"] = "0";
         }else{
             $i=1;
             while($row = $result->fetch_assoc()) {
@@ -63,6 +63,7 @@ class Database{
 
 
                 $resultados[$i]= $id."-".$nombre."-".$clave."-".$nroDoc."-". $codDoc."-".$mail ."-".$telefono."-".$cod_usuario;
+
                 $i++;
             }
             // se guarda las revistas recuperados de la consulta en SESSION
@@ -76,10 +77,10 @@ class Database{
         $result2 = $stmt2->get_result();
 
         if($result2->num_rows === 0) {
-            $_SESSION["sinSeccion"] = "0";
+            $_SESSION["sinDatos"] = "0";
         }else{
             $i=1;
-            while($row = $result->fetch_assoc()) {
+            while($row = $result2->fetch_assoc()) {
                 $id=$row['Id_usuario'];
                 $nombre= $row['Nombre'];
                 $clave=$row['Pass'];
@@ -106,10 +107,10 @@ class Database{
         $result3 = $stmt3->get_result();
 
         if($result3->num_rows === 0) {
-            $_SESSION["sinSeccion"] = "0";
+            $_SESSION["sinDatos"] = "0";
         }else{
             $i=1;
-            while($row = $result->fetch_assoc()) {
+            while($row = $result3->fetch_assoc()) {
                 $id=$row['Id_usuario'];
                 $nombre= $row['Nombre'];
                 $clave=$row['Pass'];
@@ -279,6 +280,14 @@ public function queryBorrarSeccion($idSeccion)
     $stmt->close();
 
 }
+    public function queryBorrarUsuario($idUsuario)
+    {
+        $stmt = $this->conexion->prepare("DELETE FROM usuario  WHERE Id_usuario=?");
+        $stmt->bind_param('i', $idUsuario);
+        $stmt->execute();
+        $stmt->close();
+
+    }
 
 
 

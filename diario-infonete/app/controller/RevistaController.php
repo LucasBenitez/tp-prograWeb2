@@ -11,6 +11,7 @@ class RevistaController{
             //include_once("view/guardarRevistaView.php");
            // $this->modelo->executeBuscarRevista();
             $this->modelo->executeBuscarSeccion();
+
             header("Location: interno.php?page=buscarNoticias");
 
         }
@@ -24,6 +25,7 @@ class RevistaController{
             $this->modelo->executeBuscarNoticias();
             include_once("view/revista/panelControlRevista.php");
         }
+
 
     public function executeBuscarSeccion(){
         $this->modelo->executeBuscarSeccion();
@@ -76,5 +78,6 @@ class RevistaController{
         $this->modelo->executeBorrarSeccion($idSeccion);
         header("Location: interno.php?page=admRevista");
     }
+
 
 }
