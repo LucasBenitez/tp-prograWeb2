@@ -1,19 +1,19 @@
 <?php
 include_once("view/partial/headerInteno.php");
-include_once ("helper/UploadImage.php");
+include_once("helper/UploadImage.php");
 
 $_SESSION["usuarioAlta"] = "Admin";
 $_SESSION["actionReg"] = "interno";
-$page = isset($_GET[ "page" ]) ? $_GET[ "page" ] : "inicioAdm";
+$page = isset($_GET["page"]) ? $_GET["page"] : "inicioAdm";
 
-switch ($page){
+switch ($page) {
 
     case "login":
         $usuario = $_POST["usuario"];
         $clave = $_POST["clave"];
         include_once("controller/LoginController.php");
         $controller = new LoginController();
-        $controller->execute($usuario,$clave);
+        $controller->execute($usuario, $clave);
         break;
 
     case "guardarUsuario":
@@ -25,9 +25,8 @@ switch ($page){
         $codUser = $_POST["codUser"];
         include_once("controller/AltaUsuarioController.php");
         $controller = new AltaUsuarioController();
-        $controller->executeRegistarUsuario($usuario,$clave,$nroDoc,$tel,$mail,$codUser);
+        $controller->executeRegistarUsuario($usuario, $clave, $nroDoc, $tel, $mail, $codUser);
         break;
-
 
 
     case "panelControl":
@@ -42,11 +41,32 @@ switch ($page){
         $controller->execute();
         break;
 
+    case "buscarRevistas":
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executeBuscarRevistas();
+
+        break;
+
     case "buscarNoticias":
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
-        $controller->executeBuscarNoticias();
+         $controller->executeBuscarNoticias();
+
+
         break;
+
+    case "buscarTodo":
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executeBuscarTodo();
+
+
+
+
+        break;
+
+
 
     case "buscarSeccion":
         include_once("controller/RevistaController.php");
@@ -61,7 +81,7 @@ switch ($page){
         $controller->execute();
         break;
 
-        case "crearNoticia":
+    case "crearNoticia":
         $_SESSION["crearNoticia"] = "OK";
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
@@ -80,30 +100,30 @@ switch ($page){
         $titulo = $_POST["titulo"];
         $nroRevista = $_POST["nroRevista"];
         $descripcion = $_POST["descripcion"];
-        $imagen=$_FILES["uploadedImage"];
+        $imagen = $_FILES["uploadedImage"];
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
-        $controller->executeGuardarRevista($titulo,$nroRevista,$descripcion,$imagen);
+        $controller->executeGuardarRevista($titulo, $nroRevista, $descripcion, $imagen);
         break;
 
     case "guardarNoticia":
         $tituloNoticia = $_POST["titulo"];
-        $subtitulo= $_POST["subtitulo"];
+        $subtitulo = $_POST["subtitulo"];
         $informe = $_POST["informe"];
         $cod_contenidista = $_POST["cod_contenidista"];
-        $cod_seccion=$_POST["cod_seccion"];
+        $cod_seccion = $_POST["cod_seccion"];
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
-        $controller->executeGuardarNoticia($tituloNoticia,$subtitulo,$informe,$cod_contenidista,$cod_seccion);
+        $controller->executeGuardarNoticia($tituloNoticia, $subtitulo, $informe, $cod_contenidista, $cod_seccion);
         break;
 
 
     case "guardarSeccion":
         $descripcionSeccion = $_POST["descripcion"];
-        $cod_revista= $_POST["cod_revista"];
+        $cod_revista = $_POST["cod_revista"];
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
-        $controller->executeGuardarSeccion($descripcionSeccion,$cod_revista);
+        $controller->executeGuardarSeccion($descripcionSeccion, $cod_revista);
         break;
 
     case "cambiarEstadoNoticia":
@@ -114,31 +134,31 @@ switch ($page){
         break;
 
     case "editarNoticia":
-        $titulo=$_POST["titulo"];
+        $titulo = $_POST["titulo"];
         $idNoticia = $_POST["idNoticia"];
-        $cuerpoNoticia=$_POST["cuerpoNoticia"];
+        $cuerpoNoticia = $_POST["cuerpoNoticia"];
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
-        $controller->executeEditarNoticia($idNoticia,$cuerpoNoticia,$titulo);
+        $controller->executeEditarNoticia($idNoticia, $cuerpoNoticia, $titulo);
         break;
 
     case "editarRevista":
-        $titulo=$_POST["titulo"];
+        $titulo = $_POST["titulo"];
         $idRevista = $_POST["idRevista"];
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
-        $controller->executeEditarRevista($idRevista,$titulo);
+        $controller->executeEditarRevista($idRevista, $titulo);
         break;
 
-        case "editarSeccion":
-        $titulo=$_POST["titulo"];
-        $idSeccion= $_POST["idSeccion"];
+    case "editarSeccion":
+        $titulo = $_POST["titulo"];
+        $idSeccion = $_POST["idSeccion"];
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
-        $controller->executeEditarSeccion($idSeccion,$titulo);
+        $controller->executeEditarSeccion($idSeccion, $titulo);
         break;
 
-        case "redirect":
+    case "redirect":
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
         $controller->redirectEditarNoticia();

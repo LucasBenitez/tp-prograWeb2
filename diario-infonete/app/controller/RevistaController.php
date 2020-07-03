@@ -1,85 +1,146 @@
 <?php
-class RevistaController{
+
+class RevistaController
+{
     private $modelo;
 
-        public function __construct(){
-            include_once("model/RevistaModel.php");
-            $this->modelo = new RevistaModel();
-        }
+    public function __construct()
+    {
+        include_once("model/RevistaModel.php");
+        $this->modelo = new RevistaModel();
+    }
 
-        public function execute(){
-            //include_once("view/guardarRevistaView.php");
-           // $this->modelo->executeBuscarRevista();
-            $this->modelo->executeBuscarSeccion();
+    public function execute()
+    {
 
-            header("Location: interno.php?page=buscarNoticias");
+        $resultadosNoticia=$this->modelo->executeBuscarNoticias();
+        $resultadosRevista=$this->modelo->executeBuscarRevistas();
+        $resultadosSeccion=$this->modelo->executeBuscarSeccion();
+        include_once("view/revista/panelControlRevista.php");
 
-        }
 
-        public function executeGuardarRevista($titulo,$nroRevista,$descripcion,$imagen){
-            $nombreImagen=UploadImage::subirFoto($imagen,"revista");
-            $this->modelo->executeGuardarRevista( $titulo, $nroRevista, $descripcion,$nombreImagen);
-            header("Location: interno.php?page=admRevista");
-        }
 
-        public function executeBuscarNoticias(){
-            $this->modelo->executeBuscarNoticias();
-            include_once("view/revista/panelControlRevista.php");
-        }
-    public function executeBuscarNoticiasInicio($idUsuario){
+
+    }
+
+    public function executeGuardarRevista($titulo, $nroRevista, $descripcion, $imagen)
+    {
+        $nombreImagen = UploadImage::subirFoto($imagen, "revista");
+        $this->modelo->executeGuardarRevista($titulo, $nroRevista, $descripcion, $nombreImagen);
+        header("Location: interno.php?page=admRevista");
+    }
+
+    public function executeBuscarTodo()
+    {
+
+
+        $resultadosNoticia=$this->modelo->executeBuscarNoticias();
+        $resultadosRevista=$this->modelo->executeBuscarRevistas();
+        include_once("view/revista/panelControlRevista.php");
+
+
+
+    }
+    public function executeBuscarNoticias()
+    {
+
+
+        $resultadosNoticia=$this->modelo->executeBuscarNoticias();
+        include_once("view/revista/panelControlRevista.php");
+
+
+
+    }
+
+    public function executeBuscarRevistas()
+    {
+
+
+        $resultadosRevista=$this->modelo->executeBuscarRevistas();
+        include_once("view/revista/panelControlRevista.php");
+
+
+    }
+
+    public function executeBuscarNoticiasInicio($idUsuario)
+    {
         $this->modelo->executeBuscarNoticiasPorLector($idUsuario);
         include_once("view/lector/paginaLectorView.php");
     }
 
 
-    public function executeBuscarSeccion(){
+    public function executeBuscarSeccion()
+    {
         $this->modelo->executeBuscarSeccion();
         include_once("view/revista/panelControlRevista.php");
     }
-    public function executeGuardarNoticia($tituloNoticia,$subtitulo,$informe,$cod_contenidista,$cod_seccion){
-        $this->modelo->executeGuardarNoticia($tituloNoticia,$subtitulo,$informe,$cod_contenidista,$cod_seccion);
+
+    public function executeGuardarNoticia($tituloNoticia, $subtitulo, $informe, $cod_contenidista, $cod_seccion)
+    {
+        $this->modelo->executeGuardarNoticia($tituloNoticia, $subtitulo, $informe, $cod_contenidista, $cod_seccion);
         header("Location: interno.php?page=admRevista");
     }
-    public function executeGuardarSeccion($descripcion,$cod_revista){
-        $this->modelo->executeGuardarSeccion($descripcion,$cod_revista);
+
+    public function executeGuardarSeccion($descripcion, $cod_revista)
+    {
+        $this->modelo->executeGuardarSeccion($descripcion, $cod_revista);
         header("Location: interno.php?page=admRevista");
     }
-    public function executeCambiarEstadoNoticia($idNoticia){
+
+    public function executeCambiarEstadoNoticia($idNoticia)
+    {
         $this->modelo->executeCambiarEstadoNoticia($idNoticia);
         header("Location: interno.php?page=admRevista");
 
     }
-    public function executeEditarNoticia($idNoticia,$cuerpoNoticia,$titulo){
-        $this->modelo->executeEditarNoticia($idNoticia,$cuerpoNoticia,$titulo);
+
+    public function executeEditarNoticia($idNoticia, $cuerpoNoticia, $titulo)
+    {
+        $this->modelo->executeEditarNoticia($idNoticia, $cuerpoNoticia, $titulo);
         header("Location: interno.php?page=admRevista");
     }
-    public function executeEditarRevista($idRevista,$titulo){
-        $this->modelo->executeEditarRevista($idRevista,$titulo);
+
+    public function executeEditarRevista($idRevista, $titulo)
+    {
+        $this->modelo->executeEditarRevista($idRevista, $titulo);
         header("Location: interno.php?page=admRevista");
     }
-    public function executeEditarSeccion($idSeccion,$titulo){
-        $this->modelo->executeEditarSeccion($idSeccion,$titulo);
+
+    public function executeEditarSeccion($idSeccion, $titulo)
+    {
+        $this->modelo->executeEditarSeccion($idSeccion, $titulo);
         header("Location: interno.php?page=admRevista");
     }
-    public function redirectEditarNoticia(){
+
+    public function redirectEditarNoticia()
+    {
         include_once("view/revista/editarNoticiaView.php");
     }
-    public function redirectEditarRevista(){
+
+    public function redirectEditarRevista()
+    {
         include_once("view/revista/editarRevistaView.php");
     }
-    public function redirectEditarSeccion(){
+
+    public function redirectEditarSeccion()
+    {
         include_once("view/revista/editarSeccionView.php");
     }
 
-    public function executeBorrarNoticia($idNoticia){
+    public function executeBorrarNoticia($idNoticia)
+    {
         $this->modelo->executeBorrarNoticia($idNoticia);
         header("Location: interno.php?page=admRevista");
     }
-    public function executeBorrarRevista($idRevista){
+
+    public function executeBorrarRevista($idRevista)
+    {
         $this->modelo->executeBorrarRevista($idRevista);
         header("Location: interno.php?page=admRevista");
     }
-    public function executeBorrarSeccion($idSeccion){
+
+    public function executeBorrarSeccion($idSeccion)
+    {
         $this->modelo->executeBorrarSeccion($idSeccion);
         header("Location: interno.php?page=admRevista");
     }

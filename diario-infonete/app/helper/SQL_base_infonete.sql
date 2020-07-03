@@ -60,8 +60,8 @@ imagen_revista varchar(200),
 CONSTRAINT PK_Revista PRIMARY KEY (Id)
 );
 
-insert into Diario_Revista values (1,"revista1",1,"revistadesc","imagen1");
-insert into Diario_Revista values (2,"revista2",1,"revistadesc2","imagen2");
+insert into Diario_Revista values (1,"revista1",1,"revistadesc","imagen1.jpg");
+insert into Diario_Revista values (2,"revista2",1,"revistadesc2","imagen2.jpg");
 
 
 
@@ -94,7 +94,7 @@ CONSTRAINT FK_Cod_Revista FOREIGN KEY (Cod_revista) REFERENCES Diario_Revista (I
 
 insert into Lector_SuscripcionRevista (Id_usuario,Cod_revista) value
 	(1,1),
-	(2,1),
+	(2,2),
 	(3,2),
     (1,2);
     
@@ -120,6 +120,5 @@ CONSTRAINT FK_Noticia_Usuario FOREIGN KEY (Cod_contenidista) REFERENCES Usuario 
      ,Cod_seccion,Cod_Contenidista,EstadoAutorizado)
  value (1,"titulo","subtitulo","informe","imagen",1,1,"no");
  
-select * from diario_revista;
 
 

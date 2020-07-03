@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION["usuarioOK"])) {
+if (isset($_SESSION["usuarioOK"])) {
     $usuario = $_SESSION["usuarioOK"];
     $pos = explode("-", $usuario);
     ?>
@@ -15,72 +15,79 @@ if(isset($_SESSION["usuarioOK"])) {
         <h1 class="">Panel de control Administrador</h1>
         <h2 class="w3-margin-left w3-margin-bottom" style="margin-top: 2%">Acciones posibles</h2>
 
+
         <div class="w3-container w3-margin-top w3-margin-bottom">
-            <a href="interno.php?page=crearRevista" class="w3-button bg-primary w3-hover-black w3-margin-right" style="text-decoration: none">Crear nueva Revista</a>
-            <a href="interno.php?page=crearNoticia" class="w3-button bg-primary w3-hover-black w3-margin-right"style="text-decoration: none">Crear Noticia</a>
-            <a href="interno.php?page=crearSeccion" class="w3-button bg-primary w3-hover-black w3-margin-right"style="text-decoration: none">Crear Seccion</a>
+            <a href="interno.php?page=crearRevista" class="w3-button bg-primary w3-hover-black w3-margin-right"
+               style="text-decoration: none">Crear nueva Revista</a>
+            <a href="interno.php?page=crearNoticia" class="w3-button bg-primary w3-hover-black w3-margin-right"
+               style="text-decoration: none">Crear Noticia</a>
+            <a href="interno.php?page=crearSeccion" class="w3-button bg-primary w3-hover-black w3-margin-right"
+               style="text-decoration: none">Crear Seccion</a>
 
         </div>
     </div>
-        <div class="row w3-center" style="margin-left: 35%">
-            <div class="col  col-md-6">
-        <div class="w3-container">
-            <h2>Lista de Revistas</h2>
-            <table class="w3-table w3-bordered">
-                <tr class="w3-center">
-                    <th>id Revista</th>
+    <div class="row w3-center" style="margin-left: 35%">
+        <div class="col  col-md-6">
+            <div class="w3-container">
+                <h2>Lista de Revistas</h2>
+                <table class="w3-table w3-bordered">
+                    <tr class="w3-center">
+                        <th>id Revista</th>
 
-                    <th>Titulo</th>
-                    <th>Numero</th>
-                    <th>Descripcion</th>
-                    <th>Borrar</th>
-                    <th>Modificar</th>
+                        <th>Titulo</th>
+                        <th>Numero</th>
+                        <th>Descripcion</th>
+                        <th>Borrar</th>
+                        <th>Modificar</th>
 
-                </tr>
-    </div>
+                    </tr>
+            </div>
 
-                <?php
-                if(isset($_SESSION["revistas"])) {
-                    $revistas = $_SESSION["revistas"];
-                    $tam = sizeof($revistas);
-                    for ($i = 1; $i <= $tam; $i++) {
-                        $posi = explode("-", $revistas[$i]);
-                        echo "<div>";
-                        echo "<td>$posi[0]</td>";
-                        echo "<td>$posi[1]</td>";
-                        echo "<td>$posi[2]</td>";
-                        echo "<td>$posi[3]</td>";
-                        echo "<td>";
-                        echo"<div class='w3-margin-left'><a href='interno.php?page=borrarRevista&idRevista=$posi[0]'style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
-                        echo "</td>";
-                        echo "<td>";
-                        echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=redirectRevista&idRevista=$posi[0]' style='color: black'>
+            <?php
+
+            if (isset($resultadosRevista)) {
+
+                $tam = sizeof($resultadosRevista);
+                for ($i = 1; $i <= $tam; $i++) {
+                    $posi = explode("-", $resultadosRevista[$i]);
+                    echo "<div>";
+                    echo "<td>$posi[0]</td>";
+                    echo "<td>$posi[1]</td>";
+                    echo "<td>$posi[2]</td>";
+                    echo "<td>$posi[3]</td>";
+                    echo "<td>";
+                    echo "<div class='w3-margin-left'><a href='interno.php?page=borrarRevista&idRevista=$posi[0]'style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
+                    echo "</td>";
+                    echo "<td>";
+                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=redirectRevista&idRevista=$posi[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
-                        echo "</td>";
-                        echo"</tr>";
-                    }
+                    echo "</td>";
+                    echo "</tr>";
+
                 }
-                if(isset($_SESSION["sinDatos"])) {
-                    echo"<div class='alert warning'>
+                echo "<img src='./images/revista/$posi[4]'>";
+            }
+            if (isset($_SESSION["sinDatos"])) {
+                echo "<div class='alert warning'>
                               <span class='closebtn'>&times;</span>  
                               <strong>Success!</strong> No hay revistas para mostrar en la tabla
                             </div>";
-                    unset($_SESSION["sinDatos"]);
+                unset($_SESSION["sinDatos"]);
 
-                }
-                if(isset($_SESSION["eliminadoOK"])) {
-                    echo"<div class='alert success'>
+            }
+            if (isset($_SESSION["eliminadoOK"])) {
+                echo "<div class='alert success'>
                               <span class='closebtn'>&times;</span>  
                               <strong>Success!</strong>Usuario eliminado exitosamente</div>";
-                    unset($_SESSION["eliminadoOK"]);
-                }
-                if(isset($_SESSION["userModif"])) {
-                    echo"<div class='alert success'>
+                unset($_SESSION["eliminadoOK"]);
+            }
+            if (isset($_SESSION["userModif"])) {
+                echo "<div class='alert success'>
                               <span class='closebtn'>&times;</span>  
                               <strong>Success!</strong>Clave modificada correctamente</div>";
-                    unset($_SESSION["userModif"]);
-                }
-                ?>
+                unset($_SESSION["userModif"]);
+            }
+            ?>
             </table>
         </div>
 
@@ -97,29 +104,31 @@ if(isset($_SESSION["usuarioOK"])) {
                     <th>Editar noticia</th>
                 </tr>
                 <?php
-                if(isset($_SESSION["noticias"])) {
-                    $noticias = $_SESSION["noticias"];
-                    $tam = sizeof($noticias);
+
+                if (isset($resultadosNoticia)) {
+
+                    $tam = sizeof($resultadosNoticia);
                     for ($i = 1; $i <= $tam; $i++) {
-                        $posN = explode("-", $noticias[$i]);
+                        $posN = explode("-", $resultadosNoticia[$i]);
+
                         echo "<tr>";
                         echo "<td>$posN[0]</td>";
                         echo "<td>$posN[1]</td>";
                         echo "<td>$posN[2]</td>";
                         echo "<td>$posN[3]</td>";
-                        if($pos[2]==1){
-                        echo "<td>";
-                        echo"<div class='w3-margin-left'><a href='interno.php?page=borrarNoticia&idNoticia=$posN[0]' style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
-                        echo "</td>";
-                        echo "<td>";
-                        echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarEstadoNoticia&idNoticia=$posN[0]' style='color: black'>
+                        if ($pos[2] == 1) {
+                            echo "<td>";
+                            echo "<div class='w3-margin-left'><a href='interno.php?page=borrarNoticia&idNoticia=$posN[0]' style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
+                            echo "</td>";
+                            echo "<td>";
+                            echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarEstadoNoticia&idNoticia=$posN[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
-                        echo "</td>";
+                            echo "</td>";
                             echo "<td>";
                             echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=redirect&idNoticia=$posN[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                             echo "</td>";
-                        }else{
+                        } else {
                             echo "<td>";
                             echo "No disponible";
                             echo "</td>";
@@ -128,25 +137,26 @@ if(isset($_SESSION["usuarioOK"])) {
                             echo "</td>";
 
                         }
-                        echo"</tr>";
+                        echo "</tr>";
+
                     }
                 }
-                if(isset($_SESSION["sinNoticias"])) {
-                    echo"<div class='alert warning'>
+                if (isset($_SESSION["sinNoticias"])) {
+                    echo "<div class='alert warning'>
                               <span class='closebtn'>&times;</span>  
                               <strong>Success!</strong> No hay noticias para mostrar en la tabla
                             </div>";
                     unset($_SESSION["sinNoticias"]);
 
                 }
-                if(isset($_SESSION["eliminadoOK"])) {
-                    echo"<div class='alert success'>
+                if (isset($_SESSION["eliminadoOK"])) {
+                    echo "<div class='alert success'>
                               <span class='closebtn'>&times;</span>  
                               <strong>Success!</strong>Usuario eliminado exitosamente</div>";
                     unset($_SESSION["eliminadoOK"]);
                 }
-                if(isset($_SESSION["userModif"])) {
-                    echo"<div class='alert success'>
+                if (isset($_SESSION["userModif"])) {
+                    echo "<div class='alert success'>
                               <span class='closebtn'>&times;</span>  
                               <strong>Success!</strong>Clave modificada correctamente</div>";
                     unset($_SESSION["userModif"]);
@@ -165,22 +175,22 @@ if(isset($_SESSION["usuarioOK"])) {
 
             </tr>
             <?php
-            if(isset($_SESSION["seccion"])) {
+            if (isset($_SESSION["seccion"])) {
                 $seccion = $_SESSION["seccion"];
                 $tam = sizeof($seccion);
                 for ($i = 1; $i <= $tam; $i++) {
                     $posS = explode("-", $seccion[$i]);
                     echo "<tr>";
                     echo "<td>$posS[1]</td>";
-                    if($pos[2]==1){
+                    if ($pos[2] == 1) {
                         echo "<td>";
-                        echo"<div class='w3-margin-left'><a href='interno.php?page=borrarSeccion&idSeccion=$posS[0]' style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
+                        echo "<div class='w3-margin-left'><a href='interno.php?page=borrarSeccion&idSeccion=$posS[0]' style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
                         echo "</td>";
                         echo "<td>";
                         echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=redirectSeccion&idSeccion=$posS[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                         echo "</td>";
-                    }else{
+                    } else {
                         echo "<td>";
                         echo "No disponible";
                         echo "</td>";
@@ -189,25 +199,25 @@ if(isset($_SESSION["usuarioOK"])) {
                         echo "</td>";
 
                     }
-                    echo"</tr>";
+                    echo "</tr>";
                 }
             }
-            if(isset($_SESSION["sinSeccion"])) {
-                echo"<div class='alert warning'>
+            if (isset($_SESSION["sinSeccion"])) {
+                echo "<div class='alert warning'>
                               <span class='closebtn'>&times;</span>  
                               <strong>Success!</strong> No hay noticias para mostrar en la tabla
                             </div>";
                 unset($_SESSION["sinSeccion"]);
 
             }
-            if(isset($_SESSION["eliminadoOK"])) {
-                echo"<div class='alert success'>
+            if (isset($_SESSION["eliminadoOK"])) {
+                echo "<div class='alert success'>
                               <span class='closebtn'>&times;</span>  
                               <strong>Success!</strong>Usuario eliminado exitosamente</div>";
                 unset($_SESSION["eliminadoOK"]);
             }
-            if(isset($_SESSION["userModif"])) {
-                echo"<div class='alert success'>
+            if (isset($_SESSION["userModif"])) {
+                echo "<div class='alert success'>
                               <span class='closebtn'>&times;</span>  
                               <strong>Success!</strong>Clave modificada correctamente</div>";
                 unset($_SESSION["userModif"]);
@@ -217,10 +227,11 @@ if(isset($_SESSION["usuarioOK"])) {
     </div>
     </div>
     <div class="w3-display-bottomright w3-margin-bottom w3-margin-right">
-        <a href="interno.php?page=panelControl" class="w3-button bg-primary w3-hover-black w3-margin-right" style="text-decoration: none">Volver a la página anterior</a></div>
+        <a href="interno.php?page=panelControl" class="w3-button bg-primary w3-hover-black w3-margin-right"
+           style="text-decoration: none">Volver a la página anterior</a></div>
 
     <?php
-    if(isset($_SESSION["crearRevista"])){
+    if (isset($_SESSION["crearRevista"])) {
         ?>
         <br>
         <br>
@@ -230,7 +241,8 @@ if(isset($_SESSION["usuarioOK"])) {
                 <h2 class="w3-center">Crear Revista</h2>
             </div>
             <br>
-            <form class="w3-container" name="registrar" action="interno.php?page=guardarRevista" method="post" enctype="multipart/form-data"
+            <form class="w3-container" name="registrar" action="interno.php?page=guardarRevista" method="post"
+                  enctype="multipart/form-data"
             >
                 <label>Titulo</label>
                 <input class="w3-input w3-round" type="text" name="titulo"><br/>
@@ -239,13 +251,13 @@ if(isset($_SESSION["usuarioOK"])) {
                 <label>Descripcion</label>
                 <textarea class="w3-input w3-round" type="text" name="descripcion" rows="4" cols="50">
                         </textarea>
-                <input type="file"  id="uploadedImage" name="uploadedImage"
+                <input type="file" id="uploadedImage" name="uploadedImage"
                        aria-describedby="inputGroupFileAddon01">
-                <label  for="inputGroupFile01" id="uploadedImage__label">Seleccionar
+                <label for="inputGroupFile01" id="uploadedImage__label">Seleccionar
                     imagen para la nota</label>
 
                 <div class="w3-center w3-margin-bottom">
-                    <input class="w3-button w3-blue-grey w3-round w3-center" type="submit" name="boton" value="CREAR" >
+                    <input class="w3-button w3-blue-grey w3-round w3-center" type="submit" name="boton" value="CREAR">
 
                     <a class="w3-button w3-blue-grey w3-round w3-center" onclick="cerrarForm()">SALIR</a>
                 </div>
@@ -257,7 +269,7 @@ if(isset($_SESSION["usuarioOK"])) {
     }
     ?>
     <?php
-    if(isset($_SESSION["crearNoticia"])){
+    if (isset($_SESSION["crearNoticia"])) {
         ?>
         <br>
         <br>
@@ -267,7 +279,8 @@ if(isset($_SESSION["usuarioOK"])) {
                 <h2 class="w3-center">Crear Noticia</h2>
             </div>
             <br>
-            <form class="w3-container" name="registrarNoticia" action="interno.php?page=guardarNoticia" method="post" enctype="application/x-www-form-urlencoded">
+            <form class="w3-container" name="registrarNoticia" action="interno.php?page=guardarNoticia" method="post"
+                  enctype="application/x-www-form-urlencoded">
                 <label>Titulo</label>
                 <input class="w3-input w3-round" type="text" name="titulo"><br/>
                 <label>Subtitulo</label>
@@ -276,7 +289,7 @@ if(isset($_SESSION["usuarioOK"])) {
                 <textarea class="w3-input w3-round" type="text" name="informe" rows="4" cols="50">
                         </textarea>
                 <?php
-                if(isset($_SESSION["seccion"])) {
+                if (isset($_SESSION["seccion"])) {
                     $seccion = $_SESSION["seccion"];
                     $tam = sizeof($seccion);
                     echo "<select name='cod_seccion'>";
@@ -286,16 +299,15 @@ if(isset($_SESSION["usuarioOK"])) {
                         echo " <option  value='$posS[0]'>$posS[1]</option>";
 
 
-
                     }
                     echo "</select>";
 
                 }
                 ?>
                 <br/>
-                <input type="hidden" name="cod_contenidista" value="<?php echo $pos[0]?>">
+                <input type="hidden" name="cod_contenidista" value="<?php echo $pos[0] ?>">
                 <div class="w3-center w3-margin-bottom">
-                    <input class="w3-button w3-blue-grey w3-round w3-center" type="submit" name="boton" value="CREAR" >
+                    <input class="w3-button w3-blue-grey w3-round w3-center" type="submit" name="boton" value="CREAR">
 
                     <a class="w3-button w3-blue-grey w3-round w3-center" onclick="cerrarForm()">SALIR</a>
                 </div>
@@ -306,7 +318,7 @@ if(isset($_SESSION["usuarioOK"])) {
     }
     ?>
     <?php
-    if(isset($_SESSION["crearSeccion"])){
+    if (isset($_SESSION["crearSeccion"])) {
         ?>
         <br>
         <br>
@@ -316,31 +328,31 @@ if(isset($_SESSION["usuarioOK"])) {
                 <h2 class="w3-center">Crear Seccion</h2>
             </div>
             <br>
-            <form class="w3-container" name="registrarSeccion" action="interno.php?page=guardarSeccion" method="POST" enctype="application/x-www-form-urlencoded">
+            <form class="w3-container" name="registrarSeccion" action="interno.php?page=guardarSeccion" method="POST"
+                  enctype="application/x-www-form-urlencoded">
                 <label>Nombre</label>
                 <input class="w3-input w3-round" type="text" name="descripcion"><br/>
 
                 <?php
-                if(isset($_SESSION["revistas"])) {
-                $revistas = $_SESSION["revistas"];
-                $tam = sizeof($revistas);
-                echo "<select name='cod_revista'>";
-                for ($i = 1; $i <= $tam; $i++) {
-                    $posR = explode("-", $revistas[$i]);
+                if (isset($_SESSION["revistas"])) {
+                    $revistas = $_SESSION["revistas"];
+                    $tam = sizeof($revistas);
+                    echo "<select name='cod_revista'>";
+                    for ($i = 1; $i <= $tam; $i++) {
+                        $posR = explode("-", $revistas[$i]);
 
-                    echo " <option  value='$posR[0]'>$posR[1]</option>";
-
+                        echo " <option  value='$posR[0]'>$posR[1]</option>";
 
 
                     }
-                echo "</select>";
+                    echo "</select>";
 
                 }
                 ?>
 
 
                 <div class="w3-center w3-margin-bottom">
-                    <input class="w3-button w3-blue-grey w3-round w3-center" type="submit" name="boton" value="CREAR" >
+                    <input class="w3-button w3-blue-grey w3-round w3-center" type="submit" name="boton" value="CREAR">
 
                     <a class="w3-button w3-blue-grey w3-round w3-center" onclick="cerrarForm()">SALIR</a>
                 </div>
@@ -361,7 +373,7 @@ if(isset($_SESSION["usuarioOK"])) {
     </body>
     </html>
     <?php
-}else{
+} else {
     header("Location: index.php");
     exit();
 }
