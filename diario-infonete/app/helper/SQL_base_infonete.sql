@@ -120,5 +120,8 @@ CONSTRAINT FK_Noticia_Usuario FOREIGN KEY (Cod_contenidista) REFERENCES Usuario 
      ,Cod_seccion,Cod_Contenidista,EstadoAutorizado)
  value (1,"titulo","subtitulo","informe","imagen",1,1,"no");
  
+ 
+ select * from Lector_SuscripcionRevista
+ 
 
 

@@ -20,7 +20,7 @@
         }
 
         if($userRol =="Usuario"){
-            header("Location:index.php");
+            header("Location:index.php?page=inicioLectorView");
         }else{
             if($control==1){
                 header("Location: interno.php");
@@ -36,5 +36,8 @@
                     }
             }
         }
+    }
+    public function executeInicioLectorView(){
+        include_once ("view/lector/inicioLectorView.php");
     }
 }

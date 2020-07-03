@@ -13,6 +13,13 @@ switch ($page){
         $controller->execute($usuario,$clave);
         break;
 
+
+    case "inicioLectorView":
+        include_once("controller/LoginController.php");
+        $controller = new LoginController();
+        $controller->executeInicioLectorView();
+        break;
+
     case "registrar":
         $_SESSION["usuarioAlta"] = "Usuario";
         $_SESSION["actionReg"] = "index";
@@ -39,6 +46,20 @@ switch ($page){
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
         $controller->executeBuscarNoticiasInicio($idUsuario);
+        break;
+
+    case "suscribirse":
+        $idUsuario=$_GET["idUsuario"];
+        $idRevista=$_GET ["idRevista"];
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executeSuscribirse($idUsuario,$idRevista);
+        break;
+
+    case "buscarTodoLector":
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executeBuscarTodoLector();
         break;
 
 

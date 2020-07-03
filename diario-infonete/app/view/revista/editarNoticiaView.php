@@ -16,6 +16,8 @@ if(isset($_SESSION["usuarioOK"])) {
     <title>Document</title>
 </head>
 <body>
+
+
 <form class="w3-container w3-col s6 w3-display-middle" name="registrar" action="interno.php?page=editarNoticia" method="post" enctype="application/x-www-form-urlencoded">
 
 

@@ -49,6 +49,17 @@ class RevistaController
 
 
     }
+    public function executeBuscarTodoLector()
+    {
+
+
+
+        $resultadosRevista=$this->modelo->executeBuscarRevistas();
+        include_once("view/lector/inicioLectorView.php");
+
+
+
+    }
     public function executeBuscarNoticias()
     {
 
@@ -117,6 +128,9 @@ class RevistaController
 
     public function redirectEditarNoticia()
     {
+
+
+
         include_once("view/revista/editarNoticiaView.php");
     }
 
@@ -146,6 +160,18 @@ class RevistaController
     {
         $this->modelo->executeBorrarSeccion($idSeccion);
         header("Location: interno.php?page=admRevista");
+    }
+
+    public function executeSuscribirse($idUsuario,$idNoticia)
+    {
+
+
+        $this->modelo->executeSuscribirse($idUsuario,$idNoticia);
+        header("Location: index.php?page=inicioLectorView");
+
+
+
+
     }
 
 
