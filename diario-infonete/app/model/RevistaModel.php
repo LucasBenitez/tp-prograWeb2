@@ -41,12 +41,12 @@ class RevistaModel
         $this->conexion->close();
     }
 
-    public function executeGuardarNoticia($tituloNoticia, $subtitulo, $informe, $cod_contenidista, $cod_seccion)
+    public function executeGuardarNoticia($tituloNoticia, $subtitulo, $informe, $cod_contenidista, $cod_seccion,$imagen)
     {
 
-        $sql = "insert into Noticia (Titulo,Subtitulo,informe_noticia
-                 ,Cod_seccion,Cod_Contenidista,EstadoAutorizado)
-      value ('$tituloNoticia','$subtitulo','$informe',$cod_seccion,$cod_contenidista,'no')";
+
+        $sql = "insert into Noticia (Titulo,Subtitulo,informe_noticia,imagen_noticia,Cod_seccion,Cod_contenidista,EstadoAutorizado)
+        value ('$tituloNoticia','$subtitulo','$informe','$imagen',$cod_seccion,$cod_contenidista,'No') ";
         $this->conexion->queryInsert($sql);
         $this->conexion->close();
     }

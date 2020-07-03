@@ -60,10 +60,6 @@ switch ($page) {
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
         $controller->executeBuscarTodo();
-
-
-
-
         break;
 
 
@@ -112,9 +108,11 @@ switch ($page) {
         $informe = $_POST["informe"];
         $cod_contenidista = $_POST["cod_contenidista"];
         $cod_seccion = $_POST["cod_seccion"];
+        $imagen = $_FILES["uploadedImage"];
+
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
-        $controller->executeGuardarNoticia($tituloNoticia, $subtitulo, $informe, $cod_contenidista, $cod_seccion);
+        $controller->executeGuardarNoticia($tituloNoticia, $subtitulo, $informe, $cod_contenidista, $cod_seccion,$imagen);
         break;
 
 

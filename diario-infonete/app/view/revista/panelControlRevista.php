@@ -65,7 +65,7 @@ if (isset($_SESSION["usuarioOK"])) {
                     echo "</tr>";
 
                 }
-                echo "<img src='./images/revista/$posi[4]'>";
+
             }
             if (isset($_SESSION["sinDatos"])) {
                 echo "<div class='alert warning'>
@@ -175,11 +175,11 @@ if (isset($_SESSION["usuarioOK"])) {
 
             </tr>
             <?php
-            if (isset($_SESSION["seccion"])) {
-                $seccion = $_SESSION["seccion"];
-                $tam = sizeof($seccion);
+            if (isset($resultadosSeccion)) {
+
+                $tam = sizeof($resultadosSeccion);
                 for ($i = 1; $i <= $tam; $i++) {
-                    $posS = explode("-", $seccion[$i]);
+                    $posS = explode("-",$resultadosSeccion[$i]);
                     echo "<tr>";
                     echo "<td>$posS[1]</td>";
                     if ($pos[2] == 1) {
@@ -254,7 +254,7 @@ if (isset($_SESSION["usuarioOK"])) {
                 <input type="file" id="uploadedImage" name="uploadedImage"
                        aria-describedby="inputGroupFileAddon01">
                 <label for="inputGroupFile01" id="uploadedImage__label">Seleccionar
-                    imagen para la nota</label>
+                    imagen para la revista</label>
 
                 <div class="w3-center w3-margin-bottom">
                     <input class="w3-button w3-blue-grey w3-round w3-center" type="submit" name="boton" value="CREAR">
@@ -280,7 +280,7 @@ if (isset($_SESSION["usuarioOK"])) {
             </div>
             <br>
             <form class="w3-container" name="registrarNoticia" action="interno.php?page=guardarNoticia" method="post"
-                  enctype="application/x-www-form-urlencoded">
+                  enctype="multipart/form-data">
                 <label>Titulo</label>
                 <input class="w3-input w3-round" type="text" name="titulo"><br/>
                 <label>Subtitulo</label>
@@ -289,12 +289,12 @@ if (isset($_SESSION["usuarioOK"])) {
                 <textarea class="w3-input w3-round" type="text" name="informe" rows="4" cols="50">
                         </textarea>
                 <?php
-                if (isset($_SESSION["seccion"])) {
-                    $seccion = $_SESSION["seccion"];
-                    $tam = sizeof($seccion);
+                if (isset($resultadosSeccion)) {
+
+                    $tam = sizeof($resultadosSeccion);
                     echo "<select name='cod_seccion'>";
                     for ($i = 1; $i <= $tam; $i++) {
-                        $posS = explode("-", $seccion[$i]);
+                        $posS = explode("-", $resultadosSeccion[$i]);
 
                         echo " <option  value='$posS[0]'>$posS[1]</option>";
 
@@ -305,6 +305,11 @@ if (isset($_SESSION["usuarioOK"])) {
                 }
                 ?>
                 <br/>
+                <input type="file" id="uploadedImage" name="uploadedImage"
+                       aria-describedby="inputGroupFileAddon01">
+                <label for="inputGroupFile01" id="uploadedImage__label">Seleccionar
+                    imagen para la noticia</label>
+
                 <input type="hidden" name="cod_contenidista" value="<?php echo $pos[0] ?>">
                 <div class="w3-center w3-margin-bottom">
                     <input class="w3-button w3-blue-grey w3-round w3-center" type="submit" name="boton" value="CREAR">
@@ -334,12 +339,12 @@ if (isset($_SESSION["usuarioOK"])) {
                 <input class="w3-input w3-round" type="text" name="descripcion"><br/>
 
                 <?php
-                if (isset($_SESSION["revistas"])) {
-                    $revistas = $_SESSION["revistas"];
-                    $tam = sizeof($revistas);
+                if (isset($resultadosRevista)) {
+
+                    $tam = sizeof($resultadosRevista);
                     echo "<select name='cod_revista'>";
                     for ($i = 1; $i <= $tam; $i++) {
-                        $posR = explode("-", $revistas[$i]);
+                        $posR = explode("-", $resultadosRevista[$i]);
 
                         echo " <option  value='$posR[0]'>$posR[1]</option>";
 

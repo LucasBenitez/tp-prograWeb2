@@ -150,9 +150,10 @@ class Database
                 $titulo = $row['Titulo'];
                 $subTitulo = $row['Subtitulo'];
                 $estadoAutorizado = $row['EstadoAutorizado'];
+                $imagen=$row ["imagen_noticia"];
 
 
-                $resultados[$i] = $codNoticia . "-" . $titulo . "-" . $subTitulo . "-" . $estadoAutorizado;
+                $resultados[$i] = $codNoticia . "-" . $titulo . "-" . $subTitulo . "-" . $estadoAutorizado . "-".$imagen;
                 $i++;
             }
 
