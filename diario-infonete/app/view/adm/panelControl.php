@@ -33,11 +33,10 @@ if(isset($_SESSION["usuarioOK"])) {
 
 
             <?php
-            if(isset($_SESSION["admin"])) {
-                $admin = $_SESSION["admin"];
-                $tam = sizeof($admin);
+            if(isset($resultadosA)) {
+                $tam = sizeof($resultadosA);
                 for ($i = 1; $i <= $tam; $i++) {
-                    $posA = explode("-", $admin[$i]);
+                    $posA = explode("-", $resultadosA[$i]);
                     echo "<tr>";
                     echo "<td class='text-center'>$posA[1]</td>";
                     echo "<td class='text-center'>$posA[2]</td>";
@@ -97,11 +96,10 @@ if(isset($_SESSION["usuarioOK"])) {
             </tr>
             </tr>
             <?php
-            if(isset($_SESSION["contenidista"])) {
-                $contenidista = $_SESSION["contenidista"];
-                $tam = sizeof($contenidista);
+            if(isset($resultadosC)) {
+                $tam = sizeof($resultadosC);
                 for ($i = 1; $i <= $tam; $i++) {
-                    $posC = explode("-", $contenidista[$i]);
+                    $posC = explode("-", $resultadosC[$i]);
                     echo "<tr>";
                     echo "<td class='text-center'>$posC[1]</td>";
                     echo "<td class='text-center'>$posC[2]</td>";
@@ -161,11 +159,10 @@ if(isset($_SESSION["usuarioOK"])) {
             </tr>
             </tr>
             <?php
-            if(isset($_SESSION["lector"])) {
-                $lector = $_SESSION["lector"];
-                $tam = sizeof($lector);
+            if(isset($resultadosL)) {
+                $tam = sizeof($resultadosL);
                 for ($i = 1; $i <= $tam; $i++) {
-                    $posL = explode("-", $lector[$i]);
+                    $posL = explode("-", $resultadosL[$i]);
                     echo "<tr>";
                     echo "<td class='text-center'>$posL[1]</td>";
                     echo "<td class='text-center'>$posL[2]</td>";

@@ -3,14 +3,19 @@
 class InicioController
 {
     private $modelo;
+    private $modelo2;
     public function __construct(){
         include_once("model/InicioModel.php");
+        include_once("model/RevistaModel.php");
         $this->modelo = new InicioModel();
+        $this->modelo2 = new RevistaModel();
     }
 
     public function execute(){
 
-        $this->modelo->executeBuscarRevistas();
+
+        $resultadosRevistas=$this->modelo->executeBuscarRevistas();
+
         include_once("view/inicioView.php");
     }
     public function executeAdm(){
@@ -18,7 +23,14 @@ class InicioController
         include_once("view/adm/indexInternoView.php");
     }
     public function executePanelControl(){
-        $this->modelo->executeBuscarUsuarios();
+
+        include_once("view/adm/panelControl.php");
+    }
+    public function executeBuscarUsuarios()
+    {
+        $resultadosA=$this->modelo->executeBuscarAdmin();
+        $resultadosC=$this->modelo->executeBuscarConte();
+        $resultadosL=$this->modelo->executeBuscarLectores();
         include_once("view/adm/panelControl.php");
     }
     public function executeBorrarUsuario($idUsuario){

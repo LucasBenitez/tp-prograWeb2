@@ -56,6 +56,15 @@ switch ($page){
         $controller->executeSuscribirse($idUsuario,$idRevista);
         break;
 
+
+    case "filtrarRevistas":
+        $idUsuario=$_GET["Id_usuario"];
+        $idRevista=$_GET ["Cod_revista"];
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executefiltrarRevistas($idUsuario,$idRevista);
+        break;
+
     case "buscarTodoLector":
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();

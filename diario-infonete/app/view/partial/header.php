@@ -37,7 +37,7 @@ if(isset($_SESSION["usuarioOK"])) {
                 <ul class="navbar-nav ml-auto align-content-center">
                     <li class="nav-item active align-content-center">
                         <?php if(isset($_SESSION["usuarioOK"])) { ?>
-                            <label>Bienvenido <?php echo $pos[1];?></label>
+                            <label class="text-white">Bienvenido <?php echo $pos[1];?></label>
                         <?php } ?>
                     </li>
                 </ul>
@@ -73,4 +73,4 @@ if(isset($_SESSION["usuarioOK"])) {
         </div>
     </nav>
 <!-- Page content -->
-<div class="w3-content" style="max-width:2000px;margin-top:46px">
+<div class="w3-content" style="max-width:2000px;margin-top:80px">

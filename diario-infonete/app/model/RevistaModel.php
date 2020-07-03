@@ -96,11 +96,16 @@ class RevistaModel
     }
     public function executeSuscribirse($idUsuario, $idRevista)
     {
-
         $sql = "insert into Lector_SuscripcionRevista (Id_usuario,Cod_revista)
       value ($idUsuario,$idRevista);";
         $this->conexion->queryInsert($sql);
         $this->conexion->close();
+    }
+
+    public function executeFiltrarRevistas($idUsuario)
+    {
+        $this->conexion->queryBuscarNoticiasPorLector($idUsuario);
+
     }
 
 }

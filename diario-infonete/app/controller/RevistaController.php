@@ -51,9 +51,6 @@ class RevistaController
     }
     public function executeBuscarTodoLector()
     {
-
-
-
         $resultadosRevista=$this->modelo->executeBuscarRevistas();
         include_once("view/lector/inicioLectorView.php");
 
@@ -164,14 +161,14 @@ class RevistaController
 
     public function executeSuscribirse($idUsuario,$idNoticia)
     {
-
-
         $this->modelo->executeSuscribirse($idUsuario,$idNoticia);
         header("Location: index.php?page=inicioLectorView");
+    }
 
-
-
-
+    public function executeFiltrarRevistas($idUsuario)
+    {
+        $this->modelo->executeFiltrarRevistas($idUsuario );
+        header("Location: index.php?page=inicioLectorView");
     }
 
 

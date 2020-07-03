@@ -9,14 +9,22 @@ class InicioModel
         $this->conexion = new Database();
     }
 
-    public function executeBuscarUsuarios(){
-        $this->conexion->queryBuscarUsuarios();
-
+    public function executeBuscarAdmin(){
+        return $this->conexion->queryBuscarAdmin();
+    }
+    public function executeBuscarConte()
+    {
+        return $this->conexion->queryBuscarConte();
+    }
+    public function executeBuscarLectores()
+    {
+        return $this->conexion->queryBuscarLectores();
     }
     public function executeBorrarUsuario($idUsuario){
         $this->conexion->queryBorrarUsuario($idUsuario);
     }
     public function executeBuscarRevistas(){
-        $this->conexion->queryBuscarNoticias();
+
+        return $this->conexion->queryBuscarRevistas();
     }
 }

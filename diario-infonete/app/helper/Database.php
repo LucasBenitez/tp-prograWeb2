@@ -166,7 +166,7 @@ class Database
 
     public function queryBuscarRevistas()
     {
-        $resultados = null;
+        $resultados = array();
         $stmt2 = $this->conexion->prepare("SELECT * FROM Diario_Revista");
         $stmt2->execute();
         $result = $stmt2->get_result();
@@ -186,6 +186,8 @@ class Database
                 $i++;
             }
             // se guarda las revistas recuperados de la consulta en SESSION
+
+
             return $resultados;
 
         }
@@ -222,14 +224,44 @@ class Database
         $this->conexion->close();
     }
 
+    public function queryBuscarSuscripcionRevista()
+    {
+        $resultados=array();
+
+        $stmt = $this->conexion->prepare("SELECT * FROM lector_SuscripcionRevista ");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 0) {
+            $_SESSION["sinSeccion"] = "0";
+        } else {
+            $i = 1;
+            while ($row = $result->fetch_assoc()) {
+                $id = $row['Id'];
+                $titulo = $row['Titulo'];
+                $numero = $row['Numero'];
+                $descripcion = $row['Descripcion'];
+                $imagen = $row['imagen_revista'];
+
+                $resultados[$i] = $id . "-" . $titulo . "-" . $numero . "-" . $descripcion . "-".$imagen;
+                $i++;
+            }
+            // se guarda las revistas recuperados de la consulta en SESSION
+            return $resultados;
+        }
+
+        $stmt->close();
+        $this->conexion->close();
+    }
+
     public function queryBuscarNoticiasPorLector($idUsuario)
     {
-
-        $stmt = $this->conexion->prepare("SELECT * FROM Diario_Revista
-                                            WHERE Id IN (SELECT Cod_revista
-                                            FROM Lector_SuscripcionRevista 
-                                            WHERE Id_usuario=?
-                                             ");
+        $resultados=array();
+        $stmt = $this->conexion->prepare("  select * from diario_revista 
+                                                where id in (select Cod_revista
+					                            from Lector_SuscripcionRevista
+                                                where id_usuario = 1);
+                                                ");
         $stmt->bind_param('i', $idUsuario);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -239,16 +271,17 @@ class Database
         } else {
             $i = 1;
             while ($row = $result->fetch_assoc()) {
-                $id = $row['Id'];
-                $titulo = $row['Titulo'];
-                $numero = $row['Numero'];
-                $descripcion = $row['Descripcion'];
+                $id_usuario = $row['Id_usuario'];
+                $cod_revista = $row['Cod_revista'];
 
-                $resultados[$i] = $id . "-" . $titulo . "-" . $numero . "-" . $descripcion;
+
+                $resultados[$i] = $id_usuario . "-" . $cod_revista ;
                 $i++;
             }
             // se guarda las revistas recuperados de la consulta en SESSION
-            $_SESSION["revistas"] = $resultados;
+            var_dump($resultados);
+            exit;
+            return $resultados;
         }
 
         $stmt->close();

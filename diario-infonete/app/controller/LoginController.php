@@ -3,10 +3,13 @@
 
     class LoginController{
     private $modelo;
+        private $modelo2;
 
     public function __construct(){
         include_once("model/LoginModel.php");
+        include_once("model/RevistaModel.php");
         $this->modelo = new LoginModel();
+        $this->modelo2 = new RevistaModel();
     }
 
     public function execute($usuario,$clave){
@@ -38,6 +41,9 @@
         }
     }
     public function executeInicioLectorView(){
+
+        $resultadosRevistas=$this->modelo2->executeBuscarRevistas();
+        //$resultadosRevistasPorLector=$this->modelo2->executeFiltrarRevistas();
         include_once ("view/lector/inicioLectorView.php");
     }
 }
