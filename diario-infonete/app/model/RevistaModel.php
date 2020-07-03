@@ -9,6 +9,9 @@ class RevistaModel
         $this->conexion = new Database();
     }
 
+    public function executeBuscarNoticiasPorLector($idUsuario){
+        $this->conexion->queryBuscarNoticiasPorLector($idUsuario);
+    }
     public function executeBuscarNoticias(){
         $this->conexion->queryBuscarNoticias();
     }
@@ -17,10 +20,10 @@ class RevistaModel
         $this->conexion->queryBuscarSeccion();
     }
 
-    public function executeGuardarRevista($titulo,$nroRevista,$descripcion){
+    public function executeGuardarRevista($titulo,$nroRevista,$descripcion,$imagen){
 
-        $sql = "INSERT INTO Diario_Revista(Titulo,Numero,Descripcion)
-                value('$titulo',$nroRevista,'$descripcion')";
+        $sql = "INSERT INTO Diario_Revista(Titulo,Numero,Descripcion,imagen_revista)
+                value('$titulo',$nroRevista,'$descripcion','$imagen')";
         $this->conexion->queryInsert($sql);
         $this->conexion->close();
     }

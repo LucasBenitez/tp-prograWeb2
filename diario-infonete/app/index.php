@@ -34,6 +34,14 @@ switch ($page){
         $controller->executeRegistarUsuario($usuario,$clave,$nroDoc,$tel,$mail,$codUser);
         break;
 
+    case "paginaLector":
+        $idUsuario=$_GET["idUsuario"];
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executeBuscarNoticiasInicio($idUsuario);
+        break;
+
+
     case "inicio":
     default:
         include_once("controller/InicioController.php");

@@ -10,6 +10,7 @@ class InicioController
 
     public function execute(){
 
+        $this->modelo->executeBuscarRevistas();
         include_once("view/inicioView.php");
     }
     public function executeAdm(){

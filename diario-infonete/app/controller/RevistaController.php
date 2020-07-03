@@ -16,8 +16,9 @@ class RevistaController{
 
         }
 
-        public function executeGuardarRevista($titulo,$nroRevista,$descripcion){
-            $this->modelo->executeGuardarRevista( $titulo, $nroRevista, $descripcion);
+        public function executeGuardarRevista($titulo,$nroRevista,$descripcion,$imagen){
+            $nombreImagen=UploadImage::subirFoto($imagen,"revista");
+            $this->modelo->executeGuardarRevista( $titulo, $nroRevista, $descripcion,$nombreImagen);
             header("Location: interno.php?page=admRevista");
         }
 
@@ -25,6 +26,10 @@ class RevistaController{
             $this->modelo->executeBuscarNoticias();
             include_once("view/revista/panelControlRevista.php");
         }
+    public function executeBuscarNoticiasInicio($idUsuario){
+        $this->modelo->executeBuscarNoticiasPorLector($idUsuario);
+        include_once("view/lector/paginaLectorView.php");
+    }
 
 
     public function executeBuscarSeccion(){

@@ -213,6 +213,38 @@ class Database{
         $this->conexion->close();
     }
 
+    public function queryBuscarNoticiasPorLector($idUsuario){
+
+        $stmt = $this->conexion->prepare("SELECT * FROM Diario_Revista
+                                            WHERE Id IN (SELECT Cod_revista
+                                            FROM Lector_SuscripcionRevista 
+                                            WHERE Id_usuario=?
+                                             ");
+        $stmt->bind_param('i' ,$idUsuario);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if($result->num_rows === 0) {
+            $_SESSION["sinDatos"] = "0";
+        }else{
+            $i=1;
+            while($row = $result->fetch_assoc()) {
+                $id= $row['Id'];
+                $titulo=$row['Titulo'];
+                $numero = $row['Numero'];
+                $descripcion = $row['Descripcion'];
+
+                $resultados[$i]= $id."-".$titulo."-".$numero."-".$descripcion;
+                $i++;
+            }
+            // se guarda las revistas recuperados de la consulta en SESSION
+            $_SESSION["revistas"] = $resultados;
+        }
+
+        $stmt->close();
+        $this->conexion->close();
+    }
+
     public function queryCambiarEstado($idNoticia)
     {
 

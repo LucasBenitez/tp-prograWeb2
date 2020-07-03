@@ -2,8 +2,8 @@
 if(isset($_SESSION["usuarioOK"])) {
     $usuario = $_SESSION["usuarioOK"];
     $pos = explode("-", $usuario);
-
     ?>
+
     <html>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -230,7 +230,8 @@ if(isset($_SESSION["usuarioOK"])) {
                 <h2 class="w3-center">Crear Revista</h2>
             </div>
             <br>
-            <form class="w3-container" name="registrar" action="interno.php?page=guardarRevista" method="post" enctype="application/x-www-form-urlencoded">
+            <form class="w3-container" name="registrar" action="interno.php?page=guardarRevista" method="post" enctype="multipart/form-data"
+            >
                 <label>Titulo</label>
                 <input class="w3-input w3-round" type="text" name="titulo"><br/>
                 <label>Nro. Revista</label>
@@ -238,7 +239,11 @@ if(isset($_SESSION["usuarioOK"])) {
                 <label>Descripcion</label>
                 <textarea class="w3-input w3-round" type="text" name="descripcion" rows="4" cols="50">
                         </textarea>
-                <br/>
+                <input type="file"  id="uploadedImage" name="uploadedImage"
+                       aria-describedby="inputGroupFileAddon01">
+                <label  for="inputGroupFile01" id="uploadedImage__label">Seleccionar
+                    imagen para la nota</label>
+
                 <div class="w3-center w3-margin-bottom">
                     <input class="w3-button w3-blue-grey w3-round w3-center" type="submit" name="boton" value="CREAR" >
 

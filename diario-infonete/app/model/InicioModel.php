@@ -16,4 +16,7 @@ class InicioModel
     public function executeBorrarUsuario($idUsuario){
         $this->conexion->queryBorrarUsuario($idUsuario);
     }
+    public function executeBuscarRevistas(){
+        $this->conexion->queryBuscarNoticias();
+    }
 }

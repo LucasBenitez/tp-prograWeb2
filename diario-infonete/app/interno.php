@@ -1,5 +1,6 @@
 <?php
 include_once("view/partial/headerInteno.php");
+include_once ("helper/UploadImage.php");
 
 $_SESSION["usuarioAlta"] = "Admin";
 $_SESSION["actionReg"] = "interno";
@@ -79,9 +80,10 @@ switch ($page){
         $titulo = $_POST["titulo"];
         $nroRevista = $_POST["nroRevista"];
         $descripcion = $_POST["descripcion"];
+        $imagen=$_FILES["uploadedImage"];
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
-        $controller->executeGuardarRevista($titulo,$nroRevista,$descripcion);
+        $controller->executeGuardarRevista($titulo,$nroRevista,$descripcion,$imagen);
         break;
 
     case "guardarNoticia":

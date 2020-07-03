@@ -47,8 +47,7 @@ insert into Usuario (Nro_doc,Cod_doc,Nombre,Mail,Telefono,Cod_Usuario,Pass) valu
 	
 	(40111222,1,"lector","agus@gmail.com",1122223333,3,"1234"),
 	(30555000,1,"admin","walter@gmail.com",1133445566,1,"1234"),
-	(35123456,1,"contenidista","pepe2@gmail.com",1533445566,2,"1234"),
-    (35123457,1,"admin2","pepe2@gmail.com",1533445566,1,"1234");
+	(35123456,1,"contenidista","pepe2@gmail.com",1533445566,2,"1234");
 
 
 CREATE TABLE Diario_Revista
@@ -57,11 +56,12 @@ Id int NOT NULL auto_increment,
 Titulo  varchar(50),
 Numero int NOT NULL,
 Descripcion varchar(100),
+imagen_revista varchar(200),
 CONSTRAINT PK_Revista PRIMARY KEY (Id)
 );
 
-insert into Diario_Revista values (1,"revista1",1,"revistadesc");
-insert into Diario_Revista values (2,"revista2",1,"revistadesc2");
+insert into Diario_Revista values (1,"revista1",1,"revistadesc","imagen1");
+insert into Diario_Revista values (2,"revista2",1,"revistadesc2","imagen2");
 
 
 
@@ -119,5 +119,7 @@ CONSTRAINT FK_Noticia_Usuario FOREIGN KEY (Cod_contenidista) REFERENCES Usuario 
      insert into Noticia (Cod_noticia,Titulo,Subtitulo,informe_noticia,imagen_noticia
      ,Cod_seccion,Cod_Contenidista,EstadoAutorizado)
  value (1,"titulo","subtitulo","informe","imagen",1,1,"no");
+ 
+select * from diario_revista;
 
 
