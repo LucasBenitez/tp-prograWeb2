@@ -227,6 +227,37 @@ class Database
         $this->conexion->close();
 
     }
+    public function queryBuscarRevistaPorId($cod_revista)
+    {
+        $resultados = array();
+        $stmt2 = $this->conexion->prepare("SELECT * FROM Diario_Revista where Id=$cod_revista");
+        $stmt2->execute();
+        $result = $stmt2->get_result();
+
+        if ($result->num_rows === 0) {
+            $_SESSION["sinDatos"] = "0";
+        } else {
+            $i = 1;
+            while ($row = $result->fetch_assoc()) {
+                $id = $row['Id'];
+                $titulo = $row['Titulo'];
+                $numero = $row['Numero'];
+                $descripcion = $row['Descripcion'];
+                $imagen = $row['imagen_revista'];
+
+                $resultados[$i] = $id . "-" . $titulo . "-" . $numero . "-" . $descripcion . "-".$imagen;
+                $i++;
+            }
+            // se guarda las revistas recuperados de la consulta en SESSION
+
+
+            return $resultados;
+
+        }
+        $stmt2->close();
+        $this->conexion->close();
+
+    }
 
     public function queryBuscarSeccion()
     {
@@ -349,6 +380,38 @@ class Database
 
         $stmt->close();
         $this->conexion->close();
+    }
+    public function queryBuscarNoticiasPorId($cod_noticia)
+    {
+        $resultados = array();
+        $stmt = $this->conexion->prepare("SELECT * FROM Noticia WHERE cod_noticia=$cod_noticia");
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 0) {
+            $_SESSION["sinNoticias"] = "0";
+        } else {
+            $i = 1;
+            while ($row = $result->fetch_assoc()) {
+                $codNoticia = $row['Cod_noticia'];
+                $titulo = $row['Titulo'];
+                $subTitulo = $row['Subtitulo'];
+                $estadoAutorizado = $row['EstadoAutorizado'];
+                $imagen=$row ["imagen_noticia"];
+
+
+                $resultados[$i] = $codNoticia . "-" . $titulo . "-" . $subTitulo . "-" . $estadoAutorizado . "-".$imagen;
+                $i++;
+            }
+
+
+            return $resultados;
+        }
+
+        $stmt->close();
+
+
     }
 
     public function queryCambiarEstado($idNoticia)

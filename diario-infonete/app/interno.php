@@ -157,15 +157,17 @@ switch ($page) {
         break;
 
     case "redirect":
+        $cod_noticia=$_GET["cod_noticia"];
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
-        $controller->redirectEditarNoticia();
+        $controller->redirectEditarNoticia($cod_noticia);
         break;
 
     case "redirectRevista":
+        $cod_revista=$_GET["cod_revista"];
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
-        $controller->redirectEditarRevista();
+        $controller->redirectEditarRevista($cod_revista);
         break;
 
     case "redirectSeccion":
