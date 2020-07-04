@@ -53,6 +53,7 @@ class RevistaController
     public function executeBuscarNoticiasPorSeccion($codSeccion)
     {
         $resultadosNoticiasPorSeccion=$this->modelo->executeBuscarNoticiasPorSeccion($codSeccion);
+
         include_once("view/lector/noticiasPorSeccionView.php");
     }
     public function executeBuscarNoticias()

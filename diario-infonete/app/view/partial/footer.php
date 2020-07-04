@@ -1,17 +1,19 @@
-<div class="w3-margin-top">
-    <footer class=" w3-grey w3-center" style="width: 100% ; position:fixed ;bottom:0;">
-        <div class="w3-bar w3-primary">
-            <a href="index.html" class="w3-bar-item w3-button text-white"style="text-decoration: none ;">Inicio</a>
-            <a href="#" class="w3-bar-item w3-button text-white" style="text-decoration: none">Tienda</a>
-            <a href="#" class="w3-bar-item w3-button text-white" style="text-decoration: none">Archivo</a>
-            <a href="#" class="w3-bar-item w3-button text-white"style="text-decoration: none">Contacto</a>
-        </div>
-        <div class="w3-display-right w3-margin-right">
-            <a href="interno.php" class="w3-bar-item w3-button text-white"style="text-decoration: none">Modo admin</a>
-        </div>
-    </footer>
-</div>
+<!-- Footer -->
+<!--
+<footer class="page-footer font-small bg-primary w3-text-white ">
 
+
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="#" style="text-decoration: none;" class="w3-hover-light-blue"> www.desarrolloweb.com </a>
+        <a href="interno.php" style="position: absolute;right:0px; text-decoration: none" class="w3-margin-right w3-hover-light-gray "> Modo admin</a>
+    </div>
+
+
+
+</footer>
+
+-->
+<!-- Footer -->
 <script src="view/js/jquery-3.5.1.min.js"></script>
 <script src="view/js/bootstrap.min.js"></script>
 <script>

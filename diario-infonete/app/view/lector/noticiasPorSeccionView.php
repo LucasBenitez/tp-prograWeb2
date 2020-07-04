@@ -12,7 +12,7 @@ if (isset($_SESSION["usuarioOK"])) {
         for ($i = 1; $i <= $tam; $i++) {
             $posi = explode("-",$resultadosNoticiasPorSeccion[$i]);
 
-            echo "<div class='container'>";
+            echo "<div class='container w3-display-middle'>";
             echo "<h1> $posi[1] </h1>";
             //echo "<img src='./images/revistas/$pos[4]'> ";
             echo "<p>$posi[3]</p>";
