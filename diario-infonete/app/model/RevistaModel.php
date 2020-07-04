@@ -91,6 +91,14 @@ class RevistaModel
     {
         $this->conexion->queryEditarSeccion($idSeccion, $titulo);
     }
+    public function executeBuscarNoticiaPorId($cod_noticia)
+    {
+      return  $this->conexion->queryBuscarNoticiasPorId($cod_noticia);
+    }
+    public function executeBuscarRevistaPorId($cod_revista)
+    {
+        return  $this->conexion->queryBuscarRevistaPorId($cod_revista);
+    }
 
     public function executeBorrarNoticia($idNoticia)
     {

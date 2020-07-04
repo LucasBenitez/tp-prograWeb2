@@ -2,8 +2,7 @@
 if(isset($_SESSION["usuarioOK"])) {
     $usuario = $_SESSION["usuarioOK"];
     $pos = explode("-", $usuario);
-}
-    $idNoticia = $_GET["idNoticia"];
+
 
 ?>
 <!doctype html>
@@ -41,5 +40,59 @@ if(isset($_SESSION["usuarioOK"])) {
         <input type="hidden" value="<?php echo $idNoticia ?>" name="idNoticia">
 
     </form>
+
+<div class="w3-container">
+    <h2>Lista de Noticias</h2>
+    <table class="w3-table w3-bordered">
+        <tr>
+            <th>cod. Noticia</th>
+            <th>Titulo</th>
+            <th>Subtitulo</th>
+            <th>Estado</th>
+
+        </tr>
+        <?php
+
+        if(isset($resultadoNoticia)){
+
+            $tam = sizeof($resultadoNoticia);
+            for ($i = 1; $i <= $tam; $i++) {
+                $posN = explode("-", $resultadoNoticia[$i]);
+
+                echo "<tr>";
+                echo "<td>$posN[0]</td>";
+                echo "<td>$posN[1]</td>";
+                echo "<td>$posN[2]</td>";
+                echo "<td>$posN[3]</td>";
+                echo "</tr>";
+
+            }
+        }
+        if (isset($_SESSION["sinNoticias"])) {
+            echo "<div class='alert warning'>
+                              <span class='closebtn'>&times;</span>  
+                              <strong>Success!</strong> No hay noticias para mostrar en la tabla
+                            </div>";
+            unset($_SESSION["sinNoticias"]);
+
+        }
+        if (isset($_SESSION["eliminadoOK"])) {
+            echo "<div class='alert success'>
+                              <span class='closebtn'>&times;</span>  
+                              <strong>Success!</strong>Usuario eliminado exitosamente</div>";
+            unset($_SESSION["eliminadoOK"]);
+        }
+        if (isset($_SESSION["userModif"])) {
+            echo "<div class='alert success'>
+                              <span class='closebtn'>&times;</span>  
+                              <strong>Success!</strong>Clave modificada correctamente</div>";
+            unset($_SESSION["userModif"]);
+        }
+        ?>
+    </table>
+</div>
+</div>
 </body>
 </html>
+<?php
+}

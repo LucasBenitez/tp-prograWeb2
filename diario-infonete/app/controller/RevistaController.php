@@ -112,13 +112,15 @@ class RevistaController
         header("Location: interno.php?page=admRevista");
     }
 
-    public function redirectEditarNoticia()
+    public function redirectEditarNoticia($cod_noticia)
     {
+        $resultadoNoticia=$this->modelo->executeBuscarNoticiaPorId($cod_noticia);
         include_once("view/revista/editarNoticiaView.php");
     }
 
-    public function redirectEditarRevista()
+    public function redirectEditarRevista($cod_revista)
     {
+        $resultadoRevista=$this->modelo->executeBuscarRevistaPorId($cod_revista);
         include_once("view/revista/editarRevistaView.php");
     }
 
