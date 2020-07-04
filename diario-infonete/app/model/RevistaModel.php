@@ -20,6 +20,18 @@ class RevistaModel
         return $this->conexion->queryBuscarRevistas();
 
     }
+    public function executeBuscarSeccionesPorRevista($idUsuario , $id_revista)
+    {
+        return $this->conexion->queryBuscarSeccionesPorRevista($idUsuario , $id_revista);
+
+    }
+
+    public function executeBuscarNoticiasPorSeccion($codSeccion)
+    {
+        return $this->conexion->queryBuscarNoticiasPorSeccion($codSeccion);
+
+    }
+
     public function executeBuscarNoticias()
     {
 

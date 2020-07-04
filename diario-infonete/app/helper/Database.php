@@ -164,6 +164,38 @@ class Database
         $stmt->close();
     }
 
+    public function queryBuscarNoticiasPorSeccion($codSeccion)
+    {
+
+        $resultados = array();
+        $stmt = $this->conexion->prepare("SELECT * FROM Noticia
+                                                Where cod_Seccion = $codSeccion and estadoAutorizado='SI'");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 0) {
+            $_SESSION["sinNoticias"] = "0";
+        } else {
+            $i = 1;
+            while ($row = $result->fetch_assoc()) {
+                $codNoticia = $row['Cod_noticia'];
+                $titulo = $row['Titulo'];
+                $subTitulo = $row['Subtitulo'];
+                $estadoAutorizado = $row['EstadoAutorizado'];
+                $imagen=$row ["imagen_noticia"];
+
+
+                $resultados[$i] = $codNoticia . "-" . $titulo . "-" . $subTitulo . "-" . $estadoAutorizado . "-".$imagen;
+                $i++;
+            }
+
+
+            return $resultados;
+        }
+
+        $stmt->close();
+    }
+
     public function queryBuscarRevistas()
     {
         $resultados = array();
@@ -224,6 +256,37 @@ class Database
         $this->conexion->close();
     }
 
+    public function queryBuscarSeccionesPorRevista($idUsuario , $id_revista)
+    {
+        $resultados=array();
+
+        $stmt = $this->conexion->prepare("SELECT * FROM Seccion 
+                                                where Cod_revista in (select Cod_revista
+					                            from Lector_SuscripcionRevista
+                                                where id_usuario = $idUsuario and Cod_revista = $id_revista)");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 0) {
+            $_SESSION["sinSeccion"] = "0";
+        } else {
+            $i = 1;
+            while ($row = $result->fetch_assoc()) {
+                $codSeccion = $row['Cod_seccion'];
+                $descripcion = $row['Descripcion'];
+
+
+                $resultados[$i] = $codSeccion . "-" . $descripcion;
+                $i++;
+            }
+            // se guarda las revistas recuperados de la consulta en SESSION
+            return $resultados;
+        }
+
+        $stmt->close();
+        $this->conexion->close();
+    }
+
     public function queryBuscarSuscripcionRevista()
     {
         $resultados=array();
@@ -257,10 +320,10 @@ class Database
     public function queryBuscarNoticiasPorLector($idUsuario)
     {
         $resultados=array();
-        $stmt = $this->conexion->prepare("  select * from diario_revista 
+        $stmt = $this->conexion->prepare("select * from diario_revista 
                                                 where id in (select Cod_revista
 					                            from Lector_SuscripcionRevista
-                                                where id_usuario = 1);
+                                                where id_usuario = ?);
                                                 ");
         $stmt->bind_param('i', $idUsuario);
         $stmt->execute();

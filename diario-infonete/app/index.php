@@ -71,6 +71,20 @@ switch ($page){
         $controller->executeBuscarTodoLector();
         break;
 
+    case "buscarSecciones":
+        $idUsuario=$_GET["Id_usuario"];
+        $idRevista=$_GET ["Cod_revista"];
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executeBuscarSeccionesPorRevista($idUsuario , $idRevista);
+        break;
+
+    case "buscarNotiPorSeccion":
+        $codSeccion=$_GET["Cod_seccion"];
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executeBuscarNoticiasPorSeccion($codSeccion);
+        break;
 
     case "inicio":
     default:

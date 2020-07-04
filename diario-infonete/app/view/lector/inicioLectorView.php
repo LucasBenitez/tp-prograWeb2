@@ -1,4 +1,8 @@
-
+<?php
+if (isset($_SESSION["usuarioOK"])) {
+$usuario = $_SESSION["usuarioOK"];
+$pos = explode("-", $usuario);
+?>
 <div class="col-md-12 ">
     <h1 class="text-center  mt-5 mb-5">InfoNete
         <small>Diario Online</small>
@@ -50,8 +54,6 @@
         </div>
 
         <div class="col ">
-
-
             <?php
             if (isset($resultadosRevistas)) {
                 $tam = sizeof($resultadosRevistas);
@@ -65,7 +67,7 @@
                     echo "<div class=\"w3-container w3-margin-top\">
                         <p>'$posi[3]'</p>
                         </div>";
-
+                    echo "<a href='index.php?page=buscarSecciones&Id_usuario=$pos[0]&Cod_revista=$posi[0]' class=\"w3-button bg-primary w3-margin-bottom text-white\">Abrir revista</a>";
                     echo "</div>";
 
                 }
@@ -97,7 +99,8 @@
 </div>
 </div>
 
-
+<?php
+}?>
 
 
 

@@ -1,7 +1,4 @@
 
-
-
-
 <div class="col-md-12 ">
     <h1 class="text-center  mt-5 mb-5">InfoNete
         <small>Diario Online</small>
@@ -94,6 +91,7 @@
                 unset($_SESSION["userModif"]);
             }
             ?>
+
         </div>
     </div>
 </div>

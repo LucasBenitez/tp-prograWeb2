@@ -12,15 +12,10 @@ class RevistaController
 
     public function execute()
     {
-
         $resultadosNoticia=$this->modelo->executeBuscarNoticias();
         $resultadosRevista=$this->modelo->executeBuscarRevistas();
         $resultadosSeccion=$this->modelo->executeBuscarSeccion();
         include_once("view/revista/panelControlRevista.php");
-
-
-
-
     }
 
     public function executeGuardarRevista($titulo, $nroRevista, $descripcion, $imagen)
@@ -39,43 +34,37 @@ class RevistaController
 
     public function executeBuscarTodo()
     {
-
-
         $resultadosNoticia=$this->modelo->executeBuscarNoticias();
         $resultadosRevista=$this->modelo->executeBuscarRevistas();
         $resultadosSeccion=$this->modelo->executeBuscarSeccion();
         include_once("view/revista/panelControlRevista.php");
-
-
-
     }
     public function executeBuscarTodoLector()
     {
         $resultadosRevista=$this->modelo->executeBuscarRevistas();
         include_once("view/lector/inicioLectorView.php");
+    }
+    public function executeBuscarSeccionesPorRevista($idUsuario,$idRevista)
+{
+    $resultadosSeccionPorRevista=$this->modelo->executeBuscarSeccionesPorRevista($idUsuario,$idRevista);
+    include_once("view/lector/seccionesView.php");
+}
 
-
-
+    public function executeBuscarNoticiasPorSeccion($codSeccion)
+    {
+        $resultadosNoticiasPorSeccion=$this->modelo->executeBuscarNoticiasPorSeccion($codSeccion);
+        include_once("view/lector/noticiasPorSeccionView.php");
     }
     public function executeBuscarNoticias()
     {
-
-
         $resultadosNoticia=$this->modelo->executeBuscarNoticias();
         include_once("view/revista/panelControlRevista.php");
-
-
-
     }
 
     public function executeBuscarRevistas()
     {
-
-
         $resultadosRevista=$this->modelo->executeBuscarRevistas();
         include_once("view/revista/panelControlRevista.php");
-
-
     }
 
     public function executeBuscarNoticiasInicio($idUsuario)
@@ -125,9 +114,6 @@ class RevistaController
 
     public function redirectEditarNoticia()
     {
-
-
-
         include_once("view/revista/editarNoticiaView.php");
     }
 
