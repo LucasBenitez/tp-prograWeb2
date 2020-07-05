@@ -148,9 +148,9 @@ class RevistaController
         header("Location: interno.php?page=admRevista");
     }
 
-    public function executeSuscribirse($idUsuario,$idNoticia)
+    public function executeSuscribirse($idUsuario,$idRevista)
     {
-        $this->modelo->executeSuscribirse($idUsuario,$idNoticia);
+        $this->modelo->executeSuscribirse($idUsuario,$idRevista);
         header("Location: index.php?page=inicioLectorView");
     }
 
@@ -159,6 +159,10 @@ class RevistaController
         $this->modelo->executeFiltrarRevistas($idUsuario );
         header("Location: index.php?page=inicioLectorView");
     }
-
+    public function executeBuscarRevistasTienda($idUsuario)
+    {
+        $revistasTienda=$this->modelo->executeBuscarRevistasTienda($idUsuario);
+        include_once("view/tiendaView.php");
+    }
 
 }

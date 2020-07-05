@@ -164,7 +164,7 @@ class Database
         $stmt->close();
     }
 
-    public function     queryBuscarNoticiasPorSeccion($codSeccion)
+    public function queryBuscarNoticiasPorSeccion($codSeccion)
     {
 
         $resultados = array();
@@ -494,6 +494,41 @@ class Database
         $stmt->execute();
         $stmt->close();
 
+    }
+
+
+    public function queryBuscarRevistasTienda($idUsuario)
+    {
+        $resultados=array();
+
+        $stmt = $this->conexion->prepare("SELECT * FROM Diario_Revista 
+                                                where Id not in (select Cod_revista
+					                            from Lector_SuscripcionRevista
+                                                where id_usuario = $idUsuario )");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows === 0) {
+            $_SESSION["sinDatos"] = "0";
+        } else {
+            $i = 1;
+            while ($row = $result->fetch_assoc()) {
+                $id = $row['Id'];
+                $titulo = $row['Titulo'];
+                $numero = $row['Numero'];
+                $descripcion = $row['Descripcion'];
+                $imagen = $row['imagen_revista'];
+
+                $resultados[$i] = $id . "-" . $titulo . "-" . $numero . "-" . $descripcion . "-".$imagen;
+                $i++;
+            }
+            // se guarda las revistas recuperados de la consulta en SESSION
+
+
+            return $resultados;
+
+        }
+        $stmt->close();
+        $this->conexion->close();
     }
 
 

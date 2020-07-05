@@ -48,9 +48,16 @@ switch ($page){
         $controller->executeBuscarNoticiasInicio($idUsuario);
         break;
 
+    case "tienda":
+        $idUsuario=$_GET["idUsuario"];
+        include_once ("controller/RevistaController.php");
+        $controller=new RevistaController();
+        $controller->executeBuscarRevistasTienda($idUsuario);
+        break;
+
     case "suscribirse":
         $idUsuario=$_GET["idUsuario"];
-        $idRevista=$_GET ["idRevista"];
+       $idRevista=$_GET["idRevista"];
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
         $controller->executeSuscribirse($idUsuario,$idRevista);

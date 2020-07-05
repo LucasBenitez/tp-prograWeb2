@@ -27,4 +27,6 @@ class InicioModel
 
         return $this->conexion->queryBuscarRevistas();
     }
+
+
 }

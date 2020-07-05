@@ -128,6 +128,12 @@ class RevistaModel
 
     }
 
+    public function executeBuscarRevistasTienda($idUsuario)
+    {
+        return $this->conexion->queryBuscarRevistasTienda($idUsuario);
+
+    }
+
 }
 
 

@@ -38,4 +38,6 @@ class InicioController
         header("Location: interno.php?page=panelControl");
     }
 
+
+
 }

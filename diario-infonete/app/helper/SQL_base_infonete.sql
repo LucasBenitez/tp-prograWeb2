@@ -46,7 +46,8 @@ CONSTRAINT FK_Usuario_Rol FOREIGN KEY (Cod_Usuario) REFERENCES Rol (Cod_Rol)
 insert into Usuario (Nro_doc,Cod_doc,Nombre,Mail,Telefono,Cod_Usuario,Pass) value
 	
 	(40111222,1,"lector","agus@gmail.com",1122223333,3,"1234"),
-	(30555000,1,"admin","walter@gmail.com",1133445566,1,"1234"),
+	(40111222,1,"lector2","agus@gmail.com",1122223333,3,"1234"),
+    (30555000,1,"admin","walter@gmail.com",1133445566,1,"1234"),
 	(35123456,1,"contenidista","pepe2@gmail.com",1533445566,2,"1234");
 
 
@@ -61,7 +62,7 @@ CONSTRAINT PK_Revista PRIMARY KEY (Id)
 );
 
 insert into Diario_Revista values (1,"Todo Deportes",1,"Todo deportes, Diario deportivo líder en Argentina. Noticias deportivas de: Fútbol local e internacional, Selección Nacional, tenis, rugby, autos y más.","revistaDeporte.jpg");
-insert into Diario_Revista values (2,"E-Sports",1,"Noticias e-Sports y juegos: equipos, competiciones, análisis, resultados de ligas y torneos. Directo y streaming de partidas en Twitch: CS GO, LOL, COD, HoTs...","esports.png");
+insert into Diario_Revista values (2,"E Sports",1,"Noticias e Sports y juegos: equipos, competiciones, análisis, resultados de ligas y torneos. Directo y streaming de partidas en Twitch: CS GO, LOL, COD, HoTs...","esports.png");
 
 
 
@@ -95,7 +96,8 @@ CONSTRAINT FK_Cod_Revista FOREIGN KEY (Cod_revista) REFERENCES Diario_Revista (I
 );
 
 insert into Lector_SuscripcionRevista (Id_usuario,Cod_revista) value
-	(1,1);
+	(1,1),
+    (1,2);
     
 
 
@@ -117,9 +119,11 @@ CONSTRAINT FK_Noticia_Usuario FOREIGN KEY (Cod_contenidista) REFERENCES Usuario 
 
      insert into Noticia (Cod_noticia,Titulo,Subtitulo,informe_noticia,imagen_noticia
      ,Cod_seccion,Cod_Contenidista,EstadoAutorizado)
- value (1,"Lautaro erró el penal del 2-0 y el Inter perdió 2-1","Martínez se hizo cargo de una ejecución que podía cerrar el juego ante Bologna, pero la pateó mal, Skorupski lo atajó y el visitante lo dio vuelta. Todo mal.","Mientras su futuro sigue sin definirse, entre quedarse en el Inter o irse al Barcelona​, Lautaro Martínez se mantiene concentrado en lo suyo y vistiendo la camiseta del Neroazzurro. Pero no la pasa tan bien... El ex Racing se hizo cargo de un penal vs. Bologna, el que podía ser el 2-0 de su equipo, pero lo erró (en realidad lo atajó Skorupski) y el visitante lo terminó dando vuelta por 2-1.
-Lautaro fue titular en el Giuseppe Meazza y mostró movilidad de entrada, buscando ser opción uno pasos detrás de Lukaku​, su socio de ataque. Y el Inter encontró rápido el gol, a los 22 minutos, por medio del belga. Parecía que iba a ser un trámite para los de Conte, pero no.
-","lautaro.jpg",1,1,"si");
+ value (1,'Lautaro erró el penal del 2 a 0 y el Inter perdió 2 a 1','Martínez se hizo cargo de una ejecución que podía cerrar el juego ante Bologna, pero la pateó mal, Skorupski lo atajó y el visitante lo dio vuelta. Todo mal.',
+ 'Mientras su futuro sigue sin definirse, entre quedarse en el Inter o irse al Barcelona​, Lautaro Martínez se mantiene concentrado en lo suyo y vistiendo la camiseta del Neroazzurro. Pero no la pasa tan bien... 
+ El ex Racing se hizo cargo de un penal vs. Bologna, el que podía ser el 2 a 0 de su equipo, pero lo erró (en realidad lo atajó Skorupski) y el visitante lo terminó dando vuelta por 2 a 1.
+Lautaro fue titular en el Giuseppe Meazza y mostró movilidad de entrada, buscando ser opción uno pasos detrás de Lukaku​, su socio de ataque. Y el Inter encontró rápido el gol, a los 22 minutos, por medio del belga. 
+Parecía que iba a ser un trámite para los de Conte, pero no.','lautaro.jpg',1,1,'si');	
 
 insert into Noticia (Cod_noticia,Titulo,Subtitulo,informe_noticia,imagen_noticia
      ,Cod_seccion,Cod_Contenidista,EstadoAutorizado)
@@ -131,30 +135,36 @@ Del Bosque no sólo disfrutó del juego de JR en vivo y en directo en la Madre P
  insert into Noticia (Cod_noticia,Titulo,Subtitulo,informe_noticia,imagen_noticia
      ,Cod_seccion,Cod_Contenidista,EstadoAutorizado)
  value (3,"Tiafoe, sexto tenista positivo por coronavirus, se borra de la exhibición de Atlanta","Peligra el regreso del tenis por la pandemia y las cuarentenas","
-El estadounidense Frances Tiafoe, 81 del ranking ATP, ha vuelto a encender las alarmas en el mundo del tenis. Y es que se ha convertido en el sexto jugador profesional en dar positivo por coronavirus. Se realizó el test la noche del viernes, después de encontrarse indispuesto, durante el torneo de exhibición de Atlanta del que ya se ha dado de baja. Había ganado su partido ante su compatriota Sam Querrey por 6-4 y 7-6.Se une así a los casos anteriores de Thiago Seyboth Wild, infectado en Brasil, y Novak Djokovic, Borna Coric, Viktor Troicki y Grigor Dimitrov, víctimas del Adria Tour que terminó con un total de diez enfermos por COVID-19.Tiafoe, sustituido en Atlanta por el local Cristopher Eubanks, ha querido remarcar que antes de viajar a Atlanta se había realizado controles de manera periódica en su residencia de Florida y siempre había dado negativo. El yanqui ha iniciado su cuarentena y se realizará un nuevo test la semana que viene.En peligro de estar contagiados, al haber estado en contacto con su compañero, figuran John Isner, Querrey, Taylor Fritz, Reilly Opelka, Tennys Sandgren, Steve Johnson y Tommy Paul, los otros participantes del certamen bautizado con el nombre de 'All American Team Cup'.El positivo de Frances llega cuando está más en duda que nunca el regreso del tenis el mes de agosto en una anunciada gira americana de pista dura que debería iniciarse el 14 de agosto con el Open 500 de Washington. Sería la antesala del Masters 1.000 de Cincinnati y US Open, ambos en las pistas del Billie Jean King Tennis Center de Nueva York.
+El estadounidense Frances Tiafoe, 81 del ranking ATP, ha vuelto a encender las alarmas en el mundo del tenis. Y es que se ha convertido en el sexto jugador profesional en dar positivo por coronavirus. Se realizó el test la noche del viernes, después de encontrarse indispuesto, durante el torneo de exhibición de Atlanta del que ya se ha dado de baja. Había ganado su partido ante su compatriota Sam Querrey por 64 y 76.Se une así a los casos anteriores de Thiago Seyboth Wild, infectado en Brasil, y Novak Djokovic, Borna Coric, Viktor Troicki y Grigor Dimitrov, víctimas del Adria Tour que terminó con un total de diez enfermos por COVID19.Tiafoe, sustituido en Atlanta por el local Cristopher Eubanks, ha querido remarcar que antes de viajar a Atlanta se había realizado controles de manera periódica en su residencia de Florida y siempre había dado negativo. El yanqui ha iniciado su cuarentena y se realizará un nuevo test la semana que viene.En peligro de estar contagiados, al haber estado en contacto con su compañero, figuran John Isner, Querrey, Taylor Fritz, Reilly Opelka, Tennys Sandgren, Steve Johnson y Tommy Paul, los otros participantes del certamen bautizado con el nombre de 'All American Team Cup'.El positivo de Frances llega cuando está más en duda que nunca el regreso del tenis el mes de agosto en una anunciada gira americana de pista dura que debería iniciarse el 14 de agosto con el Open 500 de Washington. Sería la antesala del Masters 1.000 de Cincinnati y US Open, ambos en las pistas del Billie Jean King Tennis Center de Nueva York.
 
  ","tifoe.jpg",2,1,"si");
  
  insert into Noticia (Cod_noticia,Titulo,Subtitulo,informe_noticia,imagen_noticia
      ,Cod_seccion,Cod_Contenidista,EstadoAutorizado)
  value (4,"Las 29 consignas políticas que podrán exhibirse en las camisetas NBA","La liga de básquet norteamericana aprobó las frases que los jugadores podrán llevar en sus dorsales, sobre el número, y que reemplazarán a sus nombres","
- 
- La NBA autorizó una lista de 29 consignas políticas que podrán exhibirse en las camisetas de los jugadores que lo deseen, como el apoyo al movimiento Black Lives Matter (Las vidas negras importan), cuando se reanude la liga suspendida por la pandemia de coronavirus el 30 de julio. Todo fue motivado por el asesinato, en manos de la Policía, del afroamericano George Floyd.
+ La NBA autorizó una lista de 29 consignas políticas que podrán exhibirse en las camisetas de los jugadores que lo deseen, como el apoyo al movimiento Black Lives Matter (Las vidas negras importan), cuando se reanude 
+ la liga suspendida por la pandemia de coronavirus el 30 de julio. Todo fue motivado por el asesinato, en manos de la Policía, del afroamericano George Floyd.
  ","basquet.jpg",3,1,"si");
  
   insert into Noticia (Cod_noticia,Titulo,Subtitulo,informe_noticia,imagen_noticia
      ,Cod_seccion,Cod_Contenidista,EstadoAutorizado)
  value (5,"CSGO: Se define la Liga Pro Trust Norte y Centro","Este sábado y domingo, la acción se verá en TyC Sports Play con los mejores cuatro equipos de la región buscando el título.","
- Arrancan las definiciones de la Liga Pro Trust de Counter-Strike: Global Offensive organizada por Temporada de Juegos. Primero será el turno de la región Norte y Centro y, una semana después, de la región Sur. Ambas instancias se verán en vivo por TyC Sports Play.
-Este sábado se jugarán las semifinales de la competencia y tendrán como protagonistas de la primera semi a Mineros FC Esports -que cuenta con un mix estadounidense y canadiense- se verá las caras con Estral Esports -formado por mexicanos y estadounidenses. La otra semifinal será entre Infinity Esports de Colombia ante Supremacy Gaming de Perú.
-Los ganadores de las semifinales chocarán el domingo en la gran final por los más de 3 mil dólares en premios. Una semana más tarde será el turno de la región Sur, que ya tiene semifinales confirmadas entre DETONA Pound de Brasil y Sinisters de Argentina por un lado, y 9Z Team de Argentina e Imperial de Brasil, por el otro.","csgo.jpg",4,1,"si");
+ Arrancan las definiciones de la Liga Pro Trust de Counter Strike: Global Offensive organizada por Temporada de Juegos. Primero será el turno de la región Norte y Centro y, una semana después, de la región Sur. 
+ Ambas instancias se verán en vivo por TyC Sports Play.
+Este sábado se jugarán las semifinales de la competencia y tendrán como protagonistas de la primera semi a Mineros FC E sports que cuenta con un mix estadounidense y canadiense se verá las caras con Estral E sports 
+formado por mexicanos y estadounidenses. La otra semifinal será entre Infinity Esports de Colombia ante Supremacy Gaming de Perú.
+Los ganadores de las semifinales chocarán el domingo en la gran final por los más de 3 mil dólares en premios. Una semana más tarde será el turno de la región Sur, que ya tiene semifinales confirmadas entre 
+DETONA Pound de Brasil y Sinisters de Argentina por un lado, y 9Z Team de Argentina e Imperial de Brasil, por el otro.","csgo.jpg",4,1,"si");
 
 insert into Noticia (Cod_noticia,Titulo,Subtitulo,informe_noticia,imagen_noticia
      ,Cod_seccion,Cod_Contenidista,EstadoAutorizado)
  value (6,"SISTEMAS DE COMPORTAMIENTO: NOVEDADES (07/2020)","Os traemos las próximas áreas en las que nos centraremos con los sistemas de comportamiento.","
  ¡Hola! Al habla Cody Riot Codebear Germain. Vengo a comentaros nuestro enfoque en lo relativo a las mejoras del comportamiento de LoL, las ideas y la filosofía que hay detrás de las próximas funciones.
-
-Como hemos mencionado durante los últimos meses, los comportamientos inadecuados de LoL son algo en lo que no hemos avanzado demasiado en los últimos años. En nuestra primera fase de este nuevo intento de cambio, nos ha parecido importante hacer frente a los comportamientos en partida que afectan directamente a los resultados de las mismas. Los hemos definido como los comportamientos que albergan la intención directa de provocar una derrota o aquellos que albergan la intención directa de disminuir las probabilidades de victoria, lo que puede incluir morir a propósito, sabotaje, molestar a los demás en partida, permanecer inactivo o abandonar una partida intencionadamente."
+ 
+Como hemos mencionado durante los últimos meses, los comportamientos inadecuados de LoL son algo en lo que no hemos avanzado demasiado en los últimos años. En nuestra primera fase de este nuevo intento de cambio,
+ nos ha parecido importante hacer frente a los comportamientos en partida que afectan directamente a los resultados de las mismas. Los hemos definido como los comportamientos que albergan la intención directa 
+ de provocar una derrota o aquellos que albergan la intención directa de disminuir las probabilidades de victoria, lo que puede incluir morir a propósito, sabotaje, molestar a los demás en partida, permanecer 
+ inactivo o abandonar una partida intencionadamente."
 ,"lol.jpg",5,1,"si");
 
 
@@ -167,7 +177,8 @@ insert into Noticia (Cod_noticia,Titulo,Subtitulo,informe_noticia,imagen_noticia
 
  
  
- 
 
+
+select * from diario_revista;
 
 
