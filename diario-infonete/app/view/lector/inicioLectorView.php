@@ -61,13 +61,13 @@ $pos = explode("-", $usuario);
                     $posi = explode("-", $resultadosRevistas[$i]);
                     echo "<div class=\"w3-card-4 mb-5\">";
                     echo "<header class=\"w3-container bg-primary text-white mb-3  \">
-                        <h1>'$posi[1]'</h1>
+                        <h1>$posi[1]</h1>
                         </header>";
-                    echo "<img src='./images/revista/$posi[4]' alt=\"Alps\" class=\"mh-100\">";
+                    echo "<img src='./images/revista/$posi[4]'  class=\"mh-100\">";
                     echo "<div class=\"w3-container w3-margin-top\">
-                        <p>'$posi[3]'</p>
-                        </div>";
+                        <p class='mb-3 ' >$posi[3]</p>";
                     echo "<a href='index.php?page=buscarSecciones&Id_usuario=$pos[0]&Cod_revista=$posi[0]' class=\"w3-button bg-primary w3-margin-bottom text-white\">Abrir revista</a>";
+                    echo "</div>";
                     echo "</div>";
 
                 }

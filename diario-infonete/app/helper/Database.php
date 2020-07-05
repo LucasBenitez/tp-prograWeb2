@@ -164,7 +164,7 @@ class Database
         $stmt->close();
     }
 
-    public function queryBuscarNoticiasPorSeccion($codSeccion)
+    public function     queryBuscarNoticiasPorSeccion($codSeccion)
     {
 
         $resultados = array();
@@ -181,11 +181,12 @@ class Database
                 $codNoticia = $row['Cod_noticia'];
                 $titulo = $row['Titulo'];
                 $subTitulo = $row['Subtitulo'];
+                $informeNoticia=$row['informe_noticia'];
                 $estadoAutorizado = $row['EstadoAutorizado'];
                 $imagen=$row ["imagen_noticia"];
 
 
-                $resultados[$i] = $codNoticia . "-" . $titulo . "-" . $subTitulo . "-" . $estadoAutorizado . "-".$imagen;
+                $resultados[$i] = $codNoticia . "-" . $titulo . "-" . $subTitulo . "-" . $informeNoticia . "-" .$estadoAutorizado . "-".$imagen;
                 $i++;
             }
 

@@ -12,10 +12,13 @@ if (isset($_SESSION["usuarioOK"])) {
         for ($i = 1; $i <= $tam; $i++) {
             $posi = explode("-",$resultadosNoticiasPorSeccion[$i]);
 
-            echo "<div class='container w3-display-middle'>";
-            echo "<h1> $posi[1] </h1>";
-            //echo "<img src='./images/revistas/$pos[4]'> ";
-            echo "<p>$posi[3]</p>";
+            echo "<div class='container'>";
+            echo "<h1 class='mt-5 mb-3 text-primary'> $posi[1] </h1>";
+            echo "<strong class='mt-3'>$posi[2]</strong>";
+
+            echo "<img src='./images/noticia/$posi[5]' class='mw-100 mt-3 mb-3 '> ";
+
+            echo "<p style='margin-bottom: 100px'>$posi[3]</p>";
             echo "</div>";
         }
     }
@@ -40,5 +43,8 @@ if (isset($_SESSION["usuarioOK"])) {
         unset($_SESSION["userModif"]);
     }
 }
+
 ?>
+
+
 

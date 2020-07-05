@@ -58,11 +58,11 @@
                     $posi = explode("-", $resultadosRevistas[$i]);
                     echo "<div class=\"w3-card-4 mb-5\">";
                     echo "<header class=\"w3-container bg-primary text-white mb-3  \">
-                        <h1>'$posi[1]'</h1>
+                        <h1>$posi[1]</h1>
                         </header>";
-                    echo "<img src='./images/revista/$posi[4]' alt=\"Alps\" class=\"mh-100\">";
+                    echo "<img src='./images/revista/$posi[4]' class=\"mh-100\">";
                     echo "<div class=\"w3-container w3-margin-top\">
-                        <p>'$posi[3]'</p>
+                        <p>$posi[3]</p>
                         </div>";
 
                     echo "</div>";

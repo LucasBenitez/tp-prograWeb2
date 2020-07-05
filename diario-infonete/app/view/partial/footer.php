@@ -1,6 +1,6 @@
 <!-- Footer -->
-<!--
-<footer class="page-footer font-small bg-primary w3-text-white ">
+<div class="mt-3"></div>
+<footer class="page-footer font-small bg-primary w3-text-white container-fluid" style="position: fixed ; bottom: 0px;" >
 
 
     <div class="footer-copyright text-center py-3">© 2020 Copyright:
@@ -12,7 +12,7 @@
 
 </footer>
 
--->
+
 <!-- Footer -->
 <script src="view/js/jquery-3.5.1.min.js"></script>
 <script src="view/js/bootstrap.min.js"></script>
