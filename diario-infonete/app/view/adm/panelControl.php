@@ -14,6 +14,7 @@ if(isset($_SESSION["usuarioOK"])) {
         <div class="w3-container w3-margin-top">
 
             <a href="interno.php?page=admRevista" class="w3-button bg-primary w3-hover-black w3-margin-right"style="text-decoration: none">Administrar Revista</a>
+            <a href="../../../../../tp-prograWeb2/pdf/generarPdf.php" class="w3-button bg-primary w3-hover-black w3-margin-right"style="text-decoration: none">Generar reporte Usuarios</a>
 
 
 
