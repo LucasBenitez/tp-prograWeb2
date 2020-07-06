@@ -14,14 +14,17 @@ class InicioModel
     }
     public function executeBuscarConte()
     {
-        return $this->conexion->queryBuscarConte();
+        return $this->conexion->queryBuscarContenidista();
     }
     public function executeBuscarLectores()
     {
-        return $this->conexion->queryBuscarLectores();
+        return $this->conexion->queryBuscarLector();
     }
     public function executeBorrarUsuario($idUsuario){
         $this->conexion->queryBorrarUsuario($idUsuario);
+    }
+    public function executeCambiarAConte($idUsuario){
+        $this->conexion->queryCambiarAConte($idUsuario);
     }
     public function executeBuscarRevistas(){
 

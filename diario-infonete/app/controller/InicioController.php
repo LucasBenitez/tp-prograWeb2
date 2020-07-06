@@ -24,6 +24,10 @@ class InicioController
     }
     public function executePanelControl(){
 
+        $resultadosA=$this->modelo->executeBuscarAdmin();
+        $resultadosC=$this->modelo->executeBuscarConte();
+        $resultadosL=$this->modelo->executeBuscarLectores();
+
         include_once("view/adm/panelControl.php");
     }
     public function executeBuscarUsuarios()
@@ -34,7 +38,13 @@ class InicioController
         include_once("view/adm/panelControl.php");
     }
     public function executeBorrarUsuario($idUsuario){
+
         $this->modelo->executeBorrarUsuario($idUsuario);
+        header("Location: interno.php?page=panelControl");
+    }
+    public function executeCambiarAConte($idUsuario){
+
+        $this->modelo->executeCambiarAConte($idUsuario);
         header("Location: interno.php?page=panelControl");
     }
 

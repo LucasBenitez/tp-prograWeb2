@@ -174,11 +174,11 @@ if(isset($_SESSION["usuarioOK"])) {
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                     echo "</td>";
                     echo "<td class='text-center'>";
-                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarAConte&Id_usuario=$posL[0]' style='color: black'>
+                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarAAdmin&idUsuario=$posL[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                     echo "</td>";
                     echo "<td class='text-center'>";
-                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarALector&Id_usuario=$posL[0]' style='color: black'>
+                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarAConte&idUsuario=$posL[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                     echo "</td>";
                     echo"</tr>";

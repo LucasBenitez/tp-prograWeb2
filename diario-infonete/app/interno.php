@@ -183,6 +183,7 @@ switch ($page) {
         $controller->executeBorrarNoticia($idNoticia);
         break;
 
+
     case "borrarRevista":
         $idRevista = $_GET["idRevista"];
         include_once("controller/RevistaController.php");
@@ -202,6 +203,14 @@ switch ($page) {
         include_once("controller/InicioController.php");
         $controller = new InicioController();
         $controller->executeBorrarUsuario($idUsuario);
+
+        break;
+
+    case "cambiarAConte":
+        $idUsuario = $_GET["idUsuario"];
+        include_once("controller/InicioController.php");
+        $controller = new InicioController();
+        $controller->executeCambiarAConte($idUsuario);
 
         break;
 
