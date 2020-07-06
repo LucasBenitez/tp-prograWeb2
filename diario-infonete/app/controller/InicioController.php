@@ -47,6 +47,16 @@ class InicioController
         $this->modelo->executeCambiarAConte($idUsuario);
         header("Location: interno.php?page=panelControl");
     }
+    public function executeCambiarAAdmin($idUsuario){
+
+        $this->modelo->executeCambiarAAdmin($idUsuario);
+        header("Location: interno.php?page=panelControl");
+    }
+    public function executeCambiarALector($idUsuario){
+
+        $this->modelo->executeCambiarALector($idUsuario);
+        header("Location: interno.php?page=panelControl");
+    }
 
 
 

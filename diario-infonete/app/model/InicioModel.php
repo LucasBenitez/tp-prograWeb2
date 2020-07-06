@@ -26,6 +26,12 @@ class InicioModel
     public function executeCambiarAConte($idUsuario){
         $this->conexion->queryCambiarAConte($idUsuario);
     }
+    public function executeCambiarAAdmin($idUsuario){
+        $this->conexion->queryCambiarAAdmin($idUsuario);
+    }
+    public function executeCambiarALector($idUsuario){
+        $this->conexion->queryCambiarALector($idUsuario);
+    }
     public function executeBuscarRevistas(){
 
         return $this->conexion->queryBuscarRevistas();

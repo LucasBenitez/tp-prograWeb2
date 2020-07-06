@@ -163,6 +163,13 @@ switch ($page) {
         $controller->redirectEditarNoticia($cod_noticia);
         break;
 
+    case "redirectUsuario":
+        $idUsuario=$_GET["idUsuario"];
+        include_once("controller/AdministradorController.php");
+        $controller = new AdministradorController();
+        $controller->redirectCambiarClave($idUsuario);
+        break;
+
     case "redirectRevista":
         $cod_revista=$_GET["cod_revista"];
         include_once("controller/RevistaController.php");
@@ -191,6 +198,14 @@ switch ($page) {
         $controller->executeBorrarRevista($idRevista);
         break;
 
+    case "cambiarClave":
+        $idUsuario = $_POST["idUsuario"];
+        $claveNueva=$_POST["claveNueva"];
+        include_once("controller/AdministradorController.php");
+        $controller = new AdministradorController();
+        $controller->executeCambiarClave($idUsuario,$claveNueva);
+        break;
+
     case "borrarSeccion":
         $idSeccion = $_GET["idSeccion"];
         include_once("controller/RevistaController.php");
@@ -207,10 +222,25 @@ switch ($page) {
         break;
 
     case "cambiarAConte":
+    $idUsuario = $_GET["idUsuario"];
+    include_once("controller/InicioController.php");
+    $controller = new InicioController();
+    $controller->executeCambiarAConte($idUsuario);
+
+    break;
+    case "cambiarAAdmin":
         $idUsuario = $_GET["idUsuario"];
         include_once("controller/InicioController.php");
         $controller = new InicioController();
-        $controller->executeCambiarAConte($idUsuario);
+        $controller->executeCambiarAAdmin($idUsuario);
+
+        break;
+
+    case "cambiarALector":
+        $idUsuario = $_GET["idUsuario"];
+        include_once("controller/InicioController.php");
+        $controller = new InicioController();
+        $controller->executeCambiarALector($idUsuario);
 
         break;
 
