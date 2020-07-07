@@ -47,9 +47,13 @@ class RevistaController
     public function executeBuscarSeccionesPorRevista($idUsuario,$idRevista)
 {
     $resultadosSeccionPorRevista=$this->modelo->executeBuscarSeccionesPorRevista($idUsuario,$idRevista);
+    $resultadosRevista=$this->modelo->executeBuscarRevistaPorId($idRevista);
     include_once("view/lector/seccionesView.php");
 }
-
+    public function executeBuscarRevistaPorId($idRevista)
+    {
+    $resultadosRevista=$this->modelo->executeBuscarRevistaPorId($idRevista);
+    }
     public function executeBuscarNoticiasPorSeccion($codSeccion)
     {
         $resultadosNoticiasPorSeccion=$this->modelo->executeBuscarNoticiasPorSeccion($codSeccion);

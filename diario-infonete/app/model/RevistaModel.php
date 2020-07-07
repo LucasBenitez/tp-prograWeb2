@@ -95,9 +95,9 @@ class RevistaModel
     {
       return  $this->conexion->queryBuscarNoticiasPorId($cod_noticia);
     }
-    public function executeBuscarRevistaPorId($cod_revista)
+    public function executeBuscarRevistaPorId($idRevista)
     {
-        return  $this->conexion->queryBuscarRevistaPorId($cod_revista);
+        return  $this->conexion->queryBuscarRevistaPorId($idRevista);
     }
 
     public function executeBorrarNoticia($idNoticia)
@@ -114,7 +114,7 @@ class RevistaModel
     {
         $this->conexion->queryBorrarSeccion($idSeccion);
     }
-    public function executeSuscribirse($idUsuario, $idRevista)
+    public function executeSuscribirse($idUsuario , $idRevista)
     {
         $sql = "insert into Lector_SuscripcionRevista (Id_usuario,Cod_revista)
       value ($idUsuario,$idRevista);";

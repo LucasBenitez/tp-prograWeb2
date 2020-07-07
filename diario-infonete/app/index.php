@@ -84,6 +84,7 @@ switch ($page){
         include_once("controller/RevistaController.php");
         $controller = new RevistaController();
         $controller->executeBuscarSeccionesPorRevista($idUsuario , $idRevista);
+        //$controller->executeBuscarRevistaPorId($idRevista);
         break;
 
     case "buscarNotiPorSeccion":
@@ -92,6 +93,8 @@ switch ($page){
         $controller = new RevistaController();
         $controller->executeBuscarNoticiasPorSeccion($codSeccion);
         break;
+
+
 
     case "inicio":
     default:

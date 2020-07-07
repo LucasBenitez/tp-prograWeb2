@@ -228,10 +228,10 @@ class Database
         $this->conexion->close();
 
     }
-    public function queryBuscarRevistaPorId($cod_revista)
+    public function queryBuscarRevistaPorId($idRevista)
     {
         $resultados = array();
-        $stmt2 = $this->conexion->prepare("SELECT * FROM Diario_Revista where Id=$cod_revista");
+        $stmt2 = $this->conexion->prepare("SELECT * FROM Diario_Revista where Id= '$idRevista'");
         $stmt2->execute();
         $result = $stmt2->get_result();
 
