@@ -8,17 +8,25 @@ if (isset($_SESSION["usuarioOK"])) {
     <?php
     if (isset($resultadosNoticiasPorSeccion)) {
 
+        echo "<div class='w3-container w3-margin-bottom text-center w3-margin-top'>
+        <img src='./images/publicidad1.jpeg' alt='publicidad' style='width: 770px ; margin-bottom: 20px;height: 320px'>
+        </div>";
         $tam = sizeof($resultadosNoticiasPorSeccion);
         for ($i = 1; $i <= $tam; $i++) {
             $posi = explode("-",$resultadosNoticiasPorSeccion[$i]);
 
-            echo "<div class='container'>";
-            echo "<h1 class='mt-5 mb-3 text-primary'> $posi[1] </h1>";
-            echo "<strong class='mt-3'>$posi[2]</strong>";
+            echo "<div class=\"w3-container w3-white w3-margin w3-padding-large\">
+                    <div class=\"w3-center\">
+                    <h3>$posi[1]</h3>
+                    <h5>$posi[2]</h5>
+                    </div>";
+            echo "<div class=\"w3-justify\">
+            <img src='./images/noticia/$posi[5]' alt='' style=\"width:100%\" class=\"w3-padding-16\" >";
 
-            echo "<img src='./images/noticia/$posi[5]' class='mw-100 mt-3 mb-3 '> ";
 
-            echo "<p style='margin-bottom: 100px'>$posi[3]</p>";
+            echo "<p >$posi[3]</p>";
+
+            echo "</div>";
             echo "</div>";
         }
     }
@@ -45,6 +53,9 @@ if (isset($_SESSION["usuarioOK"])) {
 }
 
 ?>
+</div>
+<div style="margin-bottom: 100px"></div>
+
 
 
 

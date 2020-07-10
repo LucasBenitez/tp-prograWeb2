@@ -1,16 +1,12 @@
 <!-- Footer -->
-<div class="mt-3"></div>
-<footer class="page-footer font-small bg-primary w3-text-white container-fluid" style="position: fixed ; bottom: 0px;" >
 
 
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="#" style="text-decoration: none;" class="w3-hover-light-blue"> www.desarrolloweb.com </a>
-        <a href="interno.php" style="position: absolute;right:0px; text-decoration: none" class="w3-margin-right w3-hover-light-gray "> Modo admin</a>
-    </div>
+    <footer class="w3-container w3-dark-grey page-footer font-small bg-primary w3-text-white container-fluid" style="padding:10px;margin-top: 70px;position: fixed ; bottom: 0px;">
+        <a href="#" class="w3-button w3-black w3-padding-large "><i class="fa fa-arrow-up w3-margin-right"></i>Subir</a>
+        <a href="interno.php" style="position: absolute;right:0px; text-decoration: none" class="w3-margin-right w3-button w3-black w3-padding-large  "> Modo admin</a>
 
+    </footer>
 
-
-</footer>
 
 
 <!-- Footer -->

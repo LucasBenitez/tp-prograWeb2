@@ -20,7 +20,7 @@ if(isset($_SESSION["usuarioOK"])) {
     <?php
         if(isset($_SESSION["crearRevista"])){
                 ?>
-            <div class="w3-display-middle w3-margin-top w3-card-4" id="ocultar" style="margin-top: 10%">
+            <div class="w3-display-middle w3-margin-top w3-card-4 " id="ocultar" style="margin-top: 10%">
 
                 <div class="w3-container bg-primary ">
                     <h2 class="w3-center">Crear Revista</h2>

@@ -15,4 +15,11 @@ class AltaUsuarioModel
         $this->conexion->queryInsert($sql);
         $this->conexion->close();
     }
+
+    public function executeBuscarUsuarioPorId($idUsuario){
+      return  $this->conexion->queryBuscarUsuarioPorId($idUsuario);
+    }
+    public function executeCambiarClave($idUsuario,$claveNueva){
+        $this->conexion->queryCambiarClave($idUsuario,$claveNueva);
+    }
 }

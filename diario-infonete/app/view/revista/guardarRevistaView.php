@@ -8,7 +8,7 @@ if(isset($_SESSION["crearRevista"])){
     <br>
     <div class="w3-card-4 w3-display-left " id="ocultar" style="width:25%;">
 
-        <div class="w3-container bg-primary w3-round">
+        <div class="w3-container  bg-primary w3-round">
             <h2 class="w3-center">Crear Revista</h2>
         </div>
         <br>

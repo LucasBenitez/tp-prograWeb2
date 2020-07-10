@@ -32,7 +32,7 @@ if (isset($_SESSION["usuarioOK"])) {
                 <h2>Lista de Revistas</h2>
                 <table class="w3-table w3-bordered">
                     <tr class="w3-center">
-                        <th>id Revista</th>
+
 
                         <th>Titulo</th>
                         <th>Numero</th>
@@ -51,7 +51,7 @@ if (isset($_SESSION["usuarioOK"])) {
                 for ($i = 1; $i <= $tam; $i++) {
                     $posi = explode("-", $resultadosRevista[$i]);
                     echo "<div>";
-                    echo "<td>$posi[0]</td>";
+
                     echo "<td>$posi[1]</td>";
                     echo "<td>$posi[2]</td>";
                     echo "<td>$posi[3]</td>";
@@ -95,7 +95,7 @@ if (isset($_SESSION["usuarioOK"])) {
             <h2>Lista de Noticias</h2>
             <table class="w3-table w3-bordered">
                 <tr>
-                    <th>cod. Noticia</th>
+
                     <th>Titulo</th>
                     <th>Subtitulo</th>
                     <th>Estado</th>
@@ -112,7 +112,6 @@ if (isset($_SESSION["usuarioOK"])) {
                         $posN = explode("-", $resultadosNoticia[$i]);
 
                         echo "<tr>";
-                        echo "<td>$posN[0]</td>";
                         echo "<td>$posN[1]</td>";
                         echo "<td>$posN[2]</td>";
                         echo "<td>$posN[3]</td>";
@@ -235,7 +234,7 @@ if (isset($_SESSION["usuarioOK"])) {
         ?>
         <br>
         <br>
-        <div class="w3-card-4 w3-display-left " id="ocultar" style="width:25%;">
+        <div class="w3-card-4 w3-display-left" id="ocultar" style="width:25%;margin-left: 80px;">
 
             <div class="w3-container bg-primary w3-round">
                 <h2 class="w3-center">Crear Revista</h2>
@@ -251,10 +250,14 @@ if (isset($_SESSION["usuarioOK"])) {
                 <label>Descripcion</label>
                 <textarea class="w3-input w3-round" type="text" name="descripcion" rows="4" cols="50">
                         </textarea>
+
+                <label for="inputGroupFile01" id="uploadedImage__label"  class="w3-margin-top">Seleccionar
+                    imagen para la revista</label>
+
+
                 <input type="file" id="uploadedImage" name="uploadedImage"
                        aria-describedby="inputGroupFileAddon01">
-                <label for="inputGroupFile01" id="uploadedImage__label">Seleccionar
-                    imagen para la revista</label>
+
 
                 <div class="w3-center w3-margin-bottom">
                     <input class="w3-button w3-blue-grey w3-round w3-center" type="submit" name="boton" value="CREAR">
@@ -273,7 +276,7 @@ if (isset($_SESSION["usuarioOK"])) {
         ?>
         <br>
         <br>
-        <div class="w3-card-4 w3-display-left " id="ocultar" style="width:25%;">
+        <div class="w3-card-4 w3-display-left " id="ocultar" style="width:25%;margin-left: 80px;">
 
             <div class="w3-container bg-primary w3-round">
                 <h2 class="w3-center">Crear Noticia</h2>
@@ -292,7 +295,7 @@ if (isset($_SESSION["usuarioOK"])) {
                 if (isset($resultadosSeccion)) {
 
                     $tam = sizeof($resultadosSeccion);
-                    echo "<select name='cod_seccion'>";
+                    echo "<select name='cod_seccion' class='w3-margin-top w3-select'>";
                     for ($i = 1; $i <= $tam; $i++) {
                         $posS = explode("-", $resultadosSeccion[$i]);
 
@@ -305,10 +308,11 @@ if (isset($_SESSION["usuarioOK"])) {
                 }
                 ?>
                 <br/>
-                <input type="file" id="uploadedImage" name="uploadedImage"
-                       aria-describedby="inputGroupFileAddon01">
-                <label for="inputGroupFile01" id="uploadedImage__label">Seleccionar
+                <label for="inputGroupFile01" id="uploadedImage__label" class="w3-margin-top">Seleccionar
                     imagen para la noticia</label>
+                <input type="file" id="uploadedImage" name="uploadedImage"
+                       aria-describedby="inputGroupFileAddon01" class="w3-margin-bottom">
+
 
                 <input type="hidden" name="cod_contenidista" value="<?php echo $pos[0] ?>">
                 <div class="w3-center w3-margin-bottom">
@@ -327,7 +331,7 @@ if (isset($_SESSION["usuarioOK"])) {
         ?>
         <br>
         <br>
-        <div class="w3-card-4 w3-display-left " id="ocultar" style="width:25%;">
+        <div class="w3-card-4 w3-display-left " id="ocultar" style="width:25%;margin-left: 80px">
 
             <div class="w3-container bg-primary w3-round">
                 <h2 class="w3-center">Crear Seccion</h2>
@@ -342,7 +346,7 @@ if (isset($_SESSION["usuarioOK"])) {
                 if (isset($resultadosRevista)) {
 
                     $tam = sizeof($resultadosRevista);
-                    echo "<select name='cod_revista'>";
+                    echo "<select name='cod_revista' class='w3-select w3-margin-bottom w3-margin-top'>";
                     for ($i = 1; $i <= $tam; $i++) {
                         $posR = explode("-", $resultadosRevista[$i]);
 

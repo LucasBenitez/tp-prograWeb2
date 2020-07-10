@@ -1,43 +1,40 @@
 
-<div class="col-md-12 ">
-    <h1 class="text-center  mt-5 mb-5">InfoNete
-        <small>Diario Online</small>
-    </h1>
+<header class="w3-container w3-center w3-padding-48 w3-white">
+    <h1 class="w3-xxxlarge"><b>Infonete</b></h1>
+    <h6>Diario Online</h6>
+</header>
+<header class="w3-display-container w3-wide" id="home">
+    <img class="w3-image" src="./images/image-index.jpg" alt="imagen principal" width="1600" height="1060">
+    <div class="w3-display-left w3-padding-large">
+        <h1 class="w3-text-white">El mejor diario digital</h1>
+        <h1 class="w3-jumbo w3-text-white w3-hide-small"><b>Argentino</b></h1>
+        <?php if (!isset($_SESSION["usuarioOK"])) { ?>
+        <h6><button class="w3-button w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off" onclick="document.getElementById('login').style.display='block'">Ingresar</button></h6>
+            <?php
+        }
+        ?>
+    </div>
+</header>
+<form name="login" action="index.php?page=login" method="post">
+<div id="login" class="w3-modal w3-animate-opacity">
+
+    <div class="w3-modal-content" style="padding:32px">
+        <div class="w3-container w3-white">
+            <i onclick="document.getElementById('login').style.display='none'" class="fa fa-remove w3-transparent w3-button w3-xlarge w3-right"></i>
+            <h2 class="w3-wide">Ingresar</h2>
+            <p>Inicie sesion para ver el contenido premium de la página</p>
+            <p><input class="w3-input w3-border" type="text" placeholder="Ingrese su usuario" id="usuario" name="usuario"></p>
+            <p><input class="w3-input w3-border" type="password" placeholder="Ingrese su contraseña" id="clave" name="clave"></p>
+            <button type="submit" class="w3-button w3-block w3-padding-large danger-color-dark text-white w3-margin-bottom" onclick="document.getElementById('login').style.display='none'">Iniciar sesion</button>
+            <a  class="w3-button w3-block w3-padding-large danger-color-dark text-white w3-margin-bottom"
+                    onclick="document.getElementById('login').style.display='none'" href="index.php?page=registrar">Registrarse</a>
+
+        </div>
+    </div>
 </div>
-
-<div class="container text-center">
-<div class="row">
-    <div class="col-md-auto">
-            <?php if (!isset($_SESSION["usuarioOK"])) { ?>
-                <div class="card"> <!-- ingresar -->
-                    <h5 class="card-header">Ingreso <span><svg class="bi bi-person-fill" width="1em" height="1em"
-                                                               viewBox="0 0 16 16" fill="currentColor"
-                                                               xmlns="http://www.w3.org/2000/svg">
-          			<path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z"
-                          clip-rule="evenodd"/></svg></span></h5>
-                    <div class="card-body">
-                        <form name="login" action="index.php?page=login" method="post">
-                            <div class="form-group">
-                                <label for="usuario">Usuario</label>
-                                <input type="text" class="form-control" id="usuario" name="usuario" aria-describedby="">
-                            </div>
-                            <div class="form-group">
-                                <label for="contrasena">Contraseña</label>
-                                <input type="password" class="form-control" id="clave" name="clave">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-                        </form>
-                    </div>
-                    <div>
-                        <a class="w3-button" href="index.php?page=registrar">Alta usuario</a>
-                    </div>
+</form>
 
 
-                <?php
-            }
-            ?>
-
-            <!-- fin ingresar -->
             <?php if (isset($_SESSION["loginError"])) {
 
                 echo "<div class='alert error'>
@@ -48,57 +45,5 @@
             ?>
     </div>
         </div>
-    <div class="col ">
 
-
-            <?php
-            if (isset($resultadosRevistas)) {
-                $tam = sizeof($resultadosRevistas);
-                for ($i = 1; $i <= $tam; $i++) {
-                    $posi = explode("-", $resultadosRevistas[$i]);
-                    echo "<div class=\"w3-card-4 mb-5\">";
-                    echo "<header class=\"w3-container bg-primary text-white mb-3  \">
-                        <h1>$posi[1]</h1>
-                        </header>";
-                    echo "<img src='./images/revista/$posi[4]' class=\"mh-100\">";
-                    echo "<div class=\"w3-container w3-margin-top\">
-                        <p>$posi[3]</p>
-                        </div>";
-
-                    echo "</div>";
-
-                }
-
-            }
-            if (isset($_SESSION["sinDatos"])) {
-                echo "<div class='alert warning'>
-                              <span class='closebtn'>&times;</span>  
-                              <strong>Success!</strong> No hay revistas para mostrar en la tabla
-                            </div>";
-                unset($_SESSION["sinDatos"]);
-
-            }
-            if (isset($_SESSION["eliminadoOK"])) {
-                echo "<div class='alert success'>
-                              <span class='closebtn'>&times;</span>  
-                              <strong>Success!</strong>Usuario eliminado exitosamente</div>";
-                unset($_SESSION["eliminadoOK"]);
-            }
-            if (isset($_SESSION["userModif"])) {
-                echo "<div class='alert success'>
-                              <span class='closebtn'>&times;</span>  
-                              <strong>Success!</strong>Clave modificada correctamente</div>";
-                unset($_SESSION["userModif"]);
-            }
-            ?>
-
-        </div>
-    </div>
-</div>
-</div>
-
-
-
-
-
-
+<div style="margin-bottom: 100px"></div>

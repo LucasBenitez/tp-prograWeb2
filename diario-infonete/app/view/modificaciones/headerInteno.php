@@ -1,29 +1,6 @@
-<?php
-session_start();
-if(isset($_SESSION["usuarioOK"])) {
-    $usuario = $_SESSION["usuarioOK"];
-    $pos = explode("-", $usuario);
-}
-?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>InfoNete - Diario Online</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" type="img/png" href="view/img/favdiario.ico"/>
-        <!-- css -->
-        <link rel="stylesheet" href="view/css/bootstrap.min.css">
-        <link rel="stylesheet" href="view/css/style.css">
-        <link rel="stylesheet" href="view/css/w3.css">
-        <!-- js -->
-        <script type="text/javascript" src="view/js/jquery-3.5.1.min.js"></script>
-        <script type="text/javascript" src="view/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.php?page=inicioLectorView">
                 <span>
                     <svg class="bi bi-info-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M14 1H2a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V2a1 1 0 00-1-1zM2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2z" clip-rule="evenodd"/>
@@ -31,43 +8,37 @@ if(isset($_SESSION["usuarioOK"])) {
                         <circle cx="8" cy="4.5" r="1"/>
                     </svg>
                 </span> InfoNete
-            </a>
-            <div class="collapse navbar-collapse align-content-center">
-                <ul class="navbar-nav ml-auto align-content-center">
-                    <li class="nav-item active align-content-center">
-                        <?php if(isset($_SESSION["usuarioOK"])) { ?>
-                            <label>Bienvenido <?php echo $pos[1];?></label>
-                        <?php } ?>
-                    </li>
-                </ul>
-            </div>
-            <div class="container align-content-center"/>
+        </a>
+        <div class="collapse navbar-collapse align-content-center">
+            <ul class="navbar-nav ml-auto align-content-center">
+                <li class="nav-item active align-content-center">
+                    <?php if(isset($_SESSION["usuarioOK"])) { ?>
+                        <label class="text-white">Bienvenido <?php echo $pos[1];?></label>
+                    <?php } ?>
+                </li>
+            </ul>
+        </div>
+        <div class="container align-content-center"/>
 
-            <div class="collapse navbar-collapse" >
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.php?page=inicioLectorView">Inicio
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?page=tienda&idUsuario=<?php echo $pos[0]?>">Tienda</a>
+                </li>
                 <?php if(isset($_SESSION["usuarioOK"])) {
-                ?>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Alta-conte
-
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="tienda.html">Alta-noticia</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Autorizar</a>
-                    </li>
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="view/logOut.php">Salir</a>
                     </li>
                     <?php
-                    }
-                    ?>
-                </ul>
-            </div>
+                }
+                ?>
+            </ul>
         </div>
-    </nav>
-<!-- Page content -->
-<div class="w3-content" style="max-width:2000px;margin-top:46px">
-</html>
+    </div>
+</nav>

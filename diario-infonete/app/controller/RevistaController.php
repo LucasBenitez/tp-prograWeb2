@@ -47,7 +47,7 @@ class RevistaController
     public function executeBuscarSeccionesPorRevista($idUsuario,$idRevista)
 {
     $resultadosSeccionPorRevista=$this->modelo->executeBuscarSeccionesPorRevista($idUsuario,$idRevista);
-    $resultadosRevista=$this->modelo->executeBuscarRevistaPorId($idRevista);
+    //$resultadosRevista=$this->modelo->executeBuscarRevistaPorId($idRevista);
     include_once("view/lector/seccionesView.php");
 }
     public function executeBuscarRevistaPorId($idRevista)
@@ -142,8 +142,15 @@ class RevistaController
 
     public function executeBorrarRevista($idRevista)
     {
-        $this->modelo->executeBorrarRevista($idRevista);
-        header("Location: interno.php?page=admRevista");
+
+        $resultadoExecute=$this->modelo->executeBorrarRevista($idRevista);
+        if($resultadoExecute){
+            header("Location: interno.php?page=admRevista");
+        }
+        else{
+            header("pagina error");
+        }
+
     }
 
     public function executeBorrarSeccion($idSeccion)

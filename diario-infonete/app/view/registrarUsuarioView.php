@@ -1,6 +1,6 @@
 
 <div class="w3-card-4 w3-display-middle " style="width:25%;">
-    <div class="w3-container bg-primary text-white w3-round">
+    <div class="w3-container danger-color-dark text-white w3-round">
         <h2 class="w3-center">Alta <?php echo$_SESSION["usuarioAlta"] ?></h2>
     </div>
     <br>
@@ -24,10 +24,10 @@
                 </div>
          <?php } ?>
         <div class="container w3-center w3-margin-bottom">
-            <input class="w3-button bg-primary text-white w3-round w3-center w3-margin-right" type="submit" name="boton" value="ENVIAR" >
-            <input class="w3-button bg-primary text-white w3-round w3-center" type="submit" name="boton" value="CANCELAR" href="interno.php?page=panelControl">
+            <input class="w3-bar-item w3-button w3-text-white danger-color-dark text-white w3-padding mb-3 w3-margin-right" type="submit" name="boton" value="Registrarse" >
+            <input class="w3-bar-item w3-button w3-text-white danger-color-dark text-white w3-padding mb-3" type="submit" name="boton" value="Cancelar" href="index.php?page=inicio">
         </div>
     </form>
 </div>
-<div class="w3-display-bottomright w3-margin-bottom w3-margin-right">
-    <a href="interno.php?page=panelControl" class="w3-button bg-primary w3-hover-black w3-margin-right w3-text-white" style="text-decoration: none">Volver a la página anterior</a></div>
+</div>
+</div>

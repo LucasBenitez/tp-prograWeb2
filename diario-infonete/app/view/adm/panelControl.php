@@ -14,6 +14,7 @@ if(isset($_SESSION["usuarioOK"])) {
         <div class="w3-container w3-margin-top">
 
             <a href="interno.php?page=admRevista" class="w3-button bg-primary w3-hover-black w3-margin-right"style="text-decoration: none">Administrar Revista</a>
+            <a href="../../../../../tp-prograWeb2/pdf/generarPdf.php" class="w3-button bg-primary w3-hover-black w3-margin-right"style="text-decoration: none">Generar reporte Usuarios</a>
 
 
 
@@ -44,15 +45,15 @@ if(isset($_SESSION["usuarioOK"])) {
                     echo"<div class='w3-margin-left '><a href='interno.php?page=borrarUsuario&idUsuario=$posA[0]'style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
                     echo "</td>";
                     echo "<td class='text-center'>";
-                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarClave&Id_usuario=$posA[0]' style='color: black'>
+                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=redirectUsuario&idUsuario=$posA[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                     echo "</td>";
                     echo "<td class='text-center'>";
-                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarAConte&Id_usuario=$posA[0]' style='color: black'>
+                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarAConte&idUsuario=$posA[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                     echo "</td>";
                     echo "<td class='text-center'>";
-                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarALector&Id_usuario=$posA[0]' style='color: black'>
+                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarALector&idUsuario=$posA[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                     echo "</td>";
                     echo"</tr>";
@@ -91,7 +92,7 @@ if(isset($_SESSION["usuarioOK"])) {
                 <th class='text-center'>Clave</th>
                 <th class='text-center'>Borrar</th>
                 <th class='text-center'>Cambiar Clave</th>
-                <th class='text-center'>Cambiar a contenidista</th>
+                <th class='text-center'>Cambiar a administrador</th>
                 <th class='text-center'>Cambiar a lector</th>
             </tr>
             </tr>
@@ -107,15 +108,15 @@ if(isset($_SESSION["usuarioOK"])) {
                     echo"<div class='w3-margin-left '><a href='interno.php?page=borrarUsuario&idUsuario=$posC[0]'style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
                     echo "</td>";
                     echo "<td class='text-center'>";
-                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarClave&Id_usuario=$posC[0]' style='color: black'>
+                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=redirectUsuario&idUsuario=$posC[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                     echo "</td>";
                     echo "<td class='text-center'>";
-                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarAConte&Id_usuario=$posC[0]' style='color: black'>
+                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarAAdmin&idUsuario=$posC[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                     echo "</td>";
                     echo "<td class='text-center'>";
-                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarALector&Id_usuario=$posC[0]' style='color: black'>
+                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarALector&idUsuario=$posC[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                     echo "</td>";
                     echo"</tr>";
@@ -170,15 +171,15 @@ if(isset($_SESSION["usuarioOK"])) {
                     echo"<div class='w3-margin-left '><a href='interno.php?page=borrarUsuario&idUsuario=$posL[0]'style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
                     echo "</td>";
                     echo "<td class='text-center'>";
-                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarClave&Id_usuario=$posL[0]' style='color: black'>
+                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=redirectUsuario&idUsuario=$posL[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                     echo "</td>";
                     echo "<td class='text-center'>";
-                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarAConte&Id_usuario=$posL[0]' style='color: black'>
+                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarAAdmin&idUsuario=$posL[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                     echo "</td>";
                     echo "<td class='text-center'>";
-                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarALector&Id_usuario=$posL[0]' style='color: black'>
+                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=cambiarAConte&idUsuario=$posL[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                     echo "</td>";
                     echo"</tr>";

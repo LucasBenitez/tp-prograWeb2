@@ -150,10 +150,10 @@ class Database
                 $titulo = $row['Titulo'];
                 $subTitulo = $row['Subtitulo'];
                 $estadoAutorizado = $row['EstadoAutorizado'];
-                $imagen=$row ["imagen_noticia"];
+                $imagen = $row ["imagen_noticia"];
 
 
-                $resultados[$i] = $codNoticia . "-" . $titulo . "-" . $subTitulo . "-" . $estadoAutorizado . "-".$imagen;
+                $resultados[$i] = $codNoticia . "-" . $titulo . "-" . $subTitulo . "-" . $estadoAutorizado . "-" . $imagen;
                 $i++;
             }
 
@@ -181,12 +181,12 @@ class Database
                 $codNoticia = $row['Cod_noticia'];
                 $titulo = $row['Titulo'];
                 $subTitulo = $row['Subtitulo'];
-                $informeNoticia=$row['informe_noticia'];
+                $informeNoticia = $row['informe_noticia'];
                 $estadoAutorizado = $row['EstadoAutorizado'];
-                $imagen=$row ["imagen_noticia"];
+                $imagen = $row ["imagen_noticia"];
 
 
-                $resultados[$i] = $codNoticia . "-" . $titulo . "-" . $subTitulo . "-" . $informeNoticia . "-" .$estadoAutorizado . "-".$imagen;
+                $resultados[$i] = $codNoticia . "-" . $titulo . "-" . $subTitulo . "-" . $informeNoticia . "-" . $estadoAutorizado . "-" . $imagen;
                 $i++;
             }
 
@@ -215,7 +215,7 @@ class Database
                 $descripcion = $row['Descripcion'];
                 $imagen = $row['imagen_revista'];
 
-                $resultados[$i] = $id . "-" . $titulo . "-" . $numero . "-" . $descripcion . "-".$imagen;
+                $resultados[$i] = $id . "-" . $titulo . "-" . $numero . "-" . $descripcion . "-" . $imagen;
                 $i++;
             }
             // se guarda las revistas recuperados de la consulta en SESSION
@@ -228,12 +228,13 @@ class Database
         $this->conexion->close();
 
     }
-    public function queryBuscarRevistaPorId($idRevista)
+
+    public function queryBuscarRevistaPorId($cod_revista)
     {
         $resultados = array();
-        $stmt2 = $this->conexion->prepare("SELECT * FROM Diario_Revista where Id= '$idRevista'");
-        $stmt2->execute();
-        $result = $stmt2->get_result();
+        $stmt = $this->conexion->prepare("SELECT * FROM Diario_Revista where Id=$cod_revista");
+        $stmt->execute();
+        $result = $stmt->get_result();
 
         if ($result->num_rows === 0) {
             $_SESSION["sinDatos"] = "0";
@@ -246,7 +247,7 @@ class Database
                 $descripcion = $row['Descripcion'];
                 $imagen = $row['imagen_revista'];
 
-                $resultados[$i] = $id . "-" . $titulo . "-" . $numero . "-" . $descripcion . "-".$imagen;
+                $resultados[$i] = $id . "-" . $titulo . "-" . $numero . "-" . $descripcion . "-" . $imagen;
                 $i++;
             }
             // se guarda las revistas recuperados de la consulta en SESSION
@@ -255,14 +256,14 @@ class Database
             return $resultados;
 
         }
-        $stmt2->close();
-        $this->conexion->close();
+        $stmt->close();
+        
 
     }
 
     public function queryBuscarSeccion()
     {
-        $resultados=array();
+        $resultados = array();
 
         $stmt = $this->conexion->prepare("SELECT * FROM Seccion ");
         $stmt->execute();
@@ -288,9 +289,9 @@ class Database
         $this->conexion->close();
     }
 
-    public function queryBuscarSeccionesPorRevista($idUsuario , $id_revista)
+    public function queryBuscarSeccionesPorRevista($idUsuario, $id_revista)
     {
-        $resultados=array();
+        $resultados = array();
 
         $stmt = $this->conexion->prepare("SELECT * FROM Seccion 
                                                 where Cod_revista in (select Cod_revista
@@ -321,7 +322,7 @@ class Database
 
     public function queryBuscarSuscripcionRevista()
     {
-        $resultados=array();
+        $resultados = array();
 
         $stmt = $this->conexion->prepare("SELECT * FROM lector_SuscripcionRevista ");
         $stmt->execute();
@@ -338,7 +339,7 @@ class Database
                 $descripcion = $row['Descripcion'];
                 $imagen = $row['imagen_revista'];
 
-                $resultados[$i] = $id . "-" . $titulo . "-" . $numero . "-" . $descripcion . "-".$imagen;
+                $resultados[$i] = $id . "-" . $titulo . "-" . $numero . "-" . $descripcion . "-" . $imagen;
                 $i++;
             }
             // se guarda las revistas recuperados de la consulta en SESSION
@@ -351,7 +352,7 @@ class Database
 
     public function queryBuscarNoticiasPorLector($idUsuario)
     {
-        $resultados=array();
+        $resultados = array();
         $stmt = $this->conexion->prepare("select * from diario_revista 
                                                 where id in (select Cod_revista
 					                            from Lector_SuscripcionRevista
@@ -370,7 +371,7 @@ class Database
                 $cod_revista = $row['Cod_revista'];
 
 
-                $resultados[$i] = $id_usuario . "-" . $cod_revista ;
+                $resultados[$i] = $id_usuario . "-" . $cod_revista;
                 $i++;
             }
             // se guarda las revistas recuperados de la consulta en SESSION
@@ -382,6 +383,7 @@ class Database
         $stmt->close();
         $this->conexion->close();
     }
+
     public function queryBuscarNoticiasPorId($cod_noticia)
     {
         $resultados = array();
@@ -399,10 +401,10 @@ class Database
                 $titulo = $row['Titulo'];
                 $subTitulo = $row['Subtitulo'];
                 $estadoAutorizado = $row['EstadoAutorizado'];
-                $imagen=$row ["imagen_noticia"];
+                $imagen = $row ["imagen_noticia"];
 
 
-                $resultados[$i] = $codNoticia . "-" . $titulo . "-" . $subTitulo . "-" . $estadoAutorizado . "-".$imagen;
+                $resultados[$i] = $codNoticia . "-" . $titulo . "-" . $subTitulo . "-" . $estadoAutorizado . "-" . $imagen;
                 $i++;
             }
 
@@ -467,15 +469,17 @@ class Database
 
     public function queryBorrarRevista($idRevista)
     {
+
+
         $stmt2 = $this->conexion->prepare("DELETE FROM Seccion  WHERE Cod_revista=?");
         $stmt2->bind_param('i', $idRevista);
         $stmt2->execute();
         $stmt2->close();
         $stmt = $this->conexion->prepare("DELETE FROM Diario_Revista  WHERE Id=?");
         $stmt->bind_param('i', $idRevista);
-        $stmt->execute();
+        $resultado = $stmt->execute();
         $stmt->close();
-
+        return $resultado;
     }
 
     public function queryBorrarSeccion($idSeccion)
@@ -499,7 +503,7 @@ class Database
 
     public function queryBuscarRevistasTienda($idUsuario)
     {
-        $resultados=array();
+        $resultados = array();
 
         $stmt = $this->conexion->prepare("SELECT * FROM Diario_Revista 
                                                 where Id not in (select Cod_revista
@@ -518,7 +522,7 @@ class Database
                 $descripcion = $row['Descripcion'];
                 $imagen = $row['imagen_revista'];
 
-                $resultados[$i] = $id . "-" . $titulo . "-" . $numero . "-" . $descripcion . "-".$imagen;
+                $resultados[$i] = $id . "-" . $titulo . "-" . $numero . "-" . $descripcion . "-" . $imagen;
                 $i++;
             }
             // se guarda las revistas recuperados de la consulta en SESSION
@@ -546,4 +550,173 @@ class Database
     {
         mysqli_close($this->conexion);
     }
+
+    public function queryBuscarAdmin()
+    {
+
+        $resultados = array();
+        $stmt = $this->conexion->prepare("SELECT * FROM Usuario where Cod_Usuario=1 ");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 0) {
+            $_SESSION["sinUsuarios"] = "0";
+        } else {
+            $i = 1;
+            while ($row = $result->fetch_assoc()) {
+                $Id_usuario = $row["Id_usuario"];
+                $Nro_doc = $row["Nro_doc"];
+                $Cod_doc = $row["Cod_doc"];
+                $Nombre = $row["Nombre"];
+                $Mail = $row["Mail"];
+                $Telefono = $row["Telefono"];
+                $Cod_Usuario = $row["Cod_Usuario"];
+                $Pass = $row["Pass"];
+
+
+                $resultados[$i] =$Id_usuario."-". $Nombre. "-". $Pass."-" . $Cod_doc . "-" . $Nro_doc . "-" . $Mail . "-" . $Telefono . "-" . $Cod_Usuario . "-" . $Pass;
+                $i++;
+            }
+
+
+            return $resultados;
+        }
+    }
+    public function queryBuscarContenidista()
+    {
+
+        $resultados = array();
+        $stmt = $this->conexion->prepare("SELECT * FROM Usuario where Cod_Usuario=2 ");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 0) {
+            $_SESSION["sinUsuarios"] = "0";
+        } else {
+            $i = 1;
+            while ($row = $result->fetch_assoc()) {
+                $Id_usuario = $row["Id_usuario"];
+                $Nro_doc = $row["Nro_doc"];
+                $Cod_doc = $row["Cod_doc"];
+                $Nombre = $row["Nombre"];
+                $Mail = $row["Mail"];
+                $Telefono = $row["Telefono"];
+                $Cod_Usuario = $row["Cod_Usuario"];
+                $Pass = $row["Pass"];
+
+
+                $resultados[$i] =$Id_usuario."-". $Nombre. "-". $Pass."-" . $Cod_doc . "-" . $Nro_doc . "-" . $Mail . "-" . $Telefono . "-" . $Cod_Usuario . "-" . $Pass;
+                $i++;
+            }
+
+
+            return $resultados;
+        }
+    }
+    public function queryBuscarLector()
+    {
+
+        $resultados = array();
+        $stmt = $this->conexion->prepare("SELECT * FROM Usuario where Cod_Usuario=3 ");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 0) {
+            $_SESSION["sinUsuarios"] = "0";
+        } else {
+            $i = 1;
+            while ($row = $result->fetch_assoc()) {
+                $Id_usuario = $row["Id_usuario"];
+                $Nro_doc = $row["Nro_doc"];
+                $Cod_doc = $row["Cod_doc"];
+                $Nombre = $row["Nombre"];
+                $Mail = $row["Mail"];
+                $Telefono = $row["Telefono"];
+                $Cod_Usuario = $row["Cod_Usuario"];
+                $Pass = $row["Pass"];
+
+
+                $resultados[$i] = $Id_usuario . "-" . $Nombre . "-" . $Pass . "-" . $Cod_doc . "-" . $Nro_doc . "-" . $Mail . "-" . $Telefono . "-" . $Cod_Usuario . "-" . $Pass;
+                $i++;
+            }
+
+
+            return $resultados;
+        }
+    }
+    public function queryCambiarAConte($idUsuario)
+    {
+
+        $stmt = $this->conexion->prepare("UPDATE Usuario SET Cod_Usuario=?  WHERE Id_usuario=?");
+        $stmt->bind_param('ii', $cod_usuario, $idUsuario);
+        $cod_usuario = 2;
+        $stmt->execute();
+        $stmt->close();
+
+    }
+    public function queryCambiarAAdmin($idUsuario)
+    {
+
+        $stmt = $this->conexion->prepare("UPDATE Usuario SET Cod_Usuario=?  WHERE Id_usuario=?");
+        $stmt->bind_param('ii', $cod_usuario, $idUsuario);
+        $cod_usuario = 1;
+        $stmt->execute();
+        $stmt->close();
+
+    }
+    public function queryCambiarALector($idUsuario)
+    {
+
+        $stmt = $this->conexion->prepare("UPDATE Usuario SET Cod_Usuario=?  WHERE Id_usuario=?");
+        $stmt->bind_param('ii', $cod_usuario, $idUsuario);
+        $cod_usuario = 3;
+        $stmt->execute();
+        $stmt->close();
+
+    }
+
+    public function queryCambiarClave($idUsuario,$claveNueva)
+    {
+
+        $stmt = $this->conexion->prepare("UPDATE Usuario SET pass=?  WHERE Id_usuario=?");
+        $stmt->bind_param('si', $claveNueva, $idUsuario);
+        $stmt->execute();
+        $stmt->close();
+
+    }
+    public function queryBuscarUsuarioPorId($idUsuario)
+    {
+        $resultados = array();
+        $stmt = $this->conexion->prepare("SELECT * FROM Usuario WHERE Id_usuario=$idUsuario");
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+
+        if ($result->num_rows === 0) {
+            $_SESSION["sinUsuarios"] = "0";
+        } else {
+            $i = 1;
+            while ($row = $result->fetch_assoc()) {
+                $Id_usuario = $row["Id_usuario"];
+                $Nro_doc = $row["Nro_doc"];
+                $Cod_doc = $row["Cod_doc"];
+                $Nombre = $row["Nombre"];
+                $Mail = $row["Mail"];
+                $Telefono = $row["Telefono"];
+                $Cod_Usuario = $row["Cod_Usuario"];
+                $Pass = $row["Pass"];
+
+
+                $resultados[$i] = $Id_usuario . "-" . $Nombre . "-" . $Pass . "-" . $Cod_doc . "-" . $Nro_doc . "-" . $Mail . "-" . $Telefono . "-" . $Cod_Usuario . "-" . $Pass;
+                $i++;
+            }
+
+
+            return $resultados;
+        }
+
+
+    }
+
 }
