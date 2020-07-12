@@ -35,8 +35,8 @@ if(isset($_SESSION["usuarioOK"])) {
 
     <!-- Navigation bar with social media icons -->
     <div class="w3-bar w3-black w3-hide-small">
-        <a href="index.php?page=inicio" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
-        <a href="index.php?page=tienda&idUsuario=<?php echo $pos[0]?>" class="w3-bar-item w3-button"><i class="fa fa-shopping-bag"></i></a>
+        <a href="index.php?page=inicio" class="w3-bar-item w3-button"><i class="fa fa-home" ></i> Inicio</a>
+        <a href="index.php?page=tienda&idUsuario=<?php echo $pos[0]?>" class="w3-bar-item w3-button"><i class="fa fa-shopping-bag"></i> Tienda</a>
 
         <?php if(isset($_SESSION["usuarioOK"])) { ?>
             <label class="text-white mt-2 ">Bienvenido <?php echo $pos[1];?></label>
@@ -44,7 +44,7 @@ if(isset($_SESSION["usuarioOK"])) {
 
         <?php if(isset($_SESSION["usuarioOK"])) {
         ?>
-        <a href="view/logOut.php" class="w3-bar-item w3-button w3-right"><i class="fa fa-sign-out"></i></a>
+        <a href="view/logOut.php" class="w3-bar-item w3-button w3-right">Cerrar sesión <i class="fa fa-sign-out"></i></a>
             <?php
         }
         ?>

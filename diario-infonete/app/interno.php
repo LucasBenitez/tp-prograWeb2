@@ -198,6 +198,12 @@ switch ($page) {
         $controller->executeBorrarRevista($idRevista);
         break;
 
+    case "error":
+        include_once("controller/RevistaController.php");
+        $controller = new RevistaController();
+        $controller->executeBorrarRevista($idRevista);
+        break;
+
     case "cambiarClave":
         $idUsuario = $_POST["idUsuario"];
         $claveNueva=$_POST["claveNueva"];

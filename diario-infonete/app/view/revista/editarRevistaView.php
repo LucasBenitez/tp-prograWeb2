@@ -17,20 +17,30 @@ if(isset($_SESSION["usuarioOK"])) {
         <title>Document</title>
     </head>
     <body>
-    <form class="w3-container w3-col s6 w3-display-middle" name="registrar" action="interno.php?page=editarRevista" method="post" enctype="application/x-www-form-urlencoded">
+    <form class="w3-container mt-3" name="registrar" action="interno.php?page=editarRevista" method="post"
+          enctype="multipart/form-data">
 
+        <div class="w3-container">
 
-        <div class="w3-container bg-primary text-white text-center">
             <h2>Cambiar titulo revista</h2>
+            <p><input class="w3-input w3-border" type="text" placeholder="Ingrese el titulo" name="titulo"></p>
+
+            <input type="hidden" value="<?php echo $idRevista ?>" name="idRevista">
+
+            <button type="submit" class="w3-button w3-block w3-padding-large danger-color-dark text-white w3-margin-bottom"
+                    onclick="document.getElementById('crearRevista').style.display='none'">Cambiar</button>
+            <a  class="w3-button w3-block w3-padding-large danger-color-dark text-white w3-margin-bottom"
+                onclick="document.getElementById('crearRevista').style.display='none'" href="interno.php?page=admRevista">Cancelar</a>
+
         </div>
-        <label class="w3-margin-top">Titulo Revista</label>
-        <input class="w3-input w3-margin-top" type="text" name="titulo">
+
+    </form>
+
+
 
         <input type="hidden" value="<?php echo $idRevista ?>" name="idRevista">
 
-        <div class="text-center w3-margin-top"><button class="w3-button bg-primary text-white" >Enviar</button></div>
-        <div class="row w3-center" style="margin-left: 35%">
-            <div class="col  col-md-6">
+   
                 <div class="w3-container">
                     <h2>Lista de Revistas</h2>
                     <table class="w3-table w3-bordered">

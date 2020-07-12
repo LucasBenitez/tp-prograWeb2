@@ -95,6 +95,7 @@ switch ($page){
         break;
 
 
+
     case "inicio":
     default:
         include_once("controller/InicioController.php");

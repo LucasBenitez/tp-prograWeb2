@@ -17,29 +17,26 @@ if(isset($_SESSION["usuarioOK"])) {
     <body>
 
 
-    <form class="w3-container w3-col s6 w3-display-middle" name="registrar" action="interno.php?page=editarNoticia" method="post" enctype="application/x-www-form-urlencoded">
+        <form class="w3-container mt-3" name="registrar" action="interno.php?page=editarNoticia" method="post"
+              enctype="multipart/form-data">
 
+                <div class="w3-container">
 
-        <div class="w3-container bg-primary text-white text-center">
-            <h2>Cambiar informe noticia</h2>
-        </div>
-        <label class="w3-margin-top">Titulo noticia</label>
-        <input class="w3-input w3-margin-top" type="text" name="titulo">
+                    <h2>Cambiar informe noticia</h2>
+                    <p><input class="w3-input w3-border" type="text" placeholder="Ingrese el titulo" name="titulo"></p>
+                    <p><input class="w3-input w3-border" type="text" placeholder="Ingrese el informe de la noticia" id="clave" name="cuerpoNoticia"></p>
 
-        <label class="w3-margin-top">Informe noticia</label>
-        <input class="w3-input w3-margin-top" type="text" name="cuerpoNoticia">
+                    <input type="hidden" value="<?php echo $idNoticia ?>" name="idNoticia">
 
+                    <button type="submit" class="w3-button w3-block w3-padding-large danger-color-dark text-white w3-margin-bottom"
+                            onclick="document.getElementById('crearRevista').style.display='none'">Cambiar</button>
+                    <a  class="w3-button w3-block w3-padding-large danger-color-dark text-white w3-margin-bottom"
+                        onclick="document.getElementById('crearRevista').style.display='none'" href="interno.php?page=admRevista">Cancelar</a>
 
-        <input type="hidden" value="<?php echo $idNoticia ?>" name="idNoticia">
+                </div>
 
-        <div class="text-center w3-margin-top"><button class="w3-button bg-primary text-white" >Enviar</button></div>
-    </form>
-    <div class="w3-display-bottomright w3-margin-bottom w3-margin-right">
-        <a href="interno.php?page=admRevista" class="w3-button bg-primary w3-hover-black w3-margin-right" style="text-decoration: none">Volver a la página anterior</a></div>
+        </form>
 
-
-
-    </form>
 
     <div class="w3-container">
         <h2>Lista de Noticias</h2>

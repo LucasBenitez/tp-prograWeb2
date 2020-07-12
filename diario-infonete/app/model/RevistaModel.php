@@ -112,7 +112,7 @@ class RevistaModel
 
     public function executeBorrarSeccion($idSeccion)
     {
-        $this->conexion->queryBorrarSeccion($idSeccion);
+        return $this->conexion->queryBorrarSeccion($idSeccion);
     }
     public function executeSuscribirse($idUsuario , $idRevista)
     {

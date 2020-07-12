@@ -17,28 +17,28 @@ if (isset($_SESSION["usuarioOK"])) {
 
 
         <div class="w3-container w3-margin-top w3-margin-bottom">
-            <a href="interno.php?page=crearRevista" class="w3-button bg-primary w3-hover-black w3-margin-right"
-               style="text-decoration: none">Crear nueva Revista</a>
-            <a href="interno.php?page=crearNoticia" class="w3-button bg-primary w3-hover-black w3-margin-right"
-               style="text-decoration: none">Crear Noticia</a>
-            <a href="interno.php?page=crearSeccion" class="w3-button bg-primary w3-hover-black w3-margin-right"
-               style="text-decoration: none">Crear Seccion</a>
+            <a class="w3-button danger-color-dark text-white w3-margin-right"
+               style="text-decoration: none" onclick="document.getElementById('crearRevista').style.display='block'">Crear nueva Revista</a>
+            <a class="w3-button danger-color-dark text-white  w3-margin-right"
+               style="text-decoration: none" onclick="document.getElementById('crearNoticia').style.display='block'">Crear Noticia</a>
+            <a class="w3-button danger-color-dark text-white  w3-margin-right"
+               style="text-decoration: none" onclick="document.getElementById('crearSeccion').style.display='block'">Crear Seccion</a>
 
         </div>
     </div>
-    <div class="row w3-center" style="margin-left: 35%">
-        <div class="col  col-md-6">
+
+
             <div class="w3-container">
                 <h2>Lista de Revistas</h2>
-                <table class="w3-table w3-bordered">
-                    <tr class="w3-center">
+                <table class="w3-table-all">
+                    <tr>
 
 
-                        <th>Titulo</th>
-                        <th>Numero</th>
-                        <th>Descripcion</th>
-                        <th>Borrar</th>
-                        <th>Modificar</th>
+                        <th style='font-size: 15px'>Titulo</th>
+                        <th style='font-size: 15px'>Numero</th>
+                        <th style='font-size: 15px'>Descripcion</th>
+                        <th style='font-size: 15px'>Borrar</th>
+                        <th style='font-size: 15px'>Modificar</th>
 
                     </tr>
             </div>
@@ -52,14 +52,14 @@ if (isset($_SESSION["usuarioOK"])) {
                     $posi = explode("-", $resultadosRevista[$i]);
                     echo "<div>";
 
-                    echo "<td>$posi[1]</td>";
-                    echo "<td>$posi[2]</td>";
-                    echo "<td>$posi[3]</td>";
+                    echo "<td style='font-size: 15px'>$posi[1]</td>";
+                    echo "<td style='font-size: 15px'>$posi[2]</td>";
+                    echo "<td style='font-size: 15px'>$posi[3]</td>";
                     echo "<td>";
                     echo "<div class='w3-margin-left'><a href='interno.php?page=borrarRevista&idRevista=$posi[0]'style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
                     echo "</td>";
                     echo "<td>";
-                    echo "<div class='w3-margin-left'><div class='w3-margin-left'><a href='interno.php?page=redirectRevista&cod_revista=$posi[0]' style='color: black'>
+                    echo "<div class='w3-margin-left'><div class='w3-margin-left' ><a href='interno.php?page=redirectRevista&cod_revista=$posi[0]' style='color: black'>
                               <i class=\"fa fa-pencil-square-o fa-2x\" aria-hidden=\"true\" href='#'></i></a></div></div>";
                     echo "</td>";
                     echo "</tr>";
@@ -89,19 +89,21 @@ if (isset($_SESSION["usuarioOK"])) {
             }
             ?>
             </table>
-        </div>
+
 
         <div class="w3-container">
             <h2>Lista de Noticias</h2>
-            <table class="w3-table w3-bordered">
+            <table class="w3-table-all">
                 <tr>
 
-                    <th>Titulo</th>
-                    <th>Subtitulo</th>
-                    <th>Estado</th>
-                    <th>Borrar</th>
-                    <th>Modificar Estado</th>
-                    <th>Editar noticia</th>
+                    <th style='font-size: 15px'>Titulo</th>
+                    <th style='font-size: 15px'>Subtitulo</th>
+                    <th style='font-size: 15px'>Estado</th>
+                    <th style='font-size: 15px'>Borrar</th>
+                    <th style='font-size: 15px'>Modificar Estado</th>
+                    <th style='font-size: 15px'>Editar noticia</th>
+
+
                 </tr>
                 <?php
 
@@ -112,9 +114,9 @@ if (isset($_SESSION["usuarioOK"])) {
                         $posN = explode("-", $resultadosNoticia[$i]);
 
                         echo "<tr>";
-                        echo "<td>$posN[1]</td>";
-                        echo "<td>$posN[2]</td>";
-                        echo "<td>$posN[3]</td>";
+                        echo "<td style='font-size: 15px'>$posN[1]</td>";
+                        echo "<td style='font-size: 15px'>$posN[2]</td>";
+                        echo "<td style='font-size: 15px'>$posN[3]</td>";
                         if ($pos[2] == 1) {
                             echo "<td>";
                             echo "<div class='w3-margin-left'><a href='interno.php?page=borrarNoticia&idNoticia=$posN[0]' style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
@@ -129,10 +131,13 @@ if (isset($_SESSION["usuarioOK"])) {
                             echo "</td>";
                         } else {
                             echo "<td>";
-                            echo "No disponible";
+                            echo   "<p style='font-size: 15px'>No disponible</p>";
                             echo "</td>";
                             echo "<td>";
-                            echo "No disponible";
+                            echo   "<p style='font-size: 15px'>No disponible</p>";
+                            echo "</td>";
+                            echo "<td>";
+                            echo   "<p style='font-size: 15px'>No disponible</p>";
                             echo "</td>";
 
                         }
@@ -163,14 +168,14 @@ if (isset($_SESSION["usuarioOK"])) {
                 ?>
             </table>
         </div>
-    </div>
+
     <div class="w3-container">
-        <h2>Lista de Seccicion</h2>
-        <table class="w3-table w3-bordered">
+        <h2>Lista de Secciones</h2>
+        <table class="w3-table-all">
             <tr>
-                <th>Titulo</th>
-                <th>Borrar</th>
-                <th>Modificar</th>
+                <th style='font-size: 15px'>Titulo</th>
+                <th style='font-size: 15px'>Borrar</th>
+                <th style='font-size: 15px'>Modificar</th>
 
             </tr>
             <?php
@@ -180,7 +185,7 @@ if (isset($_SESSION["usuarioOK"])) {
                 for ($i = 1; $i <= $tam; $i++) {
                     $posS = explode("-",$resultadosSeccion[$i]);
                     echo "<tr>";
-                    echo "<td>$posS[1]</td>";
+                    echo "<td style='font-size: 15px'>$posS[1]</td>";
                     if ($pos[2] == 1) {
                         echo "<td>";
                         echo "<div class='w3-margin-left'><a href='interno.php?page=borrarSeccion&idSeccion=$posS[0]' style='color: black'><i class=\"fa fa-trash fa-2x\" aria-hidden=\"true\"></i></a></div>";
@@ -191,10 +196,10 @@ if (isset($_SESSION["usuarioOK"])) {
                         echo "</td>";
                     } else {
                         echo "<td>";
-                        echo "No disponible";
+                        echo "<p style='font-size: 15px'>No disponible</p>";
                         echo "</td>";
                         echo "<td>";
-                        echo "No disponible";
+                        echo "<p style='font-size: 15px'>No disponible</p>";
                         echo "</td>";
 
                     }
@@ -224,73 +229,57 @@ if (isset($_SESSION["usuarioOK"])) {
             ?>
         </table>
     </div>
-    </div>
-    <div class="w3-display-bottomright w3-margin-bottom w3-margin-right">
-        <a href="interno.php?page=panelControl" class="w3-button bg-primary w3-hover-black w3-margin-right"
-           style="text-decoration: none">Volver a la página anterior</a></div>
-
-    <?php
-    if (isset($_SESSION["crearRevista"])) {
-        ?>
-        <br>
-        <br>
-        <div class="w3-card-4 w3-display-left" id="ocultar" style="width:25%;margin-left: 80px;">
-
-            <div class="w3-container bg-primary w3-round">
-                <h2 class="w3-center">Crear Revista</h2>
-            </div>
-            <br>
-            <form class="w3-container" name="registrar" action="interno.php?page=guardarRevista" method="post"
-                  enctype="multipart/form-data"
-            >
-                <label>Titulo</label>
-                <input class="w3-input w3-round" type="text" name="titulo"><br/>
-                <label>Nro. Revista</label>
-                <input class="w3-input w3-round" type="text" name="nroRevista"><br/>
-                <label>Descripcion</label>
-                <textarea class="w3-input w3-round" type="text" name="descripcion" rows="4" cols="50">
-                        </textarea>
-
-                <label for="inputGroupFile01" id="uploadedImage__label"  class="w3-margin-top">Seleccionar
-                    imagen para la revista</label>
+   <div style="margin-bottom: 100px"></div>
 
 
-                <input type="file" id="uploadedImage" name="uploadedImage"
-                       aria-describedby="inputGroupFileAddon01">
+<!-- Modal de crear revista -->
+            <div id="crearRevista" class="w3-modal w3-animate-opacity">
+                <form class="w3-container" name="registrar" action="interno.php?page=guardarRevista" method="post"
+                      enctype="multipart/form-data">
+                <div class="w3-modal-content" style="padding:32px">
+                    <div class="w3-container w3-white">
+                        <i onclick="document.getElementById('crearRevista').style.display='none'" class="fa fa-remove
+                        w3-transparent w3-button w3-xlarge w3-right"></i>
+                        <h2>Crear Revista</h2>
+                        <p><input class="w3-input w3-border" type="text" placeholder="Ingrese el titulo" name="titulo"></p>
+                        <p><input class="w3-input w3-border" type="text" placeholder="Ingrese el número de revista" id="clave" name="nroRevista"></p>
+                        <p><textarea class="w3-input w3-border" type="text" placeholder="Ingrese la descripción" id="clave" name="descripcion" rows="4"
+                            cols="50"></textarea></p>
+
+                        <label for="inputGroupFile01" id="uploadedImage__label"  class="w3-margin-top">Seleccionar
+                            imagen para la revista</label>
+                        <p><input type="file" id="uploadedImage" name="uploadedImage"
+                                  aria-describedby="inputGroupFileAddon01"></p>
 
 
-                <div class="w3-center w3-margin-bottom">
-                    <input class="w3-button w3-blue-grey w3-round w3-center" type="submit" name="boton" value="CREAR">
 
-                    <a class="w3-button w3-blue-grey w3-round w3-center" onclick="cerrarForm()">SALIR</a>
+
+                        <button type="submit" class="w3-button w3-block w3-padding-large danger-color-dark text-white w3-margin-bottom"
+                                onclick="document.getElementById('crearRevista').style.display='none'">Crear</button>
+                        <a  class="w3-button w3-block w3-padding-large danger-color-dark text-white w3-margin-bottom"
+                            onclick="document.getElementById('crearRevista').style.display='none'" href="interno.php?page=admRevista">Cancelar</a>
+
+                    </div>
                 </div>
-            </form>
-        </div>
+                </form>
+                </div>
 
-        <?php
-        unset($_SESSION["crearRevista"]);
-    }
-    ?>
-    <?php
-    if (isset($_SESSION["crearNoticia"])) {
-        ?>
-        <br>
-        <br>
-        <div class="w3-card-4 w3-display-left " id="ocultar" style="width:25%;margin-left: 80px;">
 
-            <div class="w3-container bg-primary w3-round">
-                <h2 class="w3-center">Crear Noticia</h2>
-            </div>
-            <br>
-            <form class="w3-container" name="registrarNoticia" action="interno.php?page=guardarNoticia" method="post"
-                  enctype="multipart/form-data">
-                <label>Titulo</label>
-                <input class="w3-input w3-round" type="text" name="titulo"><br/>
-                <label>Subtitulo</label>
-                <input class="w3-input w3-round" type="text" name="subtitulo"><br/>
-                <label>Informe</label>
-                <textarea class="w3-input w3-round" type="text" name="informe" rows="4" cols="50">
-                        </textarea>
+    <!-- Modal de crear noticia -->
+
+    <div id="crearNoticia" class="w3-modal w3-animate-opacity">
+
+        <form class="w3-container" name="registrar" action="interno.php?page=guardarNoticia" method="post"
+              enctype="multipart/form-data">
+            <div class="w3-modal-content" style="padding:32px">
+                <div class="w3-container w3-white">
+                    <i onclick="document.getElementById('crearNoticia').style.display='none'" class="fa fa-remove
+                        w3-transparent w3-button w3-xlarge w3-right"></i>
+                    <h2>Crear Revista</h2>
+                    <p><input class="w3-input w3-border" type="text" placeholder="Ingrese el titulo" name="titulo"></p>
+                    <p><input class="w3-input w3-border" type="text" placeholder="Ingrese el subititulo" id="clave" name="subtitulo"></p>
+                    <p><textarea class="w3-input w3-border" type="text" placeholder="Ingrese el informe de la noticia" id="clave" name="informe" rows="4"
+                                 cols="50"></textarea></p>
                 <?php
                 if (isset($resultadosSeccion)) {
 
@@ -308,39 +297,33 @@ if (isset($_SESSION["usuarioOK"])) {
                 }
                 ?>
                 <br/>
-                <label for="inputGroupFile01" id="uploadedImage__label" class="w3-margin-top">Seleccionar
-                    imagen para la noticia</label>
-                <input type="file" id="uploadedImage" name="uploadedImage"
-                       aria-describedby="inputGroupFileAddon01" class="w3-margin-bottom">
+                    <label for="inputGroupFile01" id="uploadedImage__label"  class="w3-margin-top">Seleccionar
+                        imagen para la noticia</label>
+                    <p><input type="file" id="uploadedImage" name="uploadedImage"
+                              aria-describedby="inputGroupFileAddon01"></p>
+                    <input type="hidden" name="cod_contenidista" value="<?php echo $pos[0] ?>">
 
-
-                <input type="hidden" name="cod_contenidista" value="<?php echo $pos[0] ?>">
-                <div class="w3-center w3-margin-bottom">
-                    <input class="w3-button w3-blue-grey w3-round w3-center" type="submit" name="boton" value="CREAR">
-
-                    <a class="w3-button w3-blue-grey w3-round w3-center" onclick="cerrarForm()">SALIR</a>
-                </div>
-            </form>
-        </div>
-        <?php
-        unset($_SESSION["crearNoticia"]);
-    }
-    ?>
-    <?php
-    if (isset($_SESSION["crearSeccion"])) {
-        ?>
-        <br>
-        <br>
-        <div class="w3-card-4 w3-display-left " id="ocultar" style="width:25%;margin-left: 80px">
-
-            <div class="w3-container bg-primary w3-round">
-                <h2 class="w3-center">Crear Seccion</h2>
+                    <button type="submit" class="w3-button w3-block w3-padding-large danger-color-dark text-white w3-margin-bottom"
+                            onclick="document.getElementById('crearNoticia').style.display='none'">Crear</button>
+                    <a  class="w3-button w3-block w3-padding-large danger-color-dark text-white w3-margin-bottom"
+                        onclick="document.getElementById('crearNoticia').style.display='none'" href="interno.php?page=admRevista">Cancelar</a>
             </div>
-            <br>
-            <form class="w3-container" name="registrarSeccion" action="interno.php?page=guardarSeccion" method="POST"
-                  enctype="application/x-www-form-urlencoded">
-                <label>Nombre</label>
-                <input class="w3-input w3-round" type="text" name="descripcion"><br/>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal de crear seccion -->
+
+    <div id="crearSeccion" class="w3-modal w3-animate-opacity">
+        <form class="w3-container" name="registrar" action="interno.php?page=guardarSeccion" method="post"
+              enctype="multipart/form-data">
+            <div class="w3-modal-content" style="padding:32px">
+                <div class="w3-container w3-white">
+                    <i onclick="document.getElementById('crearSeccion').style.display='none'" class="fa fa-remove
+                        w3-transparent w3-button w3-xlarge w3-right"></i>
+                    <h2>Crear Seccón</h2>
+                    <p><input class="w3-input w3-border" type="text" placeholder="Ingrese el nombre" name="descripcion"></p>
+
 
                 <?php
                 if (isset($resultadosRevista)) {
@@ -360,25 +343,18 @@ if (isset($_SESSION["usuarioOK"])) {
                 ?>
 
 
-                <div class="w3-center w3-margin-bottom">
-                    <input class="w3-button w3-blue-grey w3-round w3-center" type="submit" name="boton" value="CREAR">
-
-                    <a class="w3-button w3-blue-grey w3-round w3-center" onclick="cerrarForm()">SALIR</a>
+                    <button type="submit" class="w3-button w3-block w3-padding-large danger-color-dark text-white w3-margin-bottom"
+                            onclick="document.getElementById('crearNoticia').style.display='none'">Crear</button>
+                    <a  class="w3-button w3-block w3-padding-large danger-color-dark text-white w3-margin-bottom"
+                        onclick="document.getElementById('crearNoticia').style.display='none'" href="interno.php?page=admRevista" style="text-decoration: none">Cancelar</a>
                 </div>
-            </form>
-        </div>
-        <?php
-        unset($_SESSION["crearSeccion"]);
-    }
-    ?>
+            </div>
+        </form>
+    </div>
 
 
-    <script>
-        function cerrarForm() {
-            document.getElementById("ocultar").style.display = 'none';
-        }
 
-    </script>
+
     </body>
     </html>
     <?php

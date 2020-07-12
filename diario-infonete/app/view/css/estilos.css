@@ -34,3 +34,6 @@
 .seccion :hover {
     color: red;
 }
+th , td {
+    font-size: 15px;
+}

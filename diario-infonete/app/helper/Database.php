@@ -486,8 +486,9 @@ class Database
     {
         $stmt = $this->conexion->prepare("DELETE FROM Seccion  WHERE Cod_seccion=?");
         $stmt->bind_param('i', $idSeccion);
-        $stmt->execute();
+        $resultado=$stmt->execute();
         $stmt->close();
+        return $resultado;
 
     }
 

@@ -144,19 +144,25 @@ class RevistaController
     {
 
         $resultadoExecute=$this->modelo->executeBorrarRevista($idRevista);
+
         if($resultadoExecute){
             header("Location: interno.php?page=admRevista");
         }
         else{
-            header("pagina error");
+            include_once("view/revista/errorRevistaView.php");
         }
 
     }
 
     public function executeBorrarSeccion($idSeccion)
     {
-        $this->modelo->executeBorrarSeccion($idSeccion);
-        header("Location: interno.php?page=admRevista");
+        $resultadoExecute = $this->modelo->executeBorrarSeccion($idSeccion);
+        if($resultadoExecute){
+            header("Location: interno.php?page=admRevista");
+        }
+        else{
+            include_once("view/revista/errorSeccionView.php");
+        }
     }
 
     public function executeSuscribirse($idUsuario,$idRevista)
